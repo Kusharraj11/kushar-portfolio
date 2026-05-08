@@ -50,7 +50,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:61;opa
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .statusbar .live::before{content:"●";color:var(--crimson);margin-right:6px;animation:pulse 1.4s infinite}
 
-.sidenav{position:fixed;left:14px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:18px;padding:18px 12px;border:1px solid var(--line);background:rgba(13,13,20,0.7);backdrop-filter:blur(8px);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim)}
+.sidenav{position:fixed;left:14px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:18px;padding:18px 12px;border:1px solid var(--line);background:rgba(13,13,20,0.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim)}
 .sidenav a{color:inherit;text-decoration:none;display:flex;align-items:center;gap:10px;padding:6px 4px;border-left:2px solid transparent;transition:all .2s}
 .sidenav a:hover,.sidenav a.active{color:var(--bone);border-left-color:var(--crimson)}
 .sidenav .num{color:var(--bone-faint);font-size:9px}
@@ -89,6 +89,7 @@ section:first-of-type{border-top:0;padding-top:80px}
 .btn.primary::after{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,80,80,0.13),transparent);animation:btnShimmer 2.8s ease-in-out infinite;pointer-events:none}
 @keyframes btnShimmer{0%{left:-100%}60%,100%{left:260%}}
 .btn.primary:hover{background:var(--crimson);color:var(--ink);border-color:var(--crimson)}
+.btn.primary:hover::after{animation-play-state:paused;opacity:0}
 .btn .arrow{font-family:"JetBrains Mono";color:var(--crimson)}
 .btn:hover .arrow{color:var(--ink)}
 
