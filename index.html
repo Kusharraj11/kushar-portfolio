@@ -265,6 +265,17 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
 .reveal.visible{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal,.reveal.visible{opacity:1 !important;transform:none !important;transition:none !important}}
 
+.nav-toggle{display:none;align-items:center;justify-content:center;width:30px;height:30px;background:none;border:1px solid var(--line);cursor:pointer;padding:0;flex-shrink:0;position:relative}
+.nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{display:block;width:16px;height:1.5px;background:var(--bone-dim);transition:all .25s ease;position:relative}
+.nav-toggle span::before,.nav-toggle span::after{content:"";position:absolute;left:0;transition:all .25s ease}
+.nav-toggle span::before{top:-5px}
+.nav-toggle span::after{top:5px}
+.nav-toggle.open span{background:transparent}
+.nav-toggle.open span::before{transform:rotate(45deg);top:0;background:var(--crimson)}
+.nav-toggle.open span::after{transform:rotate(-45deg);top:0;background:var(--crimson)}
+.nav-backdrop{display:none;position:fixed;inset:0;background:rgba(7,7,11,0.75);z-index:105;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.nav-backdrop.open{display:block}
+
 @media (max-width:980px){
   .shell{padding:60px 20px 32px}
   .sidenav,.kanji-rail{display:none}
@@ -279,6 +290,9 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
   .hero .ctas{margin-top:28px}
   .contact h3{font-size:44px}
   .avatar-frame{aspect-ratio:1/1.05;max-width:340px;margin-left:auto;margin-right:auto}
+  .nav-toggle{display:flex}
+  .sidenav{display:flex;left:-220px;top:0;bottom:0;height:100%;transform:none;transition:left .3s cubic-bezier(.4,0,.2,1);z-index:110;padding-top:60px;width:200px}
+  .sidenav.open{left:0}
 }
 @media (max-width:640px){
   .statusbar{height:auto;padding:6px 10px;gap:6px;flex-wrap:wrap;font-size:9px}
@@ -368,9 +382,11 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
     <span id="clock">--:--:-- IST</span>
     <span>v3.04.26</span>
     <span>侍 // BUSHIDŌ.MODE</span>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span></button>
   </div>
 </div>
 
+<div class="nav-backdrop" id="navBackdrop"></div>
 <nav class="sidenav">
   <a href="#hero" class="active"><span class="num">00</span>HOME</a>
   <a href="#about"><span class="num">01</span>ABOUT</a>
@@ -1063,6 +1079,27 @@ window.addEventListener('keydown', e => {
     buf = '';
   }
 });
+
+// Mobile nav
+const navToggle = document.getElementById('navToggle');
+const navBackdrop = document.getElementById('navBackdrop');
+const sidenavEl = document.querySelector('.sidenav');
+
+function closeNav(){
+  if(navToggle) navToggle.classList.remove('open');
+  if(sidenavEl) sidenavEl.classList.remove('open');
+  if(navBackdrop) navBackdrop.classList.remove('open');
+}
+
+if(navToggle){
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    sidenavEl.classList.toggle('open');
+    navBackdrop.classList.toggle('open');
+  });
+}
+if(navBackdrop) navBackdrop.addEventListener('click', closeNav);
+document.querySelectorAll('.sidenav a').forEach(a => a.addEventListener('click', closeNav));
 
 // Scroll reveal
 const revealObserver = new IntersectionObserver((entries) => {
