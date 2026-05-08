@@ -85,12 +85,14 @@ section:first-of-type{border-top:0;padding-top:80px}
 .hero .ctas{margin-top:42px;display:flex;gap:14px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:12px;padding:14px 22px;border:1px solid var(--line-2);background:transparent;color:var(--bone);font-family:inherit;font-size:11px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .2s;position:relative}
 .btn:hover{background:var(--bone);color:var(--ink);border-color:var(--bone)}
-.btn.primary{border-color:var(--crimson);color:var(--bone);background:linear-gradient(180deg,rgba(255,40,64,0.05),transparent)}
+.btn.primary{border-color:var(--crimson);color:var(--bone);background:linear-gradient(180deg,rgba(255,40,64,0.05),transparent);overflow:hidden}
+.btn.primary::after{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,80,80,0.13),transparent);animation:btnShimmer 2.8s ease-in-out infinite;pointer-events:none}
+@keyframes btnShimmer{0%{left:-100%}60%,100%{left:260%}}
 .btn.primary:hover{background:var(--crimson);color:var(--ink);border-color:var(--crimson)}
 .btn .arrow{font-family:"JetBrains Mono";color:var(--crimson)}
 .btn:hover .arrow{color:var(--ink)}
 
-.hud-card{border:1px solid var(--line);background:rgba(13,13,20,0.5);padding:22px;position:relative;backdrop-filter:blur(4px)}
+.hud-card{border:1px solid var(--line-2);background:rgba(13,13,20,0.6);padding:22px;position:relative;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 .hud-card .corner{position:absolute;width:10px;height:10px;border:1px solid var(--cyan)}
 .hud-card .corner.tl{top:-1px;left:-1px;border-right:0;border-bottom:0}
 .hud-card .corner.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
@@ -156,7 +158,7 @@ section:first-of-type{border-top:0;padding-top:80px}
 /* Now Playing grid */
 .now-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .np{border:1px solid var(--line);background:rgba(13,13,20,0.4);padding:22px;position:relative;min-height:240px;display:flex;flex-direction:column;transition:all .25s}
-.np:hover{border-color:var(--crimson);transform:translateY(-2px)}
+.np:hover{border-color:rgba(255,40,64,0.45);transform:translateY(-3px);box-shadow:0 0 0 1px rgba(255,40,64,0.08),0 0 22px rgba(255,40,64,0.14),0 6px 26px rgba(0,0,0,0.5)}
 .np .head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
 .np .id{font-size:9.5px;letter-spacing:.22em;color:var(--bone-faint);text-transform:uppercase}
 .np .kanji{font-family:"Noto Serif JP";font-weight:900;font-size:42px;color:var(--crimson);opacity:.85;line-height:1}
@@ -171,7 +173,7 @@ section:first-of-type{border-top:0;padding-top:80px}
 /* Certificates */
 .certs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .cert{border:1px solid var(--line);padding:24px;background:rgba(13,13,20,0.3);position:relative;display:flex;flex-direction:column;gap:10px;transition:all .25s}
-.cert:hover{border-color:var(--gold);transform:translateY(-2px)}
+.cert:hover{border-color:rgba(216,178,90,0.55);transform:translateY(-3px);box-shadow:0 0 0 1px rgba(216,178,90,0.1),0 0 24px rgba(216,178,90,0.15),0 6px 28px rgba(0,0,0,0.5)}
 .cert .top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:8px}
 .cert .seal{width:46px;height:46px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:"Noto Serif JP";font-weight:900;color:var(--gold);font-size:20px;flex-shrink:0}
 .cert .org{font-size:10px;letter-spacing:.22em;color:var(--bone-faint);text-transform:uppercase}
@@ -187,7 +189,7 @@ section:first-of-type{border-top:0;padding-top:80px}
 /* Projects */
 .projects-featured{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
 .proj-feat{border:1px solid var(--line);padding:28px;background:rgba(13,13,20,0.5);position:relative;display:flex;flex-direction:column;transition:all .25s}
-.proj-feat:hover{border-color:var(--crimson);transform:translateY(-2px)}
+.proj-feat:hover{border-color:rgba(255,40,64,0.5);transform:translateY(-3px);box-shadow:0 0 0 1px rgba(255,40,64,0.1),0 0 32px rgba(255,40,64,0.18),0 8px 40px rgba(0,0,0,0.55)}
 .proj-feat .corner{position:absolute;width:10px;height:10px;border:1px solid var(--crimson)}
 .proj-feat .corner.tl{top:-1px;left:-1px;border-right:0;border-bottom:0}
 .proj-feat .corner.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
@@ -203,7 +205,7 @@ section:first-of-type{border-top:0;padding-top:80px}
 .proj-feat .actions{display:flex;gap:10px;margin-top:auto}
 .projects-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .proj-card{border:1px solid var(--line);padding:18px;background:rgba(13,13,20,0.35);display:flex;flex-direction:column;min-height:170px;transition:all .25s}
-.proj-card:hover{border-color:rgba(125,249,255,0.3);transform:translateY(-2px)}
+.proj-card:hover{border-color:rgba(125,249,255,0.4);transform:translateY(-3px);box-shadow:0 0 0 1px rgba(125,249,255,0.08),0 0 20px rgba(125,249,255,0.13),0 6px 28px rgba(0,0,0,0.5)}
 .proj-card .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
 .proj-card .idx{font-size:9px;letter-spacing:.22em;color:var(--bone-faint);text-transform:uppercase}
 .proj-card .lang{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(125,249,255,0.2);padding:2px 7px}
