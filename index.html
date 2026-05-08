@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KUSHAR.RAJ // 流転 — portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Serif+JP:wght@200;400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#07070b;
+  --ink-2:#0d0d14;
+  --ink-3:#14141d;
+  --line:rgba(232,230,224,0.10);
+  --line-2:rgba(232,230,224,0.18);
+  --bone:#e8e6e0;
+  --bone-dim:#8d8a82;
+  --bone-faint:#56544f;
+  --crimson:#ff2840;
+  --crimson-deep:#a00018;
+  --cyan:#7df9ff;
+  --gold:#d8b25a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--ink);color:var(--bone);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{
+  background:
+    radial-gradient(1200px 800px at 70% -10%, rgba(255,40,64,0.07), transparent 60%),
+    radial-gradient(1000px 700px at -10% 110%, rgba(125,249,255,0.05), transparent 60%),
+    var(--ink);
+  min-height:100vh;
+}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;background:repeating-linear-gradient(0deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 3px);mix-blend-mode:overlay}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:61;opacity:.06;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>")}
+
+.hud-frame{position:fixed;inset:14px;pointer-events:none;z-index:55;border:1px solid var(--line)}
+.hud-frame::before,.hud-frame::after{content:"";position:absolute;width:18px;height:18px;border:1px solid var(--crimson)}
+.hud-frame::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.hud-frame::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.hud-frame .c2,.hud-frame .c3{position:absolute;width:18px;height:18px;border:1px solid var(--cyan)}
+.hud-frame .c2{top:-1px;right:-1px;border-left:0;border-bottom:0}
+.hud-frame .c3{bottom:-1px;left:-1px;border-right:0;border-top:0}
+
+.statusbar{position:fixed;top:14px;left:14px;right:14px;height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--ink) 0%,rgba(7,7,11,0.6) 100%);z-index:50;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-dim)}
+.statusbar .left,.statusbar .right{display:flex;gap:18px;align-items:center}
+.statusbar .dot{width:6px;height:6px;border-radius:50%;background:var(--crimson);box-shadow:0 0 8px var(--crimson)}
+.statusbar .pulse{animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.statusbar .live::before{content:"●";color:var(--crimson);margin-right:6px;animation:pulse 1.4s infinite}
+
+.sidenav{position:fixed;left:14px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:18px;padding:18px 12px;border:1px solid var(--line);background:rgba(13,13,20,0.7);backdrop-filter:blur(8px);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim)}
+.sidenav a{color:inherit;text-decoration:none;display:flex;align-items:center;gap:10px;padding:6px 4px;border-left:2px solid transparent;transition:all .2s}
+.sidenav a:hover,.sidenav a.active{color:var(--bone);border-left-color:var(--crimson)}
+.sidenav .num{color:var(--bone-faint);font-size:9px}
+.sidenav a:hover .num,.sidenav a.active .num{color:var(--crimson)}
+
+.kanji-rail{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:40;writing-mode:vertical-rl;font-family:"Noto Serif JP",serif;font-weight:200;font-size:11px;letter-spacing:.4em;color:var(--bone-faint);text-transform:none}
+
+.shell{padding:64px 96px 64px 110px;max-width:1480px;margin:0 auto}
+section{position:relative;padding:120px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0;padding-top:80px}
+
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:32px;border-bottom:1px solid var(--line);padding-bottom:18px}
+.section-head .lbl{font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--crimson)}
+.section-head h2{font-family:"Space Grotesk",sans-serif;font-weight:300;font-size:48px;line-height:1;letter-spacing:-0.02em;color:var(--bone);margin-top:8px}
+.section-head .kanji{font-family:"Noto Serif JP",serif;font-weight:200;font-size:64px;color:var(--bone-faint);line-height:1;opacity:.7}
+.section-head .meta{font-size:10px;letter-spacing:.18em;color:var(--bone-dim);text-align:right;text-transform:uppercase}
+
+/* HERO */
+.hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:center;position:relative}
+.hero .bigkanji{position:absolute;right:-40px;top:-20px;font-family:"Noto Serif JP",serif;font-weight:900;font-size:520px;line-height:.85;color:var(--crimson);opacity:.07;pointer-events:none;letter-spacing:-.04em;user-select:none}
+.hero .preface{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--bone-dim);display:flex;gap:18px;align-items:center;margin-bottom:22px}
+.hero .preface::before{content:"";width:46px;height:1px;background:var(--crimson)}
+.hero h1{font-family:"Zen Dots",sans-serif;font-size:clamp(56px,8vw,124px);line-height:.92;letter-spacing:-0.02em;color:var(--bone)}
+.hero h1 .accent{color:var(--crimson);position:relative}
+.hero h1 .accent::after{content:"_";color:var(--crimson);animation:blink 1.05s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero .role{margin-top:22px;font-family:"Space Grotesk",sans-serif;font-weight:300;font-size:22px;color:var(--bone);max-width:640px;letter-spacing:-.005em;line-height:1.4}
+.hero .role b{color:var(--cyan);font-weight:500}
+.hero .role .red{color:var(--crimson);font-weight:500}
+.hero .tags{margin-top:36px;display:flex;flex-wrap:wrap;gap:8px}
+.hero .tags span{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-dim);padding:7px 12px;border:1px solid var(--line)}
+.hero .ctas{margin-top:42px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:14px 22px;border:1px solid var(--line-2);background:transparent;color:var(--bone);font-family:inherit;font-size:11px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .2s;position:relative}
+.btn:hover{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+.btn.primary{border-color:var(--crimson);color:var(--bone);background:linear-gradient(180deg,rgba(255,40,64,0.05),transparent)}
+.btn.primary:hover{background:var(--crimson);color:var(--ink);border-color:var(--crimson)}
+.btn .arrow{font-family:"JetBrains Mono";color:var(--crimson)}
+.btn:hover .arrow{color:var(--ink)}
+
+.hud-card{border:1px solid var(--line);background:rgba(13,13,20,0.5);padding:22px;position:relative;backdrop-filter:blur(4px)}
+.hud-card .corner{position:absolute;width:10px;height:10px;border:1px solid var(--cyan)}
+.hud-card .corner.tl{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.hud-card .corner.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
+.hud-card .corner.bl{bottom:-1px;left:-1px;border-right:0;border-top:0}
+.hud-card .corner.br{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.hud-card h4{font-family:"JetBrains Mono";font-weight:500;font-size:10px;letter-spacing:.32em;color:var(--cyan);text-transform:uppercase;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.hud-card h4 .mood{color:var(--crimson);font-size:9px}
+
+/* Avatar HUD */
+.avatar-frame{aspect-ratio:1/1.05;border:1px solid var(--line-2);background:radial-gradient(circle at 50% 30%, rgba(255,40,64,0.10), transparent 70%), #02020480;position:relative;overflow:hidden;margin-bottom:18px}
+.avatar-frame::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg, rgba(125,249,255,0.06) 0 1px, transparent 1px 4px);pointer-events:none;z-index:3}
+.avatar-frame::after{content:"";position:absolute;inset:0;border:1px dashed var(--line);margin:6px;pointer-events:none}
+.avatar-frame .av-corner{position:absolute;width:10px;height:10px;border:1px solid var(--crimson);z-index:4}
+.avatar-frame .av-corner.tl{top:6px;left:6px;border-right:0;border-bottom:0}
+.avatar-frame .av-corner.tr{top:6px;right:6px;border-left:0;border-bottom:0}
+.avatar-frame .av-corner.bl{bottom:6px;left:6px;border-right:0;border-top:0}
+.avatar-frame .av-corner.br{bottom:6px;right:6px;border-left:0;border-top:0}
+.avatar-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;padding:18px 14px 10px;transition:opacity .5s ease, transform .8s ease;filter:drop-shadow(0 8px 18px rgba(255,40,64,0.25))}
+.avatar-frame img.hidden{opacity:0;transform:scale(.96)}
+.avatar-frame .scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:.55;animation:scan 3.6s linear infinite;z-index:4;pointer-events:none}
+@keyframes scan{0%{top:-2%}100%{top:102%}}
+.avatar-frame .badge{position:absolute;bottom:14px;left:14px;font-family:"JetBrains Mono";font-size:9px;letter-spacing:.22em;color:var(--bone);background:rgba(7,7,11,0.7);padding:4px 8px;border:1px solid var(--crimson);text-transform:uppercase;z-index:5}
+.avatar-frame .hp{position:absolute;top:14px;right:14px;font-size:9px;letter-spacing:.18em;color:var(--cyan);z-index:5;background:rgba(7,7,11,0.6);padding:3px 7px;border:1px solid var(--cyan);text-transform:uppercase}
+
+.stat-row{display:flex;justify-content:space-between;padding:8px 0;border-top:1px dashed var(--line);font-size:11px}
+.stat-row:first-of-type{border-top:0}
+.stat-row .k{color:var(--bone-dim);letter-spacing:.12em;text-transform:uppercase;font-size:10px}
+.stat-row .v{color:var(--bone)}
+.stat-row .v.green{color:#7dff9f}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.about p{font-family:"Space Grotesk",sans-serif;font-weight:300;font-size:18px;line-height:1.65;color:var(--bone);margin-bottom:18px;text-wrap:pretty}
+.about p .red{color:var(--crimson);font-weight:500}
+.about p .cy{color:var(--cyan);font-weight:500}
+.about-meta{border:1px solid var(--line);padding:24px;background:rgba(13,13,20,0.4)}
+.about-meta h5{font-size:10px;letter-spacing:.32em;color:var(--bone-dim);text-transform:uppercase;margin-bottom:18px}
+.kvp{display:grid;grid-template-columns:130px 1fr;gap:8px 18px;font-size:13px}
+.kvp dt{color:var(--bone-faint);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding-top:3px}
+.kvp dd{color:var(--bone);padding-bottom:14px;border-bottom:1px dashed var(--line);margin-bottom:6px;font-family:"Space Grotesk";font-size:14px}
+.kvp dd:last-of-type{border-bottom:0}
+
+/* Timeline */
+.timeline{margin-top:32px;display:flex;flex-direction:column;gap:0;border-left:1px solid var(--line);padding-left:0}
+.tl-item{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0 18px 24px;border-bottom:1px dashed var(--line);position:relative}
+.tl-item::before{content:"";position:absolute;left:-5px;top:24px;width:9px;height:9px;background:var(--crimson);border:2px solid var(--ink)}
+.tl-item.now::before{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.tl-item .when{font-size:10px;letter-spacing:.18em;color:var(--bone-faint);text-transform:uppercase;padding-top:3px}
+.tl-item h4{font-family:"Space Grotesk";font-weight:500;font-size:17px;color:var(--bone);margin-bottom:4px;letter-spacing:-0.005em}
+.tl-item .org{font-size:11px;letter-spacing:.16em;color:var(--bone-dim);text-transform:uppercase;margin-bottom:8px}
+.tl-item p{font-size:13px;color:var(--bone-dim);font-family:"Space Grotesk";font-weight:300;line-height:1.55;margin-bottom:0}
+
+/* Skills */
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 32px}
+.skill-cat{border:1px solid var(--line);padding:22px;background:rgba(13,13,20,0.3);position:relative}
+.skill-cat .cat-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;padding-bottom:12px;border-bottom:1px dashed var(--line)}
+.skill-cat .cat-head h4{font-family:"Space Grotesk";font-weight:500;font-size:15px;color:var(--bone);letter-spacing:-0.005em;display:flex;align-items:center;gap:10px}
+.skill-cat .cat-head h4 .ks{font-family:"Noto Serif JP";font-weight:700;color:var(--crimson);font-size:18px}
+.skill-cat .cat-head .lvl{font-size:9.5px;letter-spacing:.22em;color:var(--cyan);text-transform:uppercase}
+.skill-list{display:flex;flex-wrap:wrap;gap:6px}
+.skill-list span{font-size:10.5px;letter-spacing:.12em;color:var(--bone);padding:5px 10px;border:1px solid var(--line);background:rgba(7,7,11,0.4);font-family:"JetBrains Mono"}
+
+/* Now Playing grid */
+.now-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.np{border:1px solid var(--line);background:rgba(13,13,20,0.4);padding:22px;position:relative;min-height:240px;display:flex;flex-direction:column;transition:all .25s}
+.np:hover{border-color:var(--crimson);transform:translateY(-2px)}
+.np .head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.np .id{font-size:9.5px;letter-spacing:.22em;color:var(--bone-faint);text-transform:uppercase}
+.np .kanji{font-family:"Noto Serif JP";font-weight:900;font-size:42px;color:var(--crimson);opacity:.85;line-height:1}
+.np h3{font-family:"Space Grotesk";font-weight:500;font-size:18px;color:var(--bone);margin-bottom:6px;letter-spacing:-0.005em}
+.np .sub{font-size:10.5px;letter-spacing:.18em;color:var(--cyan);text-transform:uppercase;margin-bottom:14px}
+.np ul{list-style:none;font-family:"Space Grotesk";font-weight:300;font-size:14px;color:var(--bone-dim);line-height:1.55}
+.np ul li{padding:5px 0;border-bottom:1px dashed var(--line)}
+.np ul li:last-child{border-bottom:0}
+.np ul li b{color:var(--bone);font-weight:500}
+.np .quote{margin-top:auto;font-family:"Noto Serif JP";font-style:italic;font-size:12px;color:var(--bone-faint);border-left:2px solid var(--crimson);padding-left:10px;margin-top:14px;line-height:1.55}
+
+/* Certificates */
+.certs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.cert{border:1px solid var(--line);padding:24px;background:rgba(13,13,20,0.3);position:relative;display:flex;flex-direction:column;gap:10px;transition:all .25s}
+.cert:hover{border-color:var(--gold);transform:translateY(-2px)}
+.cert .top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:8px}
+.cert .seal{width:46px;height:46px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:"Noto Serif JP";font-weight:900;color:var(--gold);font-size:20px;flex-shrink:0}
+.cert .org{font-size:10px;letter-spacing:.22em;color:var(--bone-faint);text-transform:uppercase}
+.cert h4{font-family:"Space Grotesk";font-weight:500;font-size:18px;color:var(--bone);line-height:1.3;letter-spacing:-0.005em;margin-bottom:6px}
+.cert .date{font-size:10.5px;color:var(--cyan);letter-spacing:.16em;text-transform:uppercase}
+.cert p{font-size:13px;color:var(--bone-dim);line-height:1.55;font-family:"Space Grotesk";font-weight:300;margin-top:8px}
+.cert .achs{display:flex;flex-direction:column;gap:6px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.cert .achs span{font-size:11.5px;color:var(--bone);font-family:"Space Grotesk";display:flex;gap:10px;align-items:center}
+.cert .achs span::before{content:"◆";color:var(--cyan);font-size:9px}
+
+/* Terminal */
+.terminal{border:1px solid var(--line);background:#06060a;padding:28px 24px 24px;font-size:13px;line-height:1.7;position:relative;font-family:"JetBrains Mono"}
+.terminal .tbar{position:absolute;top:0;left:0;right:0;height:24px;background:linear-gradient(90deg,#101019 0%,#06060a 100%);border-bottom:1px solid var(--line);display:flex;gap:6px;align-items:center;padding:0 14px}
+.terminal .tbar i{width:8px;height:8px;border-radius:50%;background:var(--bone-faint)}
+.terminal .tbar i:first-child{background:var(--crimson)}
+.terminal .tbar i:nth-child(2){background:var(--gold)}
+.terminal .tbar i:nth-child(3){background:#7dff9f}
+.terminal .tbar span{margin-left:14px;font-size:10px;letter-spacing:.2em;color:var(--bone-faint);text-transform:uppercase}
+.terminal .ln{display:flex;gap:14px}
+.terminal .pmt{color:var(--crimson)}
+.terminal .out{color:var(--bone-dim)}
+.terminal .out b{color:var(--bone);font-weight:400}
+.terminal .out .cy{color:var(--cyan)}
+.terminal .out .gd{color:var(--gold)}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:start}
+.contact h3{font-family:"Space Grotesk";font-weight:300;font-size:64px;line-height:1.05;letter-spacing:-0.02em;color:var(--bone);margin-bottom:24px;text-wrap:balance}
+.contact h3 .red{color:var(--crimson);font-style:italic;font-family:"Noto Serif JP";font-weight:400}
+.contact p{font-family:"Space Grotesk";font-weight:300;font-size:17px;color:var(--bone-dim);max-width:520px;line-height:1.55;margin-bottom:28px}
+.contact-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+.contact-list a{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);color:var(--bone);text-decoration:none;font-size:13px;transition:all .2s}
+.contact-list a:hover{padding-left:14px;color:var(--crimson)}
+.contact-list a .k{font-size:10px;letter-spacing:.22em;color:var(--bone-faint);text-transform:uppercase;width:90px}
+.contact-list a .v{font-family:"Space Grotesk";font-weight:400;font-size:16px;flex:1}
+.contact-list a .arr{color:var(--bone-faint);transition:all .2s}
+.contact-list a:hover .arr{color:var(--crimson);transform:translate(4px,0)}
+
+footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:10px;letter-spacing:.22em;color:var(--bone-faint);text-transform:uppercase;flex-wrap:wrap;gap:14px}
+
+.boot{position:fixed;inset:0;background:var(--ink);z-index:200;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;font-family:"JetBrains Mono"}
+.boot.gone{opacity:0;pointer-events:none;transition:opacity .6s ease}
+.boot .big{font-family:"Noto Serif JP";font-weight:900;font-size:140px;color:var(--crimson);line-height:1;letter-spacing:-.04em}
+.boot .sub{font-size:10px;letter-spacing:.32em;color:var(--bone-dim);text-transform:uppercase}
+.boot .progress{width:280px;height:2px;background:rgba(232,230,224,0.08);position:relative;overflow:hidden}
+.boot .progress i{position:absolute;left:0;top:0;bottom:0;background:var(--crimson);animation:fill 1.4s ease forwards}
+@keyframes fill{0%{width:0}100%{width:100%}}
+
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;overflow:hidden}
+.glitch::before{color:var(--crimson);transform:translate(-2px,0);clip-path:polygon(0 0,100% 0,100% 33%,0 33%);opacity:0}
+.glitch::after{color:var(--cyan);transform:translate(2px,0);clip-path:polygon(0 66%,100% 66%,100% 100%,0 100%);opacity:0}
+.glitch:hover::before,.glitch:hover::after{opacity:.7;animation:gl .4s steps(3) 1}
+@keyframes gl{0%{transform:translate(-3px,1px)}50%{transform:translate(3px,-1px)}100%{transform:translate(0,0)}}
+
+@media (max-width:980px){
+  .shell{padding:60px 20px 32px}
+  .sidenav,.kanji-rail{display:none}
+  .hero{grid-template-columns:1fr;min-height:auto;padding-top:24px}
+  .about-grid,.skills-grid,.contact{grid-template-columns:1fr;gap:32px}
+  .now-grid,.certs{grid-template-columns:1fr}
+  .hero .bigkanji{font-size:240px;right:-30px;opacity:.05}
+  .section-head{flex-wrap:wrap}
+  section{padding:80px 0}
+  .hero .role{font-size:18px;max-width:100%}
+  .hero .ctas{margin-top:28px}
+  .contact h3{font-size:44px}
+  .avatar-frame{aspect-ratio:1/1.05;max-width:340px;margin-left:auto;margin-right:auto}
+}
+@media (max-width:640px){
+  .statusbar{height:auto;padding:6px 10px;gap:6px;flex-wrap:wrap;font-size:9px}
+  .statusbar .left,.statusbar .right{gap:10px;flex-wrap:wrap}
+  .statusbar .right span:nth-child(2){display:none}
+  .shell{padding:54px 16px 24px}
+  section{padding:64px 0;border-top-width:1px}
+  section:first-of-type{padding-top:24px}
+  .hero .preface{font-size:10px;letter-spacing:.24em;gap:12px;margin-bottom:18px}
+  .hero h1{font-size:clamp(40px,12vw,72px)}
+  .hero .role{font-size:16px;margin-top:18px;line-height:1.5}
+  .hero .tags{margin-top:24px;gap:6px}
+  .hero .tags span{font-size:9.5px;padding:5px 9px;letter-spacing:.14em}
+  .hero .ctas{gap:10px}
+  .btn{padding:12px 16px;font-size:10px;letter-spacing:.18em;flex:1;justify-content:center;min-width:140px}
+  .hero .bigkanji{font-size:180px;right:-20px;top:0}
+  .hud-card{padding:18px}
+  .avatar-frame{max-width:280px}
+  .section-head{padding-bottom:24px;margin-bottom:32px}
+  .section-head .lbl{font-size:10px;letter-spacing:.22em}
+  .section-head h2{font-size:32px !important}
+  .section-head .kanji{font-size:60px !important}
+  .section-head .meta{font-size:9px;letter-spacing:.18em}
+  .about p{font-size:16px;line-height:1.6}
+  .about-meta{padding:18px}
+  .kvp{grid-template-columns:100px 1fr;gap:6px 14px}
+  .tl-item{grid-template-columns:1fr;gap:6px;padding:14px 0 14px 20px}
+  .tl-item .when{padding-top:0}
+  .skills-grid{gap:12px}
+  .skill-cat{padding:18px}
+  .skill-cat .cat-head h4{font-size:14px}
+  .np{padding:18px;min-height:auto}
+  .np .kanji{font-size:34px}
+  .np h3{font-size:16px}
+  .np ul{font-size:13px}
+  .cert{padding:18px}
+  .cert h4{font-size:16px}
+  .cert .seal{width:38px;height:38px;font-size:16px}
+  .cert .top{gap:14px}
+  .cert p{font-size:12.5px}
+  .terminal{padding:30px 16px 18px;font-size:12px}
+  .contact h3{font-size:34px}
+  .contact p{font-size:15px}
+  .contact-list a{padding:14px 0;flex-wrap:wrap;gap:6px}
+  .contact-list a .k{width:auto}
+  .contact-list a .v{font-size:14px;width:100%}
+  footer{padding:24px 0 0;margin-top:40px;font-size:9px;flex-direction:column;align-items:flex-start;gap:8px}
+  .boot .big{font-size:160px}
+  .hud-frame{display:none}
+  .hud-card .corner{display:none}
+}
+@media (max-width:380px){
+  .hero h1{font-size:38px}
+  .hero .role{font-size:15px}
+  .btn{font-size:9.5px;padding:10px 12px}
+  .statusbar .left span:not(:first-child){display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="boot" id="boot">
+  <div class="big">流</div>
+  <div class="sub">SYS_BOOT // KUSHAR.RAJ // INIT</div>
+  <div class="progress"><i></i></div>
+</div>
+
+<div class="hud-frame"><span class="c2"></span><span class="c3"></span></div>
+
+<div class="statusbar">
+  <div class="left">
+    <span><span class="dot pulse"></span>&nbsp;&nbsp;NODE.0xK7 ONLINE</span>
+    <span>SECTOR / PATNA · IN</span>
+    <span class="live">LIVE</span>
+  </div>
+  <div class="right">
+    <span id="clock">--:--:-- IST</span>
+    <span>v3.04.26</span>
+    <span>侍 // BUSHIDŌ.MODE</span>
+  </div>
+</div>
+
+<nav class="sidenav">
+  <a href="#hero" class="active"><span class="num">00</span>HOME</a>
+  <a href="#about"><span class="num">01</span>ABOUT</a>
+  <a href="#path"><span class="num">02</span>PATH</a>
+  <a href="#skills"><span class="num">03</span>ARSENAL</a>
+  <a href="#now"><span class="num">04</span>NOW PLAYING</a>
+  <a href="#certs"><span class="num">05</span>CERTS</a>
+  <a href="#contact"><span class="num">06</span>CONTACT</a>
+</nav>
+
+<div class="kanji-rail">浪人 — RONIN, IN MOTION</div>
+
+<main class="shell">
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="bigkanji">侍</div>
+    <div>
+      <div class="preface">FILE_00 // OPERATOR_PROFILE</div>
+      <h1>
+        KUSHAR<br/>
+        RAJ<br/>
+        <span class="accent glitch" data-text="KASHYAP">KASHYAP</span>
+      </h1>
+      <p class="role">
+        Game developer, <b>builder</b>, designer — <span class="red">"Ronin"</span> by gamertag, MCA by training. Just wrapped an HTML5 Trainee run at BR Softech, Jaipur — currently posted in Patna, scouting the next mission. I write the code, draw the poster, and break the build — usually in that order.
+      </p>
+      <div class="tags">
+        <span>Game Dev</span>
+        <span>JavaScript</span>
+        <span>DevOps</span>
+        <span>Design</span>
+        <span>Anime · Samurai</span>
+        <span>One Piece 🏴‍☠️</span>
+      </div>
+      <div class="ctas">
+        <a class="btn primary" href="#about"><span class="arrow">▸</span> READ DOSSIER</a>
+        <a class="btn" href="#contact">OPEN COMMS <span class="arrow">↗</span></a>
+      </div>
+    </div>
+
+    <aside class="hud-card">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <h4><span>OPERATOR.RECORD</span><span class="mood" id="mood-label">// MOOD: SERIOUS</span></h4>
+
+      <div class="avatar-frame" id="avatarFrame">
+        <span class="av-corner tl"></span><span class="av-corner tr"></span><span class="av-corner bl"></span><span class="av-corner br"></span>
+        <div class="scan"></div>
+        <span class="hp">HP 100/100</span>
+        <span class="badge">CALLSIGN · RONIN</span>
+        <img src="assets/samurai-serious.png"     alt="serious"  data-mood="serious"  />
+        <img src="assets/samurai-happy.png"       alt="happy"    data-mood="happy"    class="hidden" />
+        <img src="assets/samurai-laughing.png"    alt="laughing" data-mood="laughing" class="hidden" />
+        <img src="assets/samurai-thinking.png"    alt="thinking" data-mood="thinking" class="hidden" />
+        <img src="assets/samurai-shocked.png"     alt="shocked"  data-mood="shocked"  class="hidden" />
+        <img src="assets/samurai-arms-crossed.png" alt="focused" data-mood="focused"  class="hidden" />
+        <img src="assets/samurai-surprised.png"   alt="surprised" data-mood="surprised" class="hidden" />
+        <img src="assets/samurai-blow-kiss.png"   alt="cheeky"   data-mood="cheeky"   class="hidden" />
+        <img src="assets/samurai-sleepy.png"      alt="sleepy"   data-mood="sleepy"   class="hidden" />
+        <img src="assets/samurai-kiss.png"        alt="warm"     data-mood="warm"     class="hidden" />
+        <img src="assets/samurai-angry.png"       alt="angry"    data-mood="angry"    class="hidden" />
+        <img src="assets/samurai-sad.png"         alt="sad"      data-mood="sad"      class="hidden" />
+      </div>
+
+      <div class="stat-row"><span class="k">CALLSIGN</span><span class="v">RONIN</span></div>
+      <div class="stat-row"><span class="k">CLASS</span><span class="v">GAME DEV / DEVOPS</span></div>
+      <div class="stat-row"><span class="k">LAST OP</span><span class="v">HTML5 TRAINEE · BR SOFTECH</span></div>
+      <div class="stat-row"><span class="k">STATUS</span><span class="v green">OPEN TO WORK · AVAILABLE</span></div>
+      <div class="stat-row"><span class="k">REGION</span><span class="v">PATNA · IN</span></div>
+    </aside>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <header class="section-head">
+      <div>
+        <div class="lbl">FILE_01 // ABOUT</div>
+        <h2>The operator behind the mask.</h2>
+      </div>
+      <div class="kanji">己</div>
+      <div class="meta">
+        DOC.ID&nbsp;&nbsp;01.A<br/>
+        REV&nbsp;&nbsp;26.05<br/>
+        CLEARANCE&nbsp;&nbsp;OPEN
+      </div>
+    </header>
+
+    <div class="about-grid">
+      <div class="about" data-section-mood="thinking">
+        <p>Hey — I'm <span class="red">Kushar Raj Kashyap</span>. An MCA grad who genuinely loves building things — whether that's a game mechanic, a CI/CD pipeline, or a clean UI. I write the code, design the poster, and ship the thing.</p>
+        <p>I just wrapped a stint as an <span class="cy">HTML5 Trainee at BR Softech Pvt. Ltd.</span> in Jaipur (Feb — May 2026) — spending my days on game systems and writing JavaScript that actually does something fun. Currently back in <span class="cy">Patna</span>, scouting the next chapter.</p>
+        <p>Before that, I spent six months at <span class="cy">Orbiqe Technologies</span> as an AI-DevOps Engineer — deep in Docker, Kubernetes, Terraform, and automation. That taught me how software actually <i>runs</i> in the real world, not just how it's written.</p>
+        <p>Off the keyboard I'm into anime — <span class="red">One Piece, Naruto, Bleach, Monster, Vinland Saga</span> — story-heavy games (Ghost of Tsushima is why my gamertag is "Ronin"), and dark, slow-burn TV. I think clean code and thoughtful design are two sides of the same coin.</p>
+        <p style="font-family:'Noto Serif JP';font-style:italic;color:var(--bone-dim);font-size:15px;border-left:2px solid var(--crimson);padding-left:16px;margin-top:28px">
+          「七転び八起き」 — Fall down seven times, rise eight.
+        </p>
+      </div>
+
+      <aside>
+        <div class="about-meta" style="margin-bottom:16px">
+          <h5>VITALS</h5>
+          <dl class="kvp">
+            <dt>Name</dt><dd>Kushar Raj Kashyap</dd>
+            <dt>Gamertag</dt><dd>Ronin</dd>
+            <dt>Last role</dt><dd>HTML5 Trainee · BR Softech (Feb–May 2026)</dd>
+            <dt>Located</dt><dd>Patna, IN · GMT+5:30</dd>
+            <dt>Status</dt><dd>Open to work · Game Dev / Web / DevOps</dd>
+            <dt>Education</dt><dd>MCA · Haldia Institute of Technology · 8.11<br/>BCA · BIT Mesra · 8.63</dd>
+            <dt>Open to</dt><dd>Game projects · Collabs · Design work</dd>
+          </dl>
+        </div>
+        <div class="terminal" data-section-mood="focused">
+          <div class="tbar"><i></i><i></i><i></i><span>~/about — zsh</span></div>
+          <div class="ln"><span class="pmt">$</span><span class="out">whoami</span></div>
+          <div class="ln"><span class="pmt"></span><span class="out"><b>kushar.raj</b> — code &amp; creativity, two sides of the same coin</span></div>
+          <div class="ln"><span class="pmt">$</span><span class="out">cat ~/.principles</span></div>
+          <div class="ln"><span class="pmt"></span><span class="out">› <span class="cy">good software should feel good</span></span></div>
+          <div class="ln"><span class="pmt"></span><span class="out">› <span class="cy">break it, learn it, ship it</span></span></div>
+          <div class="ln"><span class="pmt"></span><span class="out">› <span class="cy">design with empathy, code with logic</span></span></div>
+          <div class="ln"><span class="pmt">$</span><span class="out">echo $NOW_READING</span></div>
+          <div class="ln"><span class="pmt"></span><span class="out"><span class="gd">"The 48 Laws of Power"</span> — Robert Greene</span></div>
+          <div class="ln"><span class="pmt">$</span><span class="out">_</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PATH / TIMELINE -->
+  <section id="path">
+    <header class="section-head">
+      <div>
+        <div class="lbl">FILE_02 // PATH</div>
+        <h2>The route so far.</h2>
+      </div>
+      <div class="kanji">道</div>
+      <div class="meta">
+        ENTRIES&nbsp;&nbsp;04<br/>
+        SPAN&nbsp;&nbsp;2020 — NOW<br/>
+        STATUS&nbsp;&nbsp;ACTIVE
+      </div>
+    </header>
+
+    <div class="timeline" data-section-mood="focused">
+      <div class="tl-item now">
+        <div class="when">MAY 2026 — NOW</div>
+        <div>
+          <h4>Open to Work · Patna</h4>
+          <div class="org">Available · Game Dev / Web / DevOps / Design</div>
+          <p>Just wrapped my BR Softech run and back in Patna. Scouting the next mission — open to game projects, full-time roles, freelance gigs, and good collaborations.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="when">FEB — MAY 2026</div>
+        <div>
+          <h4>HTML5 Trainee</h4>
+          <div class="org">BR Softech Pvt. Ltd. · Jaipur · Internship</div>
+          <p>Built gameplay systems and interactive HTML5 features end-to-end. Spent days on game mechanics and writing JavaScript that actually does something fun. Successfully completed and signed off on 4 May 2026.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="when">2024 — 2025</div>
+        <div>
+          <h4>AI-DevOps Engineer</h4>
+          <div class="org">Orbiqe Technologies · 6 months</div>
+          <p>Hands deep in Docker, Kubernetes, Terraform, Jenkins, AWS and CI/CD pipelines. Learned how software runs in the real world — not just how it's written. Bridged AI workflows with infra automation.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="when">2023 — 2025</div>
+        <div>
+          <h4>MCA · Master of Computer Applications</h4>
+          <div class="org">Haldia Institute of Technology · CGPA 8.11</div>
+          <p>Computer applications, software engineering, and the foundations of building real systems. Honestly, most of what I know I learned by building things — and breaking them.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="when">2020 — 2023</div>
+        <div>
+          <h4>BCA · Bachelor of Computer Applications</h4>
+          <div class="org">BIT Mesra · CGPA 8.63</div>
+          <p>The first real foundation — programming, problem-solving, and the late-night cyber-café apprenticeship that made tech feel like home.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <header class="section-head">
+      <div>
+        <div class="lbl">FILE_03 // ARSENAL</div>
+        <h2>Tools at the hip.</h2>
+      </div>
+      <div class="kanji">技</div>
+      <div class="meta">
+        CATEGORIES&nbsp;&nbsp;06<br/>
+        UPDATED&nbsp;&nbsp;Q2.26<br/>
+        TRAINING&nbsp;&nbsp;ACTIVE
+      </div>
+    </header>
+
+    <div class="skills-grid" data-section-mood="focused">
+      <div class="skill-cat">
+        <div class="cat-head"><h4><span class="ks">壱</span> Game Development</h4><span class="lvl">DAILY DRIVER</span></div>
+        <div class="skill-list">
+          <span>JavaScript</span><span>Game Mechanics</span><span>Interactive Design</span><span>2D Game Systems</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="cat-head"><h4><span class="ks">弐</span> Programming</h4><span class="lvl">FOUNDATIONS</span></div>
+        <div class="skill-list">
+          <span>Python</span><span>JavaScript</span><span>HTML / CSS</span><span>SQL</span><span>Java</span><span>C</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="cat-head"><h4><span class="ks">参</span> DevOps &amp; Cloud</h4><span class="lvl">PRACTITIONER</span></div>
+        <div class="skill-list">
+          <span>Docker</span><span>Terraform</span><span>Kubernetes</span><span>Jenkins</span><span>Ansible</span><span>AWS</span><span>GitHub Actions</span><span>Linux</span><span>CI/CD</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="cat-head"><h4><span class="ks">肆</span> Design</h4><span class="lvl">FOR JOY</span></div>
+        <div class="skill-list">
+          <span>Graphic Design</span><span>Brand Logos</span><span>Social Media</span><span>Web Layouts</span><span>Figma</span><span>Canva</span><span>Adobe CS</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="cat-head"><h4><span class="ks">伍</span> Testing &amp; QA</h4><span class="lvl">SUPPORTING</span></div>
+        <div class="skill-list">
+          <span>Selenium</span><span>Postman</span><span>JMeter</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="cat-head"><h4><span class="ks">陸</span> Tools &amp; Workflow</h4><span class="lvl">EVERYDAY</span></div>
+        <div class="skill-list">
+          <span>Git / GitHub</span><span>VS Code</span><span>GitLab</span><span>Notion</span><span>Figma</span><span>Canva</span><span>Adobe CS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOW PLAYING -->
+  <section id="now">
+    <header class="section-head">
+      <div>
+        <div class="lbl">FILE_04 // BEYOND THE WORK</div>
+        <h2>What's running on the side.</h2>
+      </div>
+      <div class="kanji">遊</div>
+      <div class="meta">
+        FEEDS&nbsp;&nbsp;03<br/>
+        UPDATED&nbsp;&nbsp;LIVE<br/>
+        SIGNAL&nbsp;&nbsp;STRONG
+      </div>
+    </header>
+
+    <div class="now-grid">
+      <article class="np" data-section-mood="happy">
+        <div class="head"><span class="id">FEED · 001</span><span class="kanji">漫</span></div>
+        <h3>Anime · The Legendary Trio &amp; Beyond</h3>
+        <div class="sub">// CURRENTLY WATCHING</div>
+        <ul>
+          <li><b>One Piece 🏴‍☠️</b> — the long voyage</li>
+          <li><b>Naruto</b> · Bleach — the trio</li>
+          <li><b>Monster</b> · Vinland Saga — the heavy ones</li>
+        </ul>
+        <p class="quote">"You have no enemies. No one on this earth is your enemy."</p>
+      </article>
+
+      <article class="np" data-section-mood="focused">
+        <div class="head"><span class="id">FEED · 002</span><span class="kanji">遊</span></div>
+        <h3>Games · Story-Heavy Worlds</h3>
+        <div class="sub">// CURRENTLY ROAMING</div>
+        <ul>
+          <li><b>Ghost of Tsushima</b> — the reason for "Ronin"</li>
+          <li><b>God of War</b> — battling gods</li>
+          <li><b>Death Stranding</b> — wandering the strange</li>
+          <li><b>Uncharted</b> — Drake's wild rides</li>
+        </ul>
+        <p class="quote">Gaming isn't a pastime — it's living narratives.</p>
+      </article>
+
+      <article class="np" data-section-mood="thinking">
+        <div class="head"><span class="id">FEED · 003</span><span class="kanji">影</span></div>
+        <h3>TV · Dark Worlds &amp; Moral Mazes</h3>
+        <div class="sub">// CURRENTLY BINGING</div>
+        <ul>
+          <li><b>Better Call Saul</b> · Breaking Bad</li>
+          <li><b>Peaky Blinders</b> — style &amp; brood</li>
+          <li><b>Black Mirror</b> — tech nightmares</li>
+          <li><b>Westworld</b> · How I Met Your Mother</li>
+        </ul>
+        <p class="quote">Reading: <i>The 48 Laws of Power</i> — Robert Greene.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CERTS -->
+  <section id="certs">
+    <header class="section-head">
+      <div>
+        <div class="lbl">FILE_05 // CERTIFICATES &amp; ACHIEVEMENTS</div>
+        <h2>Marks earned, not claimed.</h2>
+      </div>
+      <div class="kanji">証</div>
+      <div class="meta">
+        TOTAL&nbsp;&nbsp;05<br/>
+        VERIFIED&nbsp;&nbsp;ALL<br/>
+        STREAK&nbsp;&nbsp;ACTIVE
+      </div>
+    </header>
+
+    <div class="certs" data-section-mood="happy">
+
+      <div class="cert">
+        <div class="top">
+          <div class="seal">壱</div>
+          <div style="flex:1">
+            <div class="org">// DELOITTE AUSTRALIA · VIA FORAGE</div>
+            <h4>Data Analytics Virtual Job Simulation</h4>
+            <span class="date">ISSUED · JULY 16, 2025</span>
+          </div>
+        </div>
+        <p>Real-world consulting tasks — applying data analytics in business scenarios modelled after actual roles at Deloitte.</p>
+        <div class="achs">
+          <span>Built an interactive Tableau data dashboard</span>
+          <span>Classified datasets and identified business trends in Excel</span>
+          <span>Practiced forensic data review for investigative insights</span>
+        </div>
+      </div>
+
+      <div class="cert">
+        <div class="top">
+          <div class="seal">弐</div>
+          <div style="flex:1">
+            <div class="org">// NXTWAVE · IIT-DELHI INSTRUCTOR</div>
+            <h4>AI for Students: Build Your Own Generative AI Model</h4>
+            <span class="date">ISSUED · MARCH 16, 2024</span>
+          </div>
+        </div>
+        <p>Hands-on workshop on the foundations of generative AI — model training, deployment, and creative application.</p>
+        <div class="achs">
+          <span>Built and trained a generative AI model end-to-end</span>
+          <span>Studied AI's future scope across education &amp; design</span>
+          <span>Guided by Mr. Trivikrama — IIT Delhi alumnus</span>
+        </div>
+      </div>
+
+      <div class="cert">
+        <div class="top">
+          <div class="seal">参</div>
+          <div style="flex:1">
+            <div class="org">// BE10X · VERIFIED WORKSHOP</div>
+            <h4>AI Tools &amp; ChatGPT Workshop</h4>
+            <span class="date">ISSUED · JULY 13, 2025</span>
+          </div>
+        </div>
+        <p>Practical application of AI tools and ChatGPT for productivity, creative work, and software development tasks.</p>
+        <div class="achs">
+          <span>Crafted pro presentations with AI in &lt; 5 minutes</span>
+          <span>Analyzed datasets in &lt; 30 minutes using AI</span>
+          <span>Coded &amp; debugged with AI-pair workflows</span>
+        </div>
+      </div>
+
+      <div class="cert">
+        <div class="top">
+          <div class="seal">肆</div>
+          <div style="flex:1">
+            <div class="org">// INAMIGOS FOUNDATION · NON-PROFIT</div>
+            <h4>Graphic Design Internship</h4>
+            <span class="date">COMPLETED · JULY 19, 2025 · 2 WEEKS</span>
+          </div>
+        </div>
+        <p>CSR-registered non-profit, recognised by the Ministry of Corporate Affairs (Govt. of India). Designed for social-impact campaigns.</p>
+        <div class="achs">
+          <span>Designed posters &amp; digital assets for awareness drives</span>
+          <span>Followed brand guidelines across social-media visuals</span>
+          <span>Collaborated in a fast-paced non-profit setting</span>
+        </div>
+      </div>
+
+      <div class="cert">
+        <div class="top">
+          <div class="seal">伍</div>
+          <div style="flex:1">
+            <div class="org">// NSDC · SKILL INDIA · GOVT OF INDIA</div>
+            <h4>AI — DevOps Engineer (SSC/Q8112) · NSQF Level 5</h4>
+            <span class="date">ISSUED · 09 FEB 2026 · ORBIQE TECHNOLOGIES</span>
+          </div>
+        </div>
+        <p>Cleared the national skills assessment for the AI — DevOps Engineer role under the IT-ITeS Sector Skill Council (nasscom), conforming to NSQF Level 5. Issued by RTD-BSDM, Ministry of Skill Development &amp; Entrepreneurship.</p>
+        <div class="achs">
+          <span>Recruit · AI Train · AI Deploy (R-T-D) model skilling</span>
+          <span>Verified by Ministry of Skill Development, Govt. of India</span>
+          <span>Cert ID: LXDJXDA80HJN56VN</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <header class="section-head">
+      <div>
+        <div class="lbl">FILE_06 // OPEN COMMS</div>
+        <h2>Send a signal.</h2>
+      </div>
+      <div class="kanji">縁</div>
+      <div class="meta">
+        CHANNEL&nbsp;&nbsp;OPEN<br/>
+        REPLY&nbsp;&nbsp;&lt; 48H<br/>
+        TZ&nbsp;&nbsp;IST
+      </div>
+    </header>
+
+    <div class="contact" data-section-mood="warm">
+      <div>
+        <h3>Got a project, a jam, or a wild idea — <span class="red">send word.</span></h3>
+        <p>Open to game projects, collabs, design work, and good conversation. Even if you just want to argue about Ghost of Tsushima or trade One Piece theories — my inbox is open.</p>
+        <a class="btn primary" href="mailto:iamkrk.dev@gmail.com"><span class="arrow">▸</span> COMPOSE MESSAGE</a>
+      </div>
+      <div class="contact-list">
+        <a href="mailto:iamkrk.dev@gmail.com"><span class="k">EMAIL</span><span class="v">iamkrk.dev@gmail.com</span><span class="arr">↗</span></a>
+        <a href="https://iamkrk.super.site/" target="_blank" rel="noopener"><span class="k">WEBSITE</span><span class="v">iamkrk.super.site</span><span class="arr">↗</span></a>
+        <a href="https://linkedin.com/in/kushar-raj-kashyap" target="_blank" rel="noopener"><span class="k">LINKEDIN</span><span class="v">in/kushar-raj-kashyap</span><span class="arr">↗</span></a>
+        <a href="https://github.com/kushar" target="_blank" rel="noopener"><span class="k">GITHUB</span><span class="v">github.com/kushar</span><span class="arr">↗</span></a>
+        <a href="https://instagram.com/kushar.raj" target="_blank" rel="noopener"><span class="k">INSTAGRAM</span><span class="v">@kushar.raj</span><span class="arr">↗</span></a>
+      </div>
+    </div>
+
+    <footer>
+      <span>© 2026 KUSHAR RAJ KASHYAP</span>
+      <span>BUILT IN PATNA · 流</span>
+      <span>END OF TRANSMISSION</span>
+    </footer>
+  </section>
+
+</main>
+
+<script>
+// Boot
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('boot').classList.add('gone'), 1500);
+  setTimeout(() => { const b=document.getElementById('boot'); if(b) b.remove(); }, 2200);
+});
+
+// Clock
+function tick(){
+  const d = new Date();
+  const t = d.toLocaleTimeString('en-GB', {timeZone:'Asia/Kolkata', hour12:false});
+  const el = document.getElementById('clock');
+  if(el) el.textContent = t + ' IST';
+}
+tick(); setInterval(tick,1000);
+
+// Mood system
+const sectionMoodMap = {
+  hero:    'serious',
+  about:   'thinking',
+  path:    'focused',
+  skills:  'focused',
+  now:     'happy',
+  certs:   'laughing',
+  contact: 'warm'
+};
+const moodLabel = {
+  serious:   'SERIOUS',
+  thinking:  'THINKING',
+  focused:   'FOCUSED',
+  happy:     'HAPPY',
+  laughing:  'GRINNING',
+  warm:      'WARM',
+  shocked:   'ALERT',
+  surprised: 'SURPRISED',
+  cheeky:    'CHEEKY',
+  sleepy:    'AT REST',
+  angry:     'FIRED UP',
+  sad:       'WISTFUL'
+};
+
+const links = document.querySelectorAll('.sidenav a');
+const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+const moodLabelEl = document.getElementById('mood-label');
+let currentMood = 'serious';
+
+function setMood(m){
+  if(!m || m === currentMood) return;
+  currentMood = m;
+  document.querySelectorAll('#avatarFrame img').forEach(img => {
+    img.classList.toggle('hidden', img.dataset.mood !== m);
+  });
+  if(moodLabelEl){
+    moodLabelEl.textContent = '// MOOD: ' + (moodLabel[m] || m.toUpperCase());
+  }
+}
+
+function onScroll(){
+  const y = window.scrollY + window.innerHeight * 0.35;
+  let idx = 0;
+  sections.forEach((s, i) => { if(s && s.offsetTop <= y) idx = i; });
+  links.forEach((a, i) => a.classList.toggle('active', i === idx));
+  const id = sections[idx]?.id;
+  setMood(sectionMoodMap[id] || 'serious');
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+// Smooth scroll
+links.forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  const target = document.querySelector(a.getAttribute('href'));
+  if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+}));
+
+// Hover micro-moods
+document.querySelectorAll('[data-section-mood]').forEach(el => {
+  el.addEventListener('mouseenter', () => setMood(el.dataset.sectionMood));
+});
+
+// Slideshow — cycle all 12 poses
+const slideshow = [
+  'serious','focused','thinking','happy','laughing',
+  'cheeky','warm','surprised','shocked','sleepy','angry','sad'
+];
+let slideIdx = 0;
+let slideshowOn = true;
+
+function tickSlide(){
+  if(!slideshowOn || document.hidden) return;
+  slideIdx = (slideIdx + 1) % slideshow.length;
+  setMood(slideshow[slideIdx]);
+}
+setInterval(tickSlide, 2400);
+
+// Pause on hover, click to advance
+const avFrame = document.getElementById('avatarFrame');
+if(avFrame){
+  avFrame.addEventListener('mouseenter', () => { slideshowOn = false; });
+  avFrame.addEventListener('mouseleave', () => { slideshowOn = true; });
+  avFrame.addEventListener('click', () => {
+    slideIdx = (slideIdx + 1) % slideshow.length;
+    setMood(slideshow[slideIdx]);
+  });
+  avFrame.style.cursor = 'pointer';
+}
+
+// Easter egg — type "ronin" → angry
+let buf = '';
+window.addEventListener('keydown', e => {
+  buf = (buf + e.key).slice(-5);
+  if(buf.toLowerCase() === 'ronin'){
+    setMood('angry');
+    setTimeout(() => onScroll(), 1500);
+    buf = '';
+  }
+});
+</script>
+
+</body>
+</html>
