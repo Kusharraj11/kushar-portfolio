@@ -1069,18 +1069,6 @@ if(avFrame){
   avFrame.style.cursor = 'pointer';
 }
 
-// Easter egg — type "ronin" → angry
-let buf = '';
-window.addEventListener('keydown', e => {
-  if(e.key === 'Escape'){ closeNav(); return; }
-  buf = (buf + e.key).slice(-5);
-  if(buf.toLowerCase() === 'ronin'){
-    setMood('angry');
-    setTimeout(() => onScroll(), 1500);
-    buf = '';
-  }
-});
-
 // Mobile nav
 const navToggle = document.getElementById('navToggle');
 const navBackdrop = document.getElementById('navBackdrop');
@@ -1105,6 +1093,18 @@ if(navToggle && sidenavEl && navBackdrop){
 }
 if(navBackdrop) navBackdrop.addEventListener('click', closeNav);
 document.querySelectorAll('.sidenav a').forEach(a => a.addEventListener('click', closeNav));
+
+// Easter egg — type "ronin" → angry
+let buf = '';
+window.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){ closeNav(); return; }
+  buf = (buf + e.key).slice(-5);
+  if(buf.toLowerCase() === 'ronin'){
+    setMood('angry');
+    setTimeout(() => onScroll(), 1500);
+    buf = '';
+  }
+});
 
 // Scroll reveal
 const revealObserver = new IntersectionObserver((entries) => {
