@@ -1069,12 +1069,16 @@ const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if(e.isIntersecting){
       e.target.classList.add('visible');
+      e.target.addEventListener('transitionend', () => {
+        e.target.style.transitionDelay = '';
+        e.target.classList.remove('reveal', 'visible');
+      }, {once: true});
       revealObserver.unobserve(e.target);
     }
   });
 }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
 
-document.querySelectorAll('.reveal').forEach((el, _, all) => {
+document.querySelectorAll('.reveal').forEach((el) => {
   const siblings = el.parentElement ? [...el.parentElement.querySelectorAll('.reveal')] : [];
   const idx = siblings.indexOf(el);
   if(idx > 0) el.style.transitionDelay = Math.min(idx * 0.08, 0.32) + 's';
