@@ -368,9 +368,10 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
   <a href="#about"><span class="num">01</span>ABOUT</a>
   <a href="#path"><span class="num">02</span>PATH</a>
   <a href="#skills"><span class="num">03</span>ARSENAL</a>
-  <a href="#now"><span class="num">04</span>NOW PLAYING</a>
-  <a href="#certs"><span class="num">05</span>CERTS</a>
-  <a href="#contact"><span class="num">06</span>CONTACT</a>
+  <a href="#projects"><span class="num">04</span>PROJECTS</a>
+  <a href="#now"><span class="num">05</span>NOW PLAYING</a>
+  <a href="#certs"><span class="num">06</span>CERTS</a>
+  <a href="#contact"><span class="num">07</span>CONTACT</a>
 </nav>
 
 <div class="kanji-rail">浪人 — RONIN, IN MOTION</div>
@@ -726,7 +727,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
   <section id="now">
     <header class="section-head">
       <div>
-        <div class="lbl">FILE_04 // BEYOND THE WORK</div>
+        <div class="lbl">FILE_05 // BEYOND THE WORK</div>
         <h2>What's running on the side.</h2>
       </div>
       <div class="kanji">遊</div>
@@ -782,7 +783,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
   <section id="certs">
     <header class="section-head">
       <div>
-        <div class="lbl">FILE_05 // CERTIFICATES &amp; ACHIEVEMENTS</div>
+        <div class="lbl">FILE_06 // CERTIFICATES &amp; ACHIEVEMENTS</div>
         <h2>Marks earned, not claimed.</h2>
       </div>
       <div class="kanji">証</div>
@@ -887,7 +888,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
   <section id="contact">
     <header class="section-head">
       <div>
-        <div class="lbl">FILE_06 // OPEN COMMS</div>
+        <div class="lbl">FILE_07 // OPEN COMMS</div>
         <h2>Send a signal.</h2>
       </div>
       <div class="kanji">縁</div>
@@ -940,13 +941,14 @@ tick(); setInterval(tick,1000);
 
 // Mood system
 const sectionMoodMap = {
-  hero:    'serious',
-  about:   'thinking',
-  path:    'focused',
-  skills:  'focused',
-  now:     'happy',
-  certs:   'laughing',
-  contact: 'warm'
+  hero:     'serious',
+  about:    'thinking',
+  path:     'focused',
+  skills:   'focused',
+  projects: 'focused',
+  now:      'happy',
+  certs:    'laughing',
+  contact:  'warm'
 };
 const moodLabel = {
   serious:   'SERIOUS',
