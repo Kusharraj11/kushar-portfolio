@@ -291,7 +291,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
   .contact h3{font-size:44px}
   .avatar-frame{aspect-ratio:1/1.05;max-width:340px;margin-left:auto;margin-right:auto}
   .nav-toggle{display:flex}
-  .sidenav{display:flex;left:-220px;top:0;bottom:0;height:100%;transform:none;transition:left .3s cubic-bezier(.4,0,.2,1);z-index:110;padding-top:60px;width:200px}
+  .sidenav{display:flex;left:-220px;top:0;bottom:0;height:100%;transform:none;transition:left .3s cubic-bezier(.4,0,.2,1);z-index:110;padding-top:60px;width:200px;gap:14px}
   .sidenav.open{left:0}
 }
 @media (max-width:640px){
@@ -382,7 +382,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
     <span id="clock">--:--:-- IST</span>
     <span>v3.04.26</span>
     <span>侍 // BUSHIDŌ.MODE</span>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
   </div>
 </div>
 
@@ -1072,6 +1072,7 @@ if(avFrame){
 // Easter egg — type "ronin" → angry
 let buf = '';
 window.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){ closeNav(); return; }
   buf = (buf + e.key).slice(-5);
   if(buf.toLowerCase() === 'ronin'){
     setMood('angry');
@@ -1086,16 +1087,20 @@ const navBackdrop = document.getElementById('navBackdrop');
 const sidenavEl = document.querySelector('.sidenav');
 
 function closeNav(){
-  if(navToggle) navToggle.classList.remove('open');
+  if(navToggle){ navToggle.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); }
   if(sidenavEl) sidenavEl.classList.remove('open');
   if(navBackdrop) navBackdrop.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
-if(navToggle){
+if(navToggle && sidenavEl && navBackdrop){
   navToggle.addEventListener('click', () => {
+    const opening = !sidenavEl.classList.contains('open');
     navToggle.classList.toggle('open');
     sidenavEl.classList.toggle('open');
     navBackdrop.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', opening.toString());
+    document.body.style.overflow = opening ? 'hidden' : '';
   });
 }
 if(navBackdrop) navBackdrop.addEventListener('click', closeNav);
