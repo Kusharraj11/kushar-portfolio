@@ -181,6 +181,8 @@ section:first-of-type{border-top:0;padding-top:80px}
 .cert .achs{display:flex;flex-direction:column;gap:6px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
 .cert .achs span{font-size:11.5px;color:var(--bone);font-family:"Space Grotesk";display:flex;gap:10px;align-items:center}
 .cert .achs span::before{content:"◆";color:var(--cyan);font-size:9px}
+.cert-view{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(216,178,90,0.3);padding:6px 12px;transition:all .2s;font-family:"JetBrains Mono"}
+.cert-view:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
 
 /* Projects */
 .projects-featured{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
@@ -262,7 +264,6 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
   .hero{grid-template-columns:1fr;min-height:auto;padding-top:24px}
   .about-grid,.skills-grid,.contact{grid-template-columns:1fr;gap:32px}
   .now-grid,.certs{grid-template-columns:repeat(2,1fr)}
-  .projects-featured{grid-template-columns:1fr}
   .projects-grid{grid-template-columns:repeat(2,1fr)}
   .hero .bigkanji{font-size:240px;right:-30px;opacity:.05}
   .section-head{flex-wrap:wrap}
@@ -614,7 +615,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
       </div>
       <div class="kanji">作</div>
       <div class="meta">
-        REPOS&nbsp;&nbsp;10<br/>
+        REPOS&nbsp;&nbsp;11<br/>
         SOURCE&nbsp;&nbsp;GITHUB<br/>
         STATUS&nbsp;&nbsp;LIVE
       </div>
@@ -622,18 +623,19 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
 
     <div class="projects-featured">
 
-      <div class="proj-feat">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <span class="corner bl"></span><span class="corner br"></span>
+      <div class="proj-feat" style="border-color:rgba(125,249,255,0.15)">
+        <span class="corner tl cy"></span><span class="corner tr cy"></span>
+        <span class="corner bl cy"></span><span class="corner br cy"></span>
         <div class="ftag">
           <span class="id">★ FEATURED // PROJ_001</span>
-          <span class="badge" style="color:var(--gold)">★ ★ ★ ★ &nbsp; 4 STARS</span>
+          <span class="badge" style="color:var(--cyan)">▸ LIVE · PLAYABLE</span>
         </div>
-        <span class="lang-badge">◆ Jupyter Notebook · Python · AI</span>
-        <h3>Disaster Recovery Advisor</h3>
-        <p>AI system that predicts natural disasters, estimates impact, and suggests recovery plans using historical, geographic, and environmental data.</p>
+        <span class="lang-badge">◆ Phaser 3 · JavaScript · Webpack</span>
+        <h3>Tokyo Can Sort</h3>
+        <p>20-level color-sorting puzzle game with unlimited and move-limited modes. Built in Phaser 3, runs entirely in the browser, auto-deployed via GitHub Actions to GitHub Pages. Tap-only controls, mobile + desktop friendly.</p>
         <div class="actions">
-          <a class="btn primary" href="https://github.com/Kusharraj11/Disaster_Recovery_Advisor" target="_blank" rel="noopener"><span class="arrow">▸</span> VIEW ON GITHUB</a>
+          <a class="btn primary" href="https://kusharraj11.github.io/Tokyo-Can-Sort-Game-/" target="_blank" rel="noopener"><span class="arrow">▸</span> PLAY NOW</a>
+          <a class="btn" href="https://github.com/Kusharraj11/Tokyo-Can-Sort-Game-" target="_blank" rel="noopener" style="border-color:rgba(125,249,255,0.3);color:var(--cyan)"><span style="color:var(--cyan)">▸</span> VIEW ON GITHUB</a>
         </div>
       </div>
 
@@ -641,13 +643,14 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
         <span class="corner tl cy"></span><span class="corner tr cy"></span>
         <span class="corner bl cy"></span><span class="corner br cy"></span>
         <div class="ftag">
-          <span class="id">GAME DEV // PROJ_002</span>
-          <span class="badge" style="color:var(--cyan)">▸ PLAYABLE</span>
+          <span class="id">★ FEATURED // PROJ_002</span>
+          <span class="badge" style="color:var(--cyan)">▸ LIVE · PLAYABLE</span>
         </div>
         <span class="lang-badge">◆ HTML · CSS · JavaScript</span>
         <h3>Tetris</h3>
-        <p>Fully playable classic Tetris built in vanilla HTML/CSS/JavaScript. End-to-end game mechanics — part of the game dev work from BR Softech days.</p>
+        <p>Fully playable classic Tetris built in vanilla HTML/CSS/JavaScript. End-to-end game mechanics — part of the game dev work from BR Softech days. Runs entirely in the browser.</p>
         <div class="actions">
+          <a class="btn primary" href="https://kusharraj11.github.io/tetris/" target="_blank" rel="noopener"><span class="arrow">▸</span> PLAY NOW</a>
           <a class="btn" href="https://github.com/Kusharraj11/tetris" target="_blank" rel="noopener" style="border-color:rgba(125,249,255,0.3);color:var(--cyan)"><span style="color:var(--cyan)">▸</span> VIEW ON GITHUB</a>
         </div>
       </div>
@@ -657,7 +660,15 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
     <div class="projects-grid">
 
       <div class="proj-card">
-        <div class="top"><span class="idx">PROJ // 003</span><span class="lang">JavaScript</span></div>
+        <div class="top"><span class="idx">PROJ // 003</span><span class="lang">Jupyter</span></div>
+        <div class="cat">AI / Python</div>
+        <h4>Disaster Recovery Advisor</h4>
+        <p>AI system that predicts natural disasters, estimates impact, and suggests recovery plans using historical, geographic, and environmental data.</p>
+        <a class="gh" href="https://github.com/Kusharraj11/Disaster_Recovery_Advisor" target="_blank" rel="noopener">↗ GITHUB</a>
+      </div>
+
+      <div class="proj-card">
+        <div class="top"><span class="idx">PROJ // 004</span><span class="lang">JavaScript</span></div>
         <div class="cat">Game Dev</div>
         <h4>First Trail Game</h4>
         <p>JavaScript game — mechanics and interactive design experiment. Where the game dev journey started.</p>
@@ -665,7 +676,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
       </div>
 
       <div class="proj-card">
-        <div class="top"><span class="idx">PROJ // 004</span><span class="lang">TypeScript</span></div>
+        <div class="top"><span class="idx">PROJ // 005</span><span class="lang">TypeScript</span></div>
         <div class="cat">Orbiqe OJT</div>
         <h4>HMRS — HR Management</h4>
         <p>Human Resource Management System built during the Orbiqe Technologies OJT.</p>
@@ -673,7 +684,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
       </div>
 
       <div class="proj-card">
-        <div class="top"><span class="idx">PROJ // 005</span><span class="lang">Dockerfile</span></div>
+        <div class="top"><span class="idx">PROJ // 006</span><span class="lang">Dockerfile</span></div>
         <div class="cat">DevOps</div>
         <h4>Go Multistage Docker</h4>
         <p>Go app with multi-stage Docker build — optimised images, minimal footprint.</p>
@@ -681,7 +692,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
       </div>
 
       <div class="proj-card">
-        <div class="top"><span class="idx">PROJ // 006</span><span class="lang">JavaScript</span></div>
+        <div class="top"><span class="idx">PROJ // 007</span><span class="lang">JavaScript</span></div>
         <div class="cat">DevOps</div>
         <h4>DevOps Pipelines</h4>
         <p>Pipeline configs, automation scripts, and CI/CD setups from real DevOps work.</p>
@@ -689,7 +700,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
       </div>
 
       <div class="proj-card">
-        <div class="top"><span class="idx">PROJ // 007</span><span class="lang">JavaScript</span></div>
+        <div class="top"><span class="idx">PROJ // 008</span><span class="lang">JavaScript</span></div>
         <div class="cat">DevOps</div>
         <h4>SonarQube Lab — Node.js</h4>
         <p>Code quality lab: SonarQube static analysis integrated with a Node.js project.</p>
@@ -697,7 +708,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
       </div>
 
       <div class="proj-card">
-        <div class="top"><span class="idx">PROJ // 008</span><span class="lang">JavaScript</span></div>
+        <div class="top"><span class="idx">PROJ // 009</span><span class="lang">JavaScript</span></div>
         <div class="cat">DevOps</div>
         <h4>Jenkins CI/CD Test</h4>
         <p>Jenkins pipeline testing and CI/CD automation configuration.</p>
@@ -705,7 +716,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
       </div>
 
       <div class="proj-card">
-        <div class="top"><span class="idx">PROJ // 009</span><span class="lang">Python</span></div>
+        <div class="top"><span class="idx">PROJ // 010</span><span class="lang">Python</span></div>
         <div class="cat">DevOps</div>
         <h4>Microservice</h4>
         <p>Python microservice architecture — modular, containerised services.</p>
@@ -713,7 +724,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
       </div>
 
       <div class="proj-card">
-        <div class="top"><span class="idx">PROJ // 010</span><span class="lang">Python</span></div>
+        <div class="top"><span class="idx">PROJ // 011</span><span class="lang">Python</span></div>
         <div class="cat">Tools</div>
         <h4>Version Control Git</h4>
         <p>Python scripts exploring Git version control workflows, automation, and branching strategies.</p>
@@ -811,6 +822,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
           <span>Classified datasets and identified business trends in Excel</span>
           <span>Practiced forensic data review for investigative insights</span>
         </div>
+        <a href="assets/cert-deloitte.jpg" target="_blank" rel="noopener" class="cert-view">VIEW CERT ↗</a>
       </div>
 
       <div class="cert">
@@ -828,6 +840,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
           <span>Studied AI's future scope across education &amp; design</span>
           <span>Guided by Mr. Trivikrama — IIT Delhi alumnus</span>
         </div>
+        <a href="assets/cert-nxtwave.jpg" target="_blank" rel="noopener" class="cert-view">VIEW CERT ↗</a>
       </div>
 
       <div class="cert">
@@ -845,6 +858,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
           <span>Analyzed datasets in &lt; 30 minutes using AI</span>
           <span>Coded &amp; debugged with AI-pair workflows</span>
         </div>
+        <a href="assets/cert-be10x.jpg" target="_blank" rel="noopener" class="cert-view">VIEW CERT ↗</a>
       </div>
 
       <div class="cert">
@@ -862,9 +876,10 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
           <span>Followed brand guidelines across social-media visuals</span>
           <span>Collaborated in a fast-paced non-profit setting</span>
         </div>
+        <a href="assets/cert-inamigos.jpg" target="_blank" rel="noopener" class="cert-view">VIEW CERT ↗</a>
       </div>
 
-      <div class="cert">
+      <div class="cert" style="grid-column:1/-1">
         <div class="top">
           <div class="seal">伍</div>
           <div style="flex:1">
@@ -879,6 +894,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
           <span>Verified by Ministry of Skill Development, Govt. of India</span>
           <span>Cert ID: LXDJXDA80HJN56VN</span>
         </div>
+        <a href="assets/cert-nsdc.jpg" target="_blank" rel="noopener" class="cert-view">VIEW CERT ↗</a>
       </div>
 
     </div>
@@ -907,10 +923,9 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
       </div>
       <div class="contact-list">
         <a href="mailto:iamkrk.dev@gmail.com"><span class="k">EMAIL</span><span class="v">iamkrk.dev@gmail.com</span><span class="arr">↗</span></a>
-        <a href="https://iamkrk.super.site/" target="_blank" rel="noopener"><span class="k">WEBSITE</span><span class="v">iamkrk.super.site</span><span class="arr">↗</span></a>
-        <a href="https://linkedin.com/in/kushar-raj-kashyap" target="_blank" rel="noopener"><span class="k">LINKEDIN</span><span class="v">in/kushar-raj-kashyap</span><span class="arr">↗</span></a>
-        <a href="https://github.com/kushar" target="_blank" rel="noopener"><span class="k">GITHUB</span><span class="v">github.com/kushar</span><span class="arr">↗</span></a>
-        <a href="https://instagram.com/kushar.raj" target="_blank" rel="noopener"><span class="k">INSTAGRAM</span><span class="v">@kushar.raj</span><span class="arr">↗</span></a>
+<a href="https://linkedin.com/in/kushar-raj-kashyap" target="_blank" rel="noopener"><span class="k">LINKEDIN</span><span class="v">in/kushar-raj-kashyap</span><span class="arr">↗</span></a>
+        <a href="https://github.com/Kusharraj11" target="_blank" rel="noopener"><span class="k">GITHUB</span><span class="v">github.com/Kusharraj11</span><span class="arr">↗</span></a>
+        <a href="https://instagram.com/iamkrk11" target="_blank" rel="noopener"><span class="k">INSTAGRAM</span><span class="v">@iamkrk11</span><span class="arr">↗</span></a>
       </div>
     </div>
 
