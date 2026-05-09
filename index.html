@@ -61,6 +61,59 @@
   @keyframes fadeIn { 0%{opacity:0} 100%{opacity:0.85} }
 
   .teaser.hidden{opacity:0;pointer-events:none;transition:opacity 400ms ease}
+
+  /* MODAL */
+  .modal-wrap{
+    position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    padding:24px;z-index:2;opacity:0;pointer-events:none;
+    transition:opacity 400ms cubic-bezier(.2,.7,.2,1);
+  }
+  .modal-wrap.visible{opacity:1;pointer-events:auto}
+
+  .modal{
+    width:100%;max-width:1040px;
+    border:1px solid var(--line-2);
+    background:linear-gradient(180deg,rgba(13,13,20,0.85),rgba(7,7,11,0.92));
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    padding:42px 36px 32px;
+    transform:translateY(12px);transition:transform 400ms cubic-bezier(.2,.7,.2,1);
+  }
+  .modal-wrap.visible .modal{transform:translateY(0)}
+
+  .modal-head{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
+    border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:30px;
+  }
+  .modal-head .title-block .lbl{
+    font-size:10px;letter-spacing:.4em;color:var(--crimson);text-transform:uppercase;
+  }
+  .modal-head .title-block h1{
+    font-family:"Space Grotesk",sans-serif;font-weight:200;
+    font-size:clamp(24px,3.5vw,34px);color:var(--bone);
+    margin-top:6px;letter-spacing:-.015em;line-height:1;
+  }
+  .modal-head .right{text-align:right}
+  .modal-head .right .kanji{
+    font-family:"Noto Serif JP",serif;font-size:24px;color:var(--bone-faint);line-height:1;
+  }
+  .modal-head .right .sub{
+    font-size:9px;letter-spacing:.3em;color:var(--bone-faint);margin-top:4px;text-transform:uppercase;
+  }
+
+  .modal-foot{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    margin-top:28px;font-size:9.5px;letter-spacing:.28em;
+    color:var(--bone-faint);text-transform:uppercase;flex-wrap:wrap;
+  }
+  .modal-foot .kbd{display:flex;gap:14px}
+
+  @media (max-width:640px){
+    .modal{padding:28px 18px 22px}
+    .modal-head{flex-direction:column;align-items:flex-start;gap:10px}
+    .modal-head .right{text-align:left}
+    .modal-foot{flex-direction:column;align-items:flex-start;gap:8px}
+    .modal-foot .kbd{flex-wrap:wrap;gap:10px}
+  }
 </style>
 </head>
 <body>
@@ -85,10 +138,48 @@
   </div>
 </noscript>
 
+<div class="modal-wrap" id="modalWrap" aria-hidden="true">
+  <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+    <div class="modal-head">
+      <div class="title-block">
+        <div class="lbl">// access protocol</div>
+        <h1 id="modalTitle">Choose your path</h1>
+      </div>
+      <div class="right">
+        <div class="kanji">三</div>
+        <div class="sub">three identities · one me</div>
+      </div>
+    </div>
+
+    <div class="tiles" id="tiles">
+      <!-- TILES inserted in next task -->
+    </div>
+
+    <div class="modal-foot">
+      <div>// pick a path. switch anytime via persona menu.</div>
+      <div class="kbd">
+        <span>↹ tab to navigate</span>
+        <span>↵ enter to confirm</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   // Auto-route returning visitors (unless ?force=1)
   if (window.persona && window.persona.maybeAutoRoute()) {
-    // page navigates away; nothing else to do
+    // navigates away
+  } else {
+    // First visit (or forced): play teaser, then reveal modal
+    setTimeout(() => {
+      const teaser = document.getElementById("teaser");
+      const wrap = document.getElementById("modalWrap");
+      if (teaser) teaser.classList.add("hidden");
+      if (wrap) {
+        wrap.classList.add("visible");
+        wrap.setAttribute("aria-hidden", "false");
+      }
+    }, 1500);
   }
 </script>
 
