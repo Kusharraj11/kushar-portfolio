@@ -1,4 +1,4 @@
-# Clean URLs for persona variants
-/gamer    /gamer.html  200
-/pro      /pro.html    200
-/code     /code.html   200
+# Clean URL aliases (rewrite, not redirect)
+/gamer  /gamer.html  200
+/pro    /pro.html    200
+/code   /code.html   200
