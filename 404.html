@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>404 — kushar.raj</title>
+<link rel="stylesheet" href="/shared/persona.css">
+<style>
+  :root {
+    --persona-switch-fg: #e8e6e0;
+    --persona-switch-bg: rgba(13,13,20,0.7);
+    --persona-switch-border: rgba(232,230,224,0.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{
+    background:#07070b;color:#e8e6e0;
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:24px;
+  }
+  .wrap{max-width:520px;text-align:center}
+  .code{font-size:96px;color:#ff2840;font-weight:200;letter-spacing:-.02em;line-height:1}
+  .msg{margin-top:16px;color:#8d8a82;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+  .links{margin-top:36px;display:flex;flex-direction:column;gap:10px}
+  .links a{
+    color:#e8e6e0;text-decoration:none;border:1px solid rgba(232,230,224,0.18);
+    padding:12px 18px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    transition:border-color .2s, color .2s;
+  }
+  .links a:hover{border-color:#ff2840;color:#ff2840}
+  .home{margin-top:24px;font-size:10px;letter-spacing:.32em;color:#56544f;text-transform:uppercase}
+  .home a{color:#7df9ff;text-decoration:none}
+  .home a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="code">404</div>
+    <div class="msg">// path not found</div>
+    <div class="links">
+      <a href="/gamer.html">→ Gamer</a>
+      <a href="/pro.html">→ Professional</a>
+      <a href="/code.html">→ Coder</a>
+    </div>
+    <div class="home">or <a href="/?force=1">return to chooser</a></div>
+  </div>
+</body>
+</html>
