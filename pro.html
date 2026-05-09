@@ -1362,10 +1362,7 @@ document.querySelectorAll('.reveal').forEach((el) => {
     const boot = document.getElementById('bootPro');
     if(!boot) return;
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let booted = false;
-    try { booted = sessionStorage.getItem('booted-pro') === '1'; } catch(e) {}
-    if(reduce || booted){ boot.remove(); return; }
-    try { sessionStorage.setItem('booted-pro','1'); } catch(e) {}
+    if(reduce){ boot.remove(); return; }
     document.body.style.overflow = 'hidden';
     setTimeout(() => {
       boot.classList.add('fade');
