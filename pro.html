@@ -111,6 +111,58 @@
   .skill-group .ic{font-size:18px}
   .skill-group .list{font-size:14px;color:var(--ink-dim);line-height:1.7}
 
+  /* PROJECTS */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .proj{
+    border:1px solid var(--line);background:#fff;text-decoration:none;color:var(--ink);
+    display:flex;flex-direction:column;transition:transform .25s, box-shadow .25s;
+  }
+  .proj:hover{transform:translateY(-3px);box-shadow:0 12px 30px -10px rgba(0,0,0,0.2)}
+  .proj .cover{aspect-ratio:4/3;background:#ddd center/cover no-repeat;overflow:hidden}
+  .proj .cover img{width:100%;height:100%;object-fit:cover;display:block}
+  .proj .body{padding:14px 16px}
+  .proj h3{
+    font-family:"Fraunces",serif;font-weight:400;font-size:16px;line-height:1.3;color:var(--ink);
+  }
+  .proj .gh{
+    margin-top:8px;font-family:"JetBrains Mono",monospace;font-size:10px;
+    color:var(--ink-faint);letter-spacing:.1em;text-transform:uppercase;
+  }
+  .proj .desc{margin-top:6px;font-size:13px;line-height:1.5;color:var(--ink-faint)}
+
+  /* CONTENT BLOCKS (about-me content) */
+  .content-block{display:grid;grid-template-columns:1fr 200px;gap:32px;align-items:start;margin-bottom:48px}
+  .content-block.flip{grid-template-columns:200px 1fr}
+  .content-block .gif{
+    width:100%;aspect-ratio:4/5;background:var(--bg-2) center/cover no-repeat;
+    border:1px solid var(--line);overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;
+    color:var(--ink-faint);text-transform:uppercase;text-align:center;
+  }
+  .content-block h3{
+    font-family:"Fraunces",serif;font-weight:400;font-size:24px;line-height:1.25;
+    color:var(--ink);margin-bottom:12px;letter-spacing:-.01em;
+  }
+  .content-block p{font-size:15px;line-height:1.6;color:var(--ink-dim);margin-bottom:12px}
+  .content-block .quote{
+    border-left:2px solid var(--ink);padding-left:14px;margin:14px 0;
+    font-style:italic;color:var(--ink);
+  }
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:520px}
+  .contact-link{
+    display:flex;align-items:center;gap:12px;
+    border:1px solid var(--line-2);padding:14px 18px;
+    text-decoration:none;color:var(--ink);font-size:14px;
+    transition:border-color .2s, transform .2s;
+  }
+  .contact-link:hover{border-color:var(--ink);transform:translateY(-1px)}
+  .contact-link .ic{font-size:18px}
+  .contact-link .lbl{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:2px}
+  .contact-link .val{font-weight:500}
+
   @media (max-width:760px){
     .shell{padding:60px 22px}
     .hero{grid-template-columns:1fr;gap:24px;align-items:start}
@@ -119,6 +171,10 @@
     .tl-item{grid-template-columns:1fr;gap:6px}
     .tl-item .when{margin-bottom:4px}
     .skills-grid{grid-template-columns:1fr;gap:22px}
+    .gallery{grid-template-columns:1fr}
+    .content-block,.content-block.flip{grid-template-columns:1fr;gap:18px}
+    .content-block .gif{aspect-ratio:5/3;max-width:300px}
+    .contact-grid{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -249,6 +305,91 @@
         <h4><span class="ic">🤝</span>Soft Skills</h4>
         <div class="list">Problem Solving · Analytical Thinking · Agile Collaboration · Time Management · Attention to Detail</div>
       </div>
+    </div>
+  </section>
+
+  <!-- DESIGN PROJECTS -->
+  <section>
+    <div class="section-label">/05 · design projects</div>
+    <h2>The journey from empathising to prototyping.</h2>
+    <div class="gallery" id="gallery">
+
+      <a class="proj" href="https://github.com/Kusharraj11/Disaster_Recovery_Advisor.git" target="_blank" rel="noopener">
+        <div class="cover">
+          <img src="/assets/pro/projects/disaster-recovery-advisor.png" alt="Disaster Recovery Advisor" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="body">
+          <h3>Disaster Recovery Advisor</h3>
+          <div class="desc">AI/ML platform predicting disaster type + duration with tailored recovery recommendations. MCA capstone @ Haldia. Random Forest + recovery planning UI.</div>
+          <div class="gh">→ github</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ABOUT CONTENT -->
+  <section>
+    <div class="section-label">/06 · beyond the resume</div>
+    <h2>A bit more about me.</h2>
+
+    <p style="font-size:16px;color:var(--ink-dim);margin-bottom:32px;max-width:680px">Growing up, I spent countless hours in cyber cafés — those buzzing hubs filled with the hum of computers and the excitement of discovery. Whether I was experimenting with new software, helping friends set up their first email accounts, or diving into intense gaming sessions at Xbox cafés, these experiences became the foundation of my fascination with technology.</p>
+
+    <div class="content-block">
+      <div>
+        <h3>Beyond my World</h3>
+        <p>I'm a huge anime fan — especially the legendary trio: <strong>Naruto</strong>, <strong>Bleach</strong>, and <strong>One Piece</strong> — plus thought-provoking series like <strong>Monster</strong> and <strong>Vinland Saga</strong>.</p>
+        <div class="quote">"You have no enemies. No one on this earth is your enemy." — A reminder that peace is possible if we choose to see people as fellow humans, not threats.</div>
+        <p>These stories aren't just entertainment — they're life lessons, motivation, and the fuel that keeps me pushing forward.</p>
+      </div>
+      <div class="gif">⛩️<br>anime</div>
+    </div>
+
+    <div class="content-block flip">
+      <div class="gif">🎮<br>gaming</div>
+      <div>
+        <h3>In the world of 🎮</h3>
+        <p>I love story-driven games — the kind where you can dive in for hours and feel like you're part of the adventure. Roaming the landscapes of <strong>Ghost of Tsushima</strong> as a samurai (my gamer tag is "Ronin" for a reason), battling gods in <strong>God of War</strong>, wandering <strong>Death Stranding</strong>, joining Nathan Drake's wild rides in <strong>Uncharted</strong>.</p>
+        <p>For me, gaming isn't just a pastime — it's about living unforgettable narratives, exploring new identities, and experiencing every twist as if I'm there myself.</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div>
+        <h3>Dark Worlds &amp; Moral Mazes</h3>
+        <p>I'm drawn to TV with deep, complex stories and a dark, intense vibe. <strong>Better Call Saul</strong> and <strong>Breaking Bad</strong> live in moral gray areas. <strong>Peaky Blinders</strong> delivers style and brooding atmosphere. <strong>Black Mirror</strong> pushes tech-tales to their limits. <strong>Westworld</strong> asks the big questions about consciousness.</p>
+        <p>If you love shows that challenge, thrill, and stay with you long after the credits — we're already on the same wavelength.</p>
+      </div>
+      <div class="gif">📺<br>tv</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section>
+    <div class="section-label">/07 · contact</div>
+    <h2>Let's talk.</h2>
+    <p style="font-size:15px;color:var(--ink-dim);margin-bottom:24px">Open to roles in game dev, frontend, or DevOps. Always up for interesting conversations.</p>
+    <div class="contact-grid">
+      <a class="contact-link" href="mailto:kusharraj11@gmail.com">
+        <span class="ic">📩</span>
+        <span><span class="lbl" style="display:block">email</span><span class="val">kusharraj11@gmail.com</span></span>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/kushar-raj-kashyap/" target="_blank" rel="noopener">
+        <span class="ic">💼</span>
+        <span><span class="lbl" style="display:block">linkedin</span><span class="val">kushar-raj-kashyap</span></span>
+      </a>
+      <a class="contact-link" href="https://github.com/Kusharraj11" target="_blank" rel="noopener">
+        <span class="ic">⌨️</span>
+        <span><span class="lbl" style="display:block">github</span><span class="val">Kusharraj11</span></span>
+      </a>
+      <a class="contact-link" href="https://www.instagram.com/iamkrk11/" target="_blank" rel="noopener">
+        <span class="ic">📸</span>
+        <span><span class="lbl" style="display:block">instagram</span><span class="val">@iamkrk11</span></span>
+      </a>
+      <a class="contact-link" href="https://www.overleaf.com/read/qhndsfwfmngb#02b2e5" target="_blank" rel="noopener" style="grid-column:1/-1">
+        <span class="ic">📃</span>
+        <span><span class="lbl" style="display:block">resume</span><span class="val">Read on Overleaf →</span></span>
+      </a>
     </div>
   </section>
 
