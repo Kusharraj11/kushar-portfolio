@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>kushar@portfolio:~$</title>
+<meta name="description" content="Coder portfolio — interactive terminal interface.">
+<meta name="theme-color" content="#0a0a0d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/persona.css">
+<script src="/shared/persona.js" defer></script>
+<style>
+  :root{
+    --bg:#0a0a0d;
+    --ink:#cdcdc0;
+    --green:#27c93f;
+    --cyan:#7df9ff;
+    --gold:#d8b25a;
+    --dim:#56544f;
+    --mid:#8d8a82;
+    --persona-switch-fg:#cdcdc0;
+    --persona-switch-bg:rgba(10,10,13,0.85);
+    --persona-switch-border:rgba(125,249,255,0.3);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{
+    background:var(--bg);color:var(--ink);
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    overflow:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:60;
+    background:repeating-linear-gradient(0deg,rgba(255,255,255,0.012) 0 1px,transparent 1px 3px);
+    mix-blend-mode:overlay;
+  }
+
+  .term-wrap{
+    position:fixed;inset:18px;display:flex;flex-direction:column;
+    border:1px solid rgba(125,249,255,0.2);
+    background:#000;
+    overflow:hidden;
+  }
+
+  .term-bar{
+    height:30px;background:linear-gradient(180deg,#1c1c1f,#141416);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    display:flex;align-items:center;padding:0 14px;gap:8px;flex-shrink:0;
+  }
+  .term-dot{width:12px;height:12px;border-radius:50%}
+  .term-bar .title{margin-left:auto;font-size:10.5px;color:var(--dim)}
+
+  .term-output{
+    flex:1;overflow-y:auto;padding:18px 22px 12px;
+    scrollbar-width:thin;scrollbar-color:rgba(125,249,255,0.3) transparent;
+  }
+  .term-output::-webkit-scrollbar{width:6px}
+  .term-output::-webkit-scrollbar-thumb{background:rgba(125,249,255,0.3)}
+
+  .line{white-space:pre-wrap;word-break:break-word}
+  .line.cmd .pl{color:var(--green)}
+  .line.cmd .at{color:var(--dim)}
+  .line.cmd .pa{color:var(--cyan)}
+  .line.cmd .input{color:var(--ink)}
+  .line.out{color:var(--mid)}
+  .line.err{color:#ff6b6b}
+  .line a{color:var(--cyan);text-decoration:none}
+  .line a:hover{text-decoration:underline}
+  .key{color:var(--gold)}
+  .ascii{color:var(--cyan);font-size:11px;line-height:1.2;white-space:pre;margin:8px 0}
+
+  .term-input-row{
+    display:flex;align-items:center;padding:10px 22px 14px;border-top:1px solid rgba(125,249,255,0.12);flex-shrink:0;
+    gap:8px;
+  }
+  .term-input-row .prompt-pre{color:var(--green);white-space:nowrap}
+  .term-input-row .prompt-pre .at{color:var(--dim)}
+  .term-input-row .prompt-pre .pa{color:var(--cyan)}
+  .term-input{
+    flex:1;background:transparent;border:0;outline:0;color:var(--ink);
+    font:inherit;caret-color:var(--cyan);padding:0;
+  }
+
+  .chips{
+    display:none;
+    overflow-x:auto;gap:6px;padding:8px 22px;border-top:1px solid rgba(125,249,255,0.08);
+    scrollbar-width:none;
+  }
+  .chips::-webkit-scrollbar{display:none}
+  .chip{
+    flex-shrink:0;border:1px solid rgba(125,249,255,0.3);background:transparent;
+    color:var(--cyan);font:inherit;font-size:11px;padding:6px 10px;cursor:pointer;
+    letter-spacing:.05em;
+  }
+  .chip:hover,.chip:active{background:rgba(125,249,255,0.08)}
+
+  @media (max-width:768px){
+    .term-wrap{inset:0;border:0}
+    .term-output{padding:14px 14px 8px}
+    .term-input-row{padding:8px 14px 12px}
+    .chips{display:flex}
+    html,body{font-size:13px}
+  }
+</style>
+</head>
+<body>
+
+<div class="term-wrap">
+  <div class="term-bar">
+    <span class="term-dot" style="background:#ff5f56"></span>
+    <span class="term-dot" style="background:#ffbd2e"></span>
+    <span class="term-dot" style="background:#27c93f"></span>
+    <span class="title">kushar@portfolio: ~ — bash</span>
+  </div>
+
+  <div class="term-output" id="termOutput" aria-live="polite"></div>
+
+  <div class="chips" id="chips" role="toolbar" aria-label="Quick commands">
+    <button class="chip" data-cmd="help">help</button>
+    <button class="chip" data-cmd="whoami">whoami</button>
+    <button class="chip" data-cmd="projects">projects</button>
+    <button class="chip" data-cmd="cat resume.md">cat resume.md</button>
+    <button class="chip" data-cmd="socials">socials</button>
+    <button class="chip" data-cmd="exit">exit</button>
+  </div>
+
+  <form class="term-input-row" id="termForm" autocomplete="off">
+    <span class="prompt-pre">kushar<span class="at">@</span>portfolio<span class="at">:</span><span class="pa">~</span><span class="at">$</span></span>
+    <input class="term-input" id="termInput" autocomplete="off" autocapitalize="off" spellcheck="false" autofocus aria-label="Terminal input">
+  </form>
+</div>
+
+<noscript>
+  <div style="position:fixed;inset:0;background:#000;color:#cdcdc0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:monospace;padding:24px;text-align:center">
+    <div style="color:#ff2840;font-size:14px">$ js: command not found</div>
+    <div style="margin-top:14px;color:#8d8a82;font-size:12px">Coder variant requires JavaScript. Try the <a href="/pro.html" style="color:#7df9ff">professional</a> variant.</div>
+  </div>
+</noscript>
+
+<script>
+  // REPL added in Task 15
+</script>
+
+</body>
+</html>
