@@ -76,10 +76,49 @@
   .bio p{margin-bottom:16px;font-size:17px;line-height:1.65;color:var(--ink-dim);max-width:680px}
   .bio strong{color:var(--ink);font-weight:500}
 
+  /* CURRENTLY */
+  .callouts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .callout{
+    border:1px solid var(--line);background:#fff;
+    padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
+  }
+  .callout .ic{font-size:22px;line-height:1;flex-shrink:0}
+  .callout .body{font-size:14px;line-height:1.5;color:var(--ink-dim)}
+  .callout .body strong{color:var(--ink);font-weight:500}
+
+  /* EXPERIENCE */
+  .timeline{display:flex;flex-direction:column;gap:24px}
+  .tl-item{display:grid;grid-template-columns:140px 1fr;gap:32px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+  .tl-item:last-child{border-bottom:0}
+  .tl-item .when{
+    font-family:"JetBrains Mono",monospace;font-size:11px;
+    letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;line-height:1.4;
+  }
+  .tl-item .what h3{
+    font-family:"Fraunces",serif;font-weight:300;font-size:22px;line-height:1.2;
+    color:var(--ink);margin-bottom:4px;letter-spacing:-.01em;
+  }
+  .tl-item .what .org{font-size:14px;color:var(--ink-dim);margin-bottom:8px}
+  .tl-item .what .desc{font-size:14px;color:var(--ink-faint);line-height:1.55;max-width:520px}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+  .skill-group h4{
+    font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:14px;
+    color:var(--ink);margin-bottom:10px;letter-spacing:.01em;
+    display:flex;align-items:center;gap:8px;
+  }
+  .skill-group .ic{font-size:18px}
+  .skill-group .list{font-size:14px;color:var(--ink-dim);line-height:1.7}
+
   @media (max-width:760px){
     .shell{padding:60px 22px}
     .hero{grid-template-columns:1fr;gap:24px;align-items:start}
     .hero .photo{width:200px;height:240px;order:-1}
+    .callouts{grid-template-columns:1fr}
+    .tl-item{grid-template-columns:1fr;gap:6px}
+    .tl-item .when{margin-bottom:4px}
+    .skills-grid{grid-template-columns:1fr;gap:22px}
   }
 </style>
 </head>
@@ -111,6 +150,106 @@
     <p>Before this, I spent six months at <strong>Orbiqe Technologies</strong> as an AI-DevOps Engineer, where I got deep into Docker, Kubernetes, Terraform, and all things automation. That experience taught me a lot about how software actually runs in the real world — not just how it's written.</p>
     <p>I did my MCA from <strong>Haldia Institute of Technology</strong> (CGPA: 8.11) and my BCA from <strong>BIT Mesra</strong> (CGPA: 8.63). Both gave me a solid foundation, but honestly, most of what I know I learned by building things and breaking them.</p>
     <p>Outside of work, I'm into anime (currently One Piece 🏴‍☠️), design, and anything that sits at the intersection of code and creativity. I believe good software should feel good — not just work well.</p>
+  </section>
+
+  <!-- CURRENTLY -->
+  <section>
+    <div class="section-label">/02 · currently</div>
+    <h2>Right now.</h2>
+    <div class="callouts">
+      <div class="callout">
+        <div class="ic">🎮</div>
+        <div class="body"><strong>Working at</strong> — Game Developer Trainee @ BR Softech Pvt. Ltd., Jaipur · Feb 2026 – Present</div>
+      </div>
+      <div class="callout">
+        <div class="ic">📖</div>
+        <div class="body">Designing with empathy, coding with logic — guided by Inclusion, Joy, Research, and Resilience.</div>
+      </div>
+      <div class="callout">
+        <div class="ic">📺</div>
+        <div class="body"><strong>Binge watching</strong> — One Piece 🏴‍☠️ · Black Mirror 🪞 · How I Met Your Mother ☂️</div>
+      </div>
+      <div class="callout">
+        <div class="ic">📚</div>
+        <div class="body"><strong>Reading</strong> — The 48 Laws of Power · Robert Greene</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section>
+    <div class="section-label">/03 · experience</div>
+    <h2>Where I've been.</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="when">Feb 2026<br>— Present</div>
+        <div class="what">
+          <h3>Game Developer Trainee</h3>
+          <div class="org">BR Softech Pvt. Ltd. · Jaipur, India</div>
+          <div class="desc">Building game mechanics and interactive systems in JavaScript. Working on real game projects from concept to ship.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="when">2025<br>· 6 months</div>
+        <div class="what">
+          <h3>AI-DevOps Engineer</h3>
+          <div class="org">Orbiqe Technologies</div>
+          <div class="desc">Worked across Docker, Kubernetes, Terraform, Jenkins, AWS. Automated deploys, built CI/CD pipelines, learned how production really works.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="when">MCA<br>2023 – 2025</div>
+        <div class="what">
+          <h3>Master of Computer Applications</h3>
+          <div class="org">Haldia Institute of Technology · CGPA 8.11</div>
+          <div class="desc">Deep dive into systems, software engineering, and applied CS.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="when">BCA<br>2020 – 2023</div>
+        <div class="what">
+          <h3>Bachelor of Computer Applications</h3>
+          <div class="org">BIT Mesra · CGPA 8.63</div>
+          <div class="desc">Foundations: data structures, algorithms, web, databases.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <div class="section-label">/04 · skills</div>
+    <h2>What I work with.</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4><span class="ic">🎮</span>Game Development</h4>
+        <div class="list">JavaScript · Game Mechanics · Interactive Design · 2D Game Systems</div>
+      </div>
+      <div class="skill-group">
+        <h4><span class="ic">⚙️</span>DevOps &amp; Cloud</h4>
+        <div class="list">Docker · Terraform · Kubernetes · Jenkins · Ansible · AWS · GitHub Actions · Linux · CI/CD</div>
+      </div>
+      <div class="skill-group">
+        <h4><span class="ic">💻</span>Programming</h4>
+        <div class="list">Python · JavaScript · HTML / CSS · SQL · Java · C</div>
+      </div>
+      <div class="skill-group">
+        <h4><span class="ic">🧪</span>Testing &amp; QA</h4>
+        <div class="list">Selenium · Postman · JMeter</div>
+      </div>
+      <div class="skill-group">
+        <h4><span class="ic">🎨</span>Design</h4>
+        <div class="list">Graphic Design · Brand Logos · Social Media Graphics · Web Layouts · Figma · Canva · Adobe Creative Suite</div>
+      </div>
+      <div class="skill-group">
+        <h4><span class="ic">🛠️</span>Tools</h4>
+        <div class="list">Git / GitHub · VS Code · GitLab · Notion · Figma · Canva · Adobe Creative Suite</div>
+      </div>
+      <div class="skill-group">
+        <h4><span class="ic">🤝</span>Soft Skills</h4>
+        <div class="list">Problem Solving · Analytical Thinking · Agile Collaboration · Time Management · Attention to Detail</div>
+      </div>
+    </div>
   </section>
 
 </main>
