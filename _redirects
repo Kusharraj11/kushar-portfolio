@@ -1,4 +1,5 @@
-# Clean URL aliases (rewrite, not redirect)
+# Root + clean URL aliases (rewrite, not redirect)
+/       /index.html  200
 /gamer  /gamer.html  200
 /pro    /pro.html    200
 /code   /code.html   200
