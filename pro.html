@@ -3,397 +3,1274 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kushar Raj Kashyap — Professional</title>
-<meta name="description" content="MCA · Game Developer Trainee · Designer. Portfolio of professional work.">
+<title>Kushar Raj Kashyap — Professional Portfolio</title>
+<meta name="description" content="Kushar Raj Kashyap — MCA · Game developer, designer, builder. Available for hire. Resume, work, writing.">
 <meta name="theme-color" content="#f5f3ec">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,200;9..144,300;9..144,400;9..144,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Serif+JP:wght@200;400;700;900&family=Space+Grotesk:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/shared/persona.css">
 <script src="/shared/persona.js"></script>
+
 <style>
-  :root {
-    --bg:#f5f3ec;
-    --bg-2:#ebe7da;
-    --ink:#14141d;
-    --ink-dim:#3a3a44;
-    --ink-faint:#6a6a75;
-    --line:rgba(20,20,29,0.12);
-    --line-2:rgba(20,20,29,0.22);
-    --accent:#14141d;
-    --persona-switch-fg:#14141d;
-    --persona-switch-bg:rgba(245,243,236,0.85);
-    --persona-switch-border:rgba(20,20,29,0.2);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{
-    background:var(--bg);color:var(--ink);
-    font-family:"Space Grotesk",ui-sans-serif,sans-serif;
-    -webkit-font-smoothing:antialiased;
-    font-size:16px;line-height:1.6;
-    min-height:100vh;
-  }
-  a{color:inherit}
-  .shell{max-width:980px;margin:0 auto;padding:80px 32px}
-  section{padding:64px 0;border-top:1px solid var(--line)}
-  section:first-of-type{border-top:0;padding-top:0}
+:root{
+  --bg:#f5f3ec;
+  --bg-2:#ece8db;
+  --bg-3:#e8e4d8;
+  --paper:#fbfaf5;
+  --ink:#14141d;
+  --ink-2:#2a2a36;
+  --ink-3:#3a3a44;
+  --mute:#56544f;
+  --faint:#8d8a82;
+  --line:rgba(20,20,29,0.10);
+  --line-2:rgba(20,20,29,0.18);
+  --line-3:rgba(20,20,29,0.28);
+  --accent:#8b1a2f;     /* deep wine — restrained crimson */
+  --accent-2:#c4a259;   /* warm gold */
+  --accent-3:#2a4a5c;   /* slate teal */
+  --persona-switch-fg: var(--ink);
+  --persona-switch-bg: rgba(245,243,236,0.92);
+  --persona-switch-border: rgba(20,20,29,0.25);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  background:var(--bg);color:var(--ink);
+  font-family:"Space Grotesk",ui-sans-serif,sans-serif;font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body{
+  background:
+    radial-gradient(1200px 800px at 80% -10%, rgba(139,26,47,0.05), transparent 60%),
+    radial-gradient(1000px 700px at -10% 110%, rgba(42,74,92,0.05), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-3) 100%);
+  min-height:100vh;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+  background-image:
+    linear-gradient(rgba(20,20,29,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20,20,29,0.022) 1px, transparent 1px);
+  background-size:32px 32px;opacity:.7;
+}
 
-  .section-label{
-    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.32em;
-    color:var(--ink-faint);text-transform:uppercase;margin-bottom:24px;
-    display:flex;align-items:center;gap:10px;
-  }
-  .section-label::before{content:"";width:24px;height:1px;background:var(--ink)}
+a{color:inherit;text-decoration:none}
 
-  h2{
-    font-family:"Fraunces","Space Grotesk",serif;font-weight:300;
-    font-size:clamp(32px,4vw,48px);line-height:1.1;letter-spacing:-.02em;
-    color:var(--ink);margin-bottom:24px;
-  }
+/* TOP BAR */
+.topbar{
+  position:fixed;top:0;left:0;right:0;height:56px;z-index:50;
+  background:linear-gradient(180deg, rgba(245,243,236,0.96), rgba(245,243,236,0.86));
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;
+}
+.topbar .brand{
+  font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:14px;
+  letter-spacing:-.01em;color:var(--ink);
+}
+.topbar .brand b{font-weight:200}
+.topbar nav{display:flex;gap:28px}
+.topbar nav a{
+  font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--mute);transition:color .2s;
+  padding:6px 0;position:relative;
+}
+.topbar nav a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);
+  transform:scaleX(0);transform-origin:left;transition:transform .25s;
+}
+.topbar nav a:hover,.topbar nav a.active{color:var(--ink)}
+.topbar nav a:hover::after,.topbar nav a.active::after{transform:scaleX(1)}
+.topbar .right{display:flex;align-items:center;gap:18px}
+.topbar .status-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--mute);
+  padding:6px 12px;border:1px solid var(--line-2);background:var(--paper);
+}
+.topbar .status-pill .dot{
+  width:6px;height:6px;border-radius:50%;background:#1a8c4a;
+  box-shadow:0 0 0 3px rgba(26,140,74,0.18);animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+.nav-toggle{display:none;align-items:center;justify-content:center;width:32px;height:32px;background:none;border:1px solid var(--line-2);cursor:pointer;padding:0;flex-shrink:0;position:relative}
+.nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{display:block;width:16px;height:1.5px;background:var(--ink-3);transition:all .25s ease;position:relative}
+.nav-toggle span::before,.nav-toggle span::after{content:"";position:absolute;left:0;transition:all .25s ease}
+.nav-toggle span::before{top:-5px}
+.nav-toggle span::after{top:5px}
+.nav-toggle.open span{background:transparent}
+.nav-toggle.open span::before{transform:rotate(45deg);top:0;background:var(--accent)}
+.nav-toggle.open span::after{transform:rotate(-45deg);top:0;background:var(--accent)}
+.nav-backdrop{display:none;position:fixed;inset:0;background:rgba(20,20,29,0.4);z-index:45;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.nav-backdrop.open{display:block}
 
-  /* HERO */
-  .hero{display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:end;padding-bottom:48px}
-  .hero .photo{
-    width:280px;height:340px;background:#ddd;
-    border:1px solid var(--line-2);overflow:hidden;
-  }
-  .hero .photo img{width:100%;height:100%;object-fit:cover;display:block}
-  .hero h1{
-    font-family:"Fraunces","Space Grotesk",serif;font-weight:200;
-    font-size:clamp(48px,8vw,96px);line-height:.95;letter-spacing:-.03em;color:var(--ink);
-  }
-  .hero h1 b{font-weight:500}
-  .hero .role{
-    margin-top:18px;font-size:15px;color:var(--ink-dim);max-width:520px;
-  }
-  .hero .meta{
-    margin-top:24px;font-family:"JetBrains Mono",monospace;font-size:11px;
-    letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;
-    display:flex;gap:18px;flex-wrap:wrap;
-  }
+/* SHELL */
+.shell{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:96px 64px 48px}
 
-  /* BIO */
-  .bio p{margin-bottom:16px;font-size:17px;line-height:1.65;color:var(--ink-dim);max-width:680px}
-  .bio strong{color:var(--ink);font-weight:500}
+section{position:relative;padding:96px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0;padding-top:48px}
 
-  /* CURRENTLY */
-  .callouts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .callout{
-    border:1px solid var(--line);background:#fff;
-    padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
-  }
-  .callout .ic{font-size:22px;line-height:1;flex-shrink:0}
-  .callout .body{font-size:14px;line-height:1.5;color:var(--ink-dim)}
-  .callout .body strong{color:var(--ink);font-weight:500}
+.section-head{
+  display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:end;
+  margin-bottom:56px;padding-bottom:20px;border-bottom:1px solid var(--line);
+}
+.section-head .num{
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.32em;
+  color:var(--accent);text-transform:uppercase;
+}
+.section-head .ttl h2{
+  font-family:"Space Grotesk",sans-serif;font-weight:200;font-size:clamp(34px,4vw,52px);
+  line-height:1;letter-spacing:-.025em;color:var(--ink);margin-top:8px;
+}
+.section-head .ttl h2 b{font-weight:500}
+.section-head .ttl .lbl{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--mute);
+}
+.section-head .meta{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;
+  color:var(--faint);text-transform:uppercase;text-align:right;line-height:1.7;
+}
 
-  /* EXPERIENCE */
-  .timeline{display:flex;flex-direction:column;gap:24px}
-  .tl-item{display:grid;grid-template-columns:140px 1fr;gap:32px;padding-bottom:24px;border-bottom:1px solid var(--line)}
-  .tl-item:last-child{border-bottom:0}
-  .tl-item .when{
-    font-family:"JetBrains Mono",monospace;font-size:11px;
-    letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;line-height:1.4;
-  }
-  .tl-item .what h3{
-    font-family:"Fraunces",serif;font-weight:300;font-size:22px;line-height:1.2;
-    color:var(--ink);margin-bottom:4px;letter-spacing:-.01em;
-  }
-  .tl-item .what .org{font-size:14px;color:var(--ink-dim);margin-bottom:8px}
-  .tl-item .what .desc{font-size:14px;color:var(--ink-faint);line-height:1.55;max-width:520px}
+/* HERO */
+.hero{
+  display:grid;grid-template-columns:1.4fr 1fr;gap:72px;align-items:center;
+  min-height:calc(100vh - 96px);padding:48px 0 0;border-top:0;
+}
+.hero .col-lead{display:flex;flex-direction:column;gap:0}
+.hero .preface{
+  display:flex;align-items:center;gap:14px;
+  font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.32em;
+  color:var(--mute);text-transform:uppercase;margin-bottom:24px;
+}
+.hero .preface::before{content:"";width:38px;height:1px;background:var(--ink)}
+.hero .name{
+  font-family:"Space Grotesk",sans-serif;font-weight:200;
+  font-size:clamp(56px,8vw,108px);line-height:.95;letter-spacing:-.035em;
+  color:var(--ink);text-wrap:balance;
+}
+.hero .name b{font-weight:500}
+.hero .name .jp{
+  font-family:"Noto Serif JP",serif;font-weight:200;font-size:.5em;
+  color:var(--accent);margin-left:.2em;letter-spacing:0;
+}
+.hero .role{
+  font-family:"Space Grotesk",sans-serif;font-weight:300;font-size:21px;
+  color:var(--ink-3);margin-top:28px;max-width:560px;line-height:1.55;letter-spacing:-.005em;
+}
+.hero .role b{color:var(--ink);font-weight:500}
+.hero .role .acc{color:var(--accent);font-weight:500}
+.hero .tags{margin-top:32px;display:flex;flex-wrap:wrap;gap:8px}
+.hero .tags span{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--mute);
+  padding:6px 11px;border:1px solid var(--line-2);background:var(--paper);
+}
+.hero .ctas{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
 
-  /* SKILLS */
-  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
-  .skill-group h4{
-    font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:14px;
-    color:var(--ink);margin-bottom:10px;letter-spacing:.01em;
-    display:flex;align-items:center;gap:8px;
-  }
-  .skill-group .ic{font-size:18px}
-  .skill-group .list{font-size:14px;color:var(--ink-dim);line-height:1.7}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:14px 22px;border:1px solid var(--ink);background:transparent;
+  color:var(--ink);font-family:"JetBrains Mono",monospace;font-size:11px;
+  letter-spacing:.22em;text-transform:uppercase;cursor:pointer;
+  transition:all .25s;
+}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent)}
+.btn.ghost{border-color:var(--line-2);color:var(--ink-3)}
+.btn.ghost:hover{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn .arrow{font-family:"JetBrains Mono";color:var(--accent);transition:color .25s}
+.btn:hover .arrow{color:inherit}
 
-  /* PROJECTS */
-  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .proj{
-    border:1px solid var(--line);background:#fff;text-decoration:none;color:var(--ink);
-    display:flex;flex-direction:column;transition:transform .25s, box-shadow .25s;
-  }
-  .proj:hover{transform:translateY(-3px);box-shadow:0 12px 30px -10px rgba(0,0,0,0.2)}
-  .proj .cover{aspect-ratio:4/3;background:#ddd center/cover no-repeat;overflow:hidden}
-  .proj .cover img{width:100%;height:100%;object-fit:cover;display:block}
-  .proj .body{padding:14px 16px}
-  .proj h3{
-    font-family:"Fraunces",serif;font-weight:400;font-size:16px;line-height:1.3;color:var(--ink);
-  }
-  .proj .gh{
-    margin-top:8px;font-family:"JetBrains Mono",monospace;font-size:10px;
-    color:var(--ink-faint);letter-spacing:.1em;text-transform:uppercase;
-  }
-  .proj .desc{margin-top:6px;font-size:13px;line-height:1.5;color:var(--ink-faint)}
+/* PROFILE CARD */
+.profile-card{
+  position:relative;background:var(--paper);
+  border:1px solid var(--line-2);
+  padding:24px;display:flex;flex-direction:column;gap:18px;
+}
+.profile-card::before{
+  content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;
+  border-top:1px solid var(--accent);border-left:1px solid var(--accent);
+}
+.profile-card::after{
+  content:"";position:absolute;bottom:-1px;right:-1px;width:14px;height:14px;
+  border-bottom:1px solid var(--accent);border-right:1px solid var(--accent);
+}
+.profile-card .pc-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.28em;
+  color:var(--mute);text-transform:uppercase;
+}
+.profile-card .pc-head .id{color:var(--accent)}
+.photo-frame{
+  position:relative;aspect-ratio:4/5;background:var(--bg-2);
+  overflow:hidden;border:1px solid var(--line);
+}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:saturate(.96) contrast(1.02)}
+.photo-frame .corner{position:absolute;width:12px;height:12px;border:1px solid var(--ink);z-index:2}
+.photo-frame .corner.tl{top:6px;left:6px;border-right:0;border-bottom:0}
+.photo-frame .corner.tr{top:6px;right:6px;border-left:0;border-bottom:0}
+.photo-frame .corner.bl{bottom:6px;left:6px;border-right:0;border-top:0}
+.photo-frame .corner.br{bottom:6px;right:6px;border-left:0;border-top:0}
+.photo-frame .stamp{
+  position:absolute;bottom:14px;left:14px;right:14px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.22em;
+  color:var(--bg);text-transform:uppercase;
+  padding:8px 12px;background:rgba(20,20,29,0.78);
+}
+.photo-frame .stamp .live::before{content:"●";color:#5cd87f;margin-right:6px}
 
-  /* CONTENT BLOCKS (about-me content) */
-  .content-block{display:grid;grid-template-columns:1fr 200px;gap:32px;align-items:start;margin-bottom:48px}
-  .content-block.flip{grid-template-columns:200px 1fr}
-  .content-block .gif{
-    width:100%;aspect-ratio:4/5;background:var(--bg-2) center/cover no-repeat;
-    border:1px solid var(--line);overflow:hidden;
-    display:flex;align-items:center;justify-content:center;
-    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;
-    color:var(--ink-faint);text-transform:uppercase;text-align:center;
-  }
-  .content-block h3{
-    font-family:"Fraunces",serif;font-weight:400;font-size:24px;line-height:1.25;
-    color:var(--ink);margin-bottom:12px;letter-spacing:-.01em;
-  }
-  .content-block p{font-size:15px;line-height:1.6;color:var(--ink-dim);margin-bottom:12px}
-  .content-block .quote{
-    border-left:2px solid var(--ink);padding-left:14px;margin:14px 0;
-    font-style:italic;color:var(--ink);
-  }
+.vitals{display:flex;flex-direction:column;gap:0}
+.vitals .row{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:10px 0;border-top:1px dashed var(--line);
+  font-size:13px;
+}
+.vitals .row:first-child{border-top:0}
+.vitals .row .k{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;
+  color:var(--faint);text-transform:uppercase;
+}
+.vitals .row .v{color:var(--ink);font-weight:400}
+.vitals .row .v.ok{color:#1a8c4a;font-weight:500}
 
-  /* CONTACT */
-  .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:520px}
-  .contact-link{
-    display:flex;align-items:center;gap:12px;
-    border:1px solid var(--line-2);padding:14px 18px;
-    text-decoration:none;color:var(--ink);font-size:14px;
-    transition:border-color .2s, transform .2s;
-  }
-  .contact-link:hover{border-color:var(--ink);transform:translateY(-1px)}
-  .contact-link .ic{font-size:18px}
-  .contact-link .lbl{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:2px}
-  .contact-link .val{font-weight:500}
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:64px}
+.about p{
+  font-family:"Space Grotesk",sans-serif;font-weight:300;font-size:18.5px;
+  line-height:1.7;color:var(--ink-2);margin-bottom:18px;text-wrap:pretty;
+}
+.about p .acc{color:var(--accent);font-weight:500}
+.about p b{color:var(--ink);font-weight:500}
+.about-quote{
+  margin-top:32px;padding:20px 24px;
+  border-left:3px solid var(--accent);background:var(--paper);
+  font-family:"Noto Serif JP",serif;font-style:italic;font-size:16px;
+  color:var(--ink-3);line-height:1.55;
+}
+.about-quote span{display:block;font-family:"Space Grotesk";font-style:normal;font-size:13px;color:var(--mute);margin-top:8px;letter-spacing:.04em}
 
-  @media (max-width:760px){
-    .shell{padding:60px 22px}
-    .hero{grid-template-columns:1fr;gap:24px;align-items:start}
-    .hero .photo{width:200px;height:240px;order:-1}
-    .callouts{grid-template-columns:1fr}
-    .tl-item{grid-template-columns:1fr;gap:6px}
-    .tl-item .when{margin-bottom:4px}
-    .skills-grid{grid-template-columns:1fr;gap:22px}
-    .gallery{grid-template-columns:1fr}
-    .content-block,.content-block.flip{grid-template-columns:1fr;gap:18px}
-    .content-block .gif{aspect-ratio:5/3;max-width:300px}
-    .contact-grid{grid-template-columns:1fr}
-  }
+.fact-card{
+  border:1px solid var(--line);background:var(--paper);
+  padding:28px;margin-bottom:18px;
+}
+.fact-card h5{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.32em;
+  color:var(--mute);text-transform:uppercase;margin-bottom:18px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.fact-card h5 .jp{font-family:"Noto Serif JP";color:var(--accent);font-size:14px}
+.kvp{display:grid;grid-template-columns:110px 1fr;gap:6px 18px;font-size:14px}
+.kvp dt{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;
+  color:var(--faint);text-transform:uppercase;padding-top:4px;
+}
+.kvp dd{
+  color:var(--ink);padding-bottom:14px;border-bottom:1px dashed var(--line);
+  margin-bottom:6px;font-family:"Space Grotesk";line-height:1.45;
+}
+.kvp dd:last-of-type{border-bottom:0;padding-bottom:0;margin-bottom:0}
+
+.principles{
+  border:1px solid var(--line);background:var(--paper);padding:28px;
+}
+.principles h5{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.32em;
+  color:var(--mute);text-transform:uppercase;margin-bottom:18px;
+}
+.principles ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.principles li{
+  display:flex;gap:12px;font-family:"Space Grotesk";font-size:14.5px;
+  color:var(--ink-2);line-height:1.45;
+}
+.principles li::before{
+  content:"◆";color:var(--accent);font-size:9px;
+  flex-shrink:0;padding-top:6px;
+}
+.principles li b{color:var(--ink);font-weight:500;display:block;margin-bottom:2px}
+
+/* TIMELINE / EXPERIENCE */
+.timeline{display:flex;flex-direction:column;gap:0;border-left:1px solid var(--line-2);padding-left:0}
+.tl-item{
+  display:grid;grid-template-columns:160px 1fr auto;gap:32px;align-items:start;
+  padding:28px 0 28px 32px;border-bottom:1px solid var(--line);position:relative;
+}
+.tl-item:last-child{border-bottom:0}
+.tl-item::before{
+  content:"";position:absolute;left:-6px;top:36px;width:11px;height:11px;
+  background:var(--bg);border:2px solid var(--ink);
+}
+.tl-item.now::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px rgba(139,26,47,0.18)}
+.tl-item .when{
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.18em;
+  color:var(--mute);text-transform:uppercase;padding-top:4px;
+}
+.tl-item h4{
+  font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:20px;
+  color:var(--ink);margin-bottom:6px;letter-spacing:-.01em;line-height:1.2;
+}
+.tl-item .org{
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;
+  color:var(--mute);text-transform:uppercase;margin-bottom:12px;
+}
+.tl-item p{
+  font-family:"Space Grotesk";font-weight:300;font-size:14.5px;
+  color:var(--ink-3);line-height:1.6;max-width:640px;margin-bottom:0;
+}
+.tl-item .tag{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink);
+  padding:6px 10px;border:1px solid var(--line-2);background:var(--paper);
+  align-self:start;white-space:nowrap;
+}
+.tl-item.now .tag{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.skill-cat{
+  border:1px solid var(--line);background:var(--paper);padding:24px;position:relative;
+  transition:transform .2s, border-color .2s, box-shadow .2s;
+}
+.skill-cat:hover{transform:translateY(-2px);border-color:var(--line-3);box-shadow:0 8px 28px -10px rgba(20,20,29,0.15)}
+.skill-cat .cat-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  margin-bottom:18px;padding-bottom:14px;border-bottom:1px dashed var(--line);
+}
+.skill-cat .cat-head h4{
+  font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:16px;
+  color:var(--ink);letter-spacing:-.005em;display:flex;align-items:center;gap:12px;
+}
+.skill-cat .cat-head h4 .jp{
+  font-family:"Noto Serif JP",serif;font-weight:700;color:var(--accent);font-size:18px;
+}
+.skill-cat .cat-head .lvl{
+  font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.22em;
+  color:var(--accent-3);text-transform:uppercase;
+}
+.skill-list{display:flex;flex-wrap:wrap;gap:6px}
+.skill-list span{
+  font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.1em;
+  color:var(--ink);padding:6px 10px;
+  border:1px solid var(--line-2);background:var(--bg);
+}
+
+/* PROJECTS */
+.projects-featured{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+.proj-feat{
+  border:1px solid var(--line-2);background:var(--paper);padding:0;position:relative;
+  display:flex;flex-direction:column;overflow:hidden;
+  transition:transform .25s, border-color .25s, box-shadow .25s;
+}
+.proj-feat:hover{transform:translateY(-3px);border-color:var(--ink);box-shadow:0 18px 50px -16px rgba(20,20,29,0.25)}
+.proj-feat .pf-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 24px;border-bottom:1px solid var(--line);
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--mute);background:var(--bg-2);
+}
+.proj-feat .pf-head .id{color:var(--accent)}
+.proj-feat .pf-head .badge{color:#1a8c4a;display:inline-flex;align-items:center;gap:6px}
+.proj-feat .pf-head .badge::before{content:"●";font-size:8px}
+.proj-feat .pf-body{padding:28px 24px;display:flex;flex-direction:column;flex:1}
+.proj-feat .lang-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent-3);
+  margin-bottom:14px;align-self:flex-start;
+  border:1px solid var(--line-2);padding:4px 10px;
+}
+.proj-feat h3{
+  font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:24px;
+  color:var(--ink);margin-bottom:10px;letter-spacing:-.015em;line-height:1.2;
+}
+.proj-feat p{
+  font-family:"Space Grotesk",sans-serif;font-weight:300;font-size:14.5px;
+  color:var(--ink-3);line-height:1.6;flex:1;margin-bottom:22px;
+}
+.proj-feat .actions{display:flex;gap:10px;margin-top:auto;flex-wrap:wrap}
+.proj-feat .actions .btn{padding:11px 16px;font-size:10px;letter-spacing:.18em}
+
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.proj-card{
+  border:1px solid var(--line);background:var(--paper);padding:22px;
+  display:flex;flex-direction:column;min-height:200px;
+  transition:transform .2s, border-color .2s, box-shadow .2s;
+}
+.proj-card:hover{transform:translateY(-2px);border-color:var(--line-3);box-shadow:0 10px 32px -12px rgba(20,20,29,0.2)}
+.proj-card .top{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;
+  padding-bottom:12px;border-bottom:1px dashed var(--line);
+}
+.proj-card .idx{
+  font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.22em;
+  color:var(--faint);text-transform:uppercase;
+}
+.proj-card .lang{
+  font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent-3);
+  border:1px solid var(--line-2);padding:3px 8px;background:var(--bg);
+}
+.proj-card .cat{
+  font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--mute);margin-bottom:8px;
+  border-left:2px solid var(--accent);padding-left:8px;
+}
+.proj-card h4{
+  font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:15px;
+  color:var(--ink);margin-bottom:8px;letter-spacing:-.005em;line-height:1.3;
+}
+.proj-card p{
+  font-family:"Space Grotesk",sans-serif;font-weight:300;font-size:13px;
+  color:var(--ink-3);line-height:1.55;flex:1;margin-bottom:14px;
+}
+.proj-card .gh{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);margin-top:auto;
+  display:inline-flex;align-items:center;gap:6px;
+  align-self:flex-start;
+}
+.proj-card .gh:hover{color:var(--ink)}
+
+/* BEYOND WORK */
+.beyond-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.bw{
+  border:1px solid var(--line);background:var(--paper);padding:26px;
+  display:flex;flex-direction:column;min-height:260px;
+  transition:transform .2s, border-color .2s, box-shadow .2s;
+}
+.bw:hover{transform:translateY(-2px);border-color:var(--line-3);box-shadow:0 10px 32px -12px rgba(20,20,29,0.2)}
+.bw .head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px}
+.bw .id{
+  font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.22em;
+  color:var(--faint);text-transform:uppercase;
+}
+.bw .jp{font-family:"Noto Serif JP";font-weight:700;font-size:36px;color:var(--accent);opacity:.8;line-height:1}
+.bw h3{
+  font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:18px;
+  color:var(--ink);margin-bottom:6px;letter-spacing:-.005em;
+}
+.bw .sub{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;
+  color:var(--accent-3);text-transform:uppercase;margin-bottom:16px;
+}
+.bw ul{list-style:none;font-family:"Space Grotesk";font-weight:300;font-size:14px;color:var(--ink-3);line-height:1.55}
+.bw ul li{padding:6px 0;border-bottom:1px dashed var(--line)}
+.bw ul li:last-child{border-bottom:0}
+.bw ul li b{color:var(--ink);font-weight:500}
+.bw .quote{
+  margin-top:auto;padding-top:14px;
+  font-family:"Noto Serif JP";font-style:italic;font-size:13px;
+  color:var(--mute);border-left:2px solid var(--accent);padding-left:12px;line-height:1.55;
+}
+
+/* CERTIFICATES */
+.certs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.cert{
+  border:1px solid var(--line);background:var(--paper);padding:26px;position:relative;
+  display:flex;flex-direction:column;gap:10px;
+  transition:transform .2s, border-color .2s, box-shadow .2s;
+}
+.cert:hover{transform:translateY(-2px);border-color:var(--accent-2);box-shadow:0 12px 36px -12px rgba(196,162,89,0.25)}
+.cert .top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:6px}
+.cert .seal{
+  width:48px;height:48px;border:1px solid var(--accent-2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Noto Serif JP";font-weight:900;color:var(--accent-2);font-size:22px;
+  flex-shrink:0;background:var(--bg);
+}
+.cert .org{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.22em;
+  color:var(--faint);text-transform:uppercase;margin-bottom:6px;
+}
+.cert h4{
+  font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:18px;
+  color:var(--ink);line-height:1.3;letter-spacing:-.005em;margin-bottom:8px;
+}
+.cert .date{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;
+  color:var(--accent-3);text-transform:uppercase;
+}
+.cert p{
+  font-family:"Space Grotesk",sans-serif;font-weight:300;font-size:14px;
+  color:var(--ink-3);line-height:1.55;margin-top:8px;
+}
+.cert .achs{
+  display:flex;flex-direction:column;gap:6px;margin-top:14px;
+  padding-top:14px;border-top:1px dashed var(--line);
+}
+.cert .achs span{
+  font-family:"Space Grotesk";font-weight:400;font-size:13px;color:var(--ink-2);
+  display:flex;gap:10px;align-items:center;line-height:1.5;
+}
+.cert .achs span::before{content:"◆";color:var(--accent-2);font-size:9px;flex-shrink:0}
+.cert-view{
+  display:inline-flex;align-items:center;gap:8px;margin-top:16px;align-self:flex-start;
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--accent-2);
+  border:1px solid var(--accent-2);padding:7px 12px;transition:all .2s;
+}
+.cert-view:hover{background:var(--accent-2);color:var(--bg)}
+
+/* CONTACT */
+.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:start}
+.contact h3{
+  font-family:"Space Grotesk",sans-serif;font-weight:200;font-size:clamp(36px,4.5vw,60px);
+  line-height:1.05;letter-spacing:-.025em;color:var(--ink);
+  margin-bottom:24px;text-wrap:balance;
+}
+.contact h3 .acc{
+  color:var(--accent);font-style:italic;font-family:"Noto Serif JP";font-weight:400;
+}
+.contact p{
+  font-family:"Space Grotesk";font-weight:300;font-size:17px;color:var(--ink-3);
+  max-width:540px;line-height:1.6;margin-bottom:32px;
+}
+.contact-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+.contact-list a{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 4px;border-bottom:1px solid var(--line);
+  color:var(--ink);transition:all .2s;
+}
+.contact-list a:hover{padding-left:14px;color:var(--accent);background:var(--paper)}
+.contact-list a .k{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.22em;
+  color:var(--faint);text-transform:uppercase;width:90px;flex-shrink:0;
+}
+.contact-list a .v{
+  font-family:"Space Grotesk";font-weight:400;font-size:16px;flex:1;
+}
+.contact-list a .arr{color:var(--faint);transition:all .2s;font-family:"JetBrains Mono"}
+.contact-list a:hover .arr{color:var(--accent);transform:translateX(4px)}
+
+footer{
+  padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.22em;
+  color:var(--faint);text-transform:uppercase;
+}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal,.reveal.visible{opacity:1 !important;transform:none !important;transition:none !important}}
+
+@media (max-width:1080px){
+  .shell{padding:88px 32px 40px}
+  .hero{grid-template-columns:1fr;gap:48px;min-height:auto;padding-top:24px}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .projects-grid,.beyond-grid,.certs{grid-template-columns:repeat(2,1fr)}
+  .contact{grid-template-columns:1fr;gap:32px}
+  .topbar nav{display:none}
+  .nav-toggle{display:flex}
+}
+@media (max-width:760px){
+  .shell{padding:80px 18px 32px}
+  .topbar{padding:0 18px;height:52px}
+  .topbar .status-pill{display:none}
+  .skills-grid,.projects-featured,.projects-grid,.beyond-grid,.certs{grid-template-columns:1fr}
+  section{padding:64px 0}
+  .section-head{grid-template-columns:auto 1fr;gap:18px;margin-bottom:36px}
+  .section-head .meta{display:none}
+  .tl-item{grid-template-columns:1fr;gap:6px;padding:20px 0 20px 24px}
+  .tl-item .tag{align-self:flex-start;margin-top:8px}
+  .hero .name{font-size:clamp(44px,12vw,76px)}
+  .hero .role{font-size:17px}
+  .btn{padding:12px 16px;font-size:10px;flex:1;justify-content:center;min-width:140px}
+  .contact h3{font-size:32px}
+  footer{flex-direction:column;align-items:flex-start;gap:8px}
+}
+
+/* Mobile drawer */
+.mobile-nav{
+  position:fixed;top:0;right:-280px;bottom:0;width:260px;
+  background:var(--paper);border-left:1px solid var(--line-2);z-index:55;
+  padding:80px 24px 24px;display:flex;flex-direction:column;gap:6px;
+  transition:right .3s cubic-bezier(.4,0,.2,1);
+}
+.mobile-nav.open{right:0}
+.mobile-nav a{
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink-3);padding:14px 8px;
+  border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;
+}
+.mobile-nav a .num{color:var(--accent)}
+.mobile-nav a:hover{color:var(--accent)}
 </style>
 </head>
 <body>
 
+<header class="topbar">
+  <a class="brand" href="#hero"><b>Kushar</b> Raj Kashyap</a>
+  <nav id="topNav">
+    <a href="#about">01 · About</a>
+    <a href="#path">02 · Experience</a>
+    <a href="#skills">03 · Skills</a>
+    <a href="#projects">04 · Projects</a>
+    <a href="#beyond">05 · Beyond</a>
+    <a href="#certs">06 · Certs</a>
+    <a href="#contact">07 · Contact</a>
+  </nav>
+  <div class="right">
+    <span class="status-pill"><span class="dot"></span>Open to Work</span>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<aside class="mobile-nav" id="mobileNav">
+  <a href="#about"><span>About</span><span class="num">01</span></a>
+  <a href="#path"><span>Experience</span><span class="num">02</span></a>
+  <a href="#skills"><span>Skills</span><span class="num">03</span></a>
+  <a href="#projects"><span>Projects</span><span class="num">04</span></a>
+  <a href="#beyond"><span>Beyond</span><span class="num">05</span></a>
+  <a href="#certs"><span>Certifications</span><span class="num">06</span></a>
+  <a href="#contact"><span>Contact</span><span class="num">07</span></a>
+</aside>
+
 <main class="shell">
 
   <!-- HERO -->
-  <section class="hero">
-    <div>
-      <div class="section-label">// professional</div>
-      <h1>Kushar Raj<br><b>Kashyap.</b></h1>
-      <p class="role">MCA graduate · Game Developer Trainee at BR Softech, Jaipur · Designer and builder of interfaces.</p>
+  <section id="hero" class="hero">
+    <div class="col-lead">
+      <div class="preface">Kushar.Raj // Portfolio · 2026</div>
+      <h1 class="name">
+        Kushar Raj<br/>
+        <b>Kashyap</b><span class="jp">柏</span>
+      </h1>
+      <p class="role">
+        MCA · <b>Game developer</b>, designer and builder. Just wrapped an HTML5 trainee run at <b>BR Softech</b>, Jaipur — currently in <b>Patna</b>, <span class="acc">open to work</span> across game dev, web, and DevOps.
+      </p>
+      <div class="tags">
+        <span>Game Dev</span>
+        <span>JavaScript</span>
+        <span>DevOps</span>
+        <span>Design</span>
+        <span>MCA</span>
+        <span>India · GMT+5:30</span>
+      </div>
+      <div class="ctas">
+        <a class="btn primary" href="https://www.overleaf.com/read/qhndsfwfmngb#02b2e5" target="_blank" rel="noopener"><span class="arrow">▸</span> Read Resume</a>
+        <a class="btn ghost" href="#contact"><span class="arrow">▸</span> Get in touch</a>
+      </div>
+    </div>
+
+    <aside class="profile-card">
+      <div class="pc-head">
+        <span>// Profile</span>
+        <span class="id">ID · 26.05</span>
+      </div>
+      <div class="photo-frame">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <img src="assets/pro/profile.jpg" alt="Portrait of Kushar Raj Kashyap" loading="eager" />
+        <div class="stamp">
+          <span class="live">Available</span>
+          <span>Patna · IN</span>
+        </div>
+      </div>
+      <div class="vitals">
+        <div class="row"><span class="k">Name</span><span class="v">Kushar Raj Kashyap</span></div>
+        <div class="row"><span class="k">Role</span><span class="v">Game Dev / Web / DevOps</span></div>
+        <div class="row"><span class="k">Last</span><span class="v">HTML5 Trainee · BR Softech</span></div>
+        <div class="row"><span class="k">Status</span><span class="v ok">Open to Work</span></div>
+        <div class="row"><span class="k">Based</span><span class="v">Patna, IN</span></div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <header class="section-head">
+      <div class="num">01</div>
+      <div class="ttl">
+        <div class="lbl">About</div>
+        <h2>The person <b>behind the page.</b></h2>
+      </div>
       <div class="meta">
-        <span>📍 Jaipur, India</span>
-        <span>· Available for hire</span>
+        DOC.ID&nbsp;&nbsp;01.A<br/>
+        REV&nbsp;&nbsp;26.05<br/>
+        STATUS&nbsp;&nbsp;OPEN
       </div>
-    </div>
-    <div class="photo">
-      <img src="/assets/pro/profile.jpg" alt="Kushar Raj Kashyap" onerror="this.style.display='none';this.parentElement.style.background='#ddd'">
-    </div>
-  </section>
+    </header>
 
-  <!-- BIO -->
-  <section class="bio">
-    <div class="section-label">/01 · about</div>
-    <h2>Hey, I'm Kushar.</h2>
-    <p>I'm an <strong>MCA graduate</strong> who loves building things — whether that's a game, a CI/CD pipeline, or a clean UI. Right now I'm working as a <strong>Game Developer Trainee at BR Softech Pvt. Ltd.</strong> in Jaipur, which honestly feels like a dream — I get to spend my days thinking about game mechanics and writing JavaScript that actually does something fun.</p>
-    <p>Before this, I spent six months at <strong>Orbiqe Technologies</strong> as an AI-DevOps Engineer, where I got deep into Docker, Kubernetes, Terraform, and all things automation. That experience taught me a lot about how software actually runs in the real world — not just how it's written.</p>
-    <p>I did my MCA from <strong>Haldia Institute of Technology</strong> (CGPA: 8.11) and my BCA from <strong>BIT Mesra</strong> (CGPA: 8.63). Both gave me a solid foundation, but honestly, most of what I know I learned by building things and breaking them.</p>
-    <p>Outside of work, I'm into anime (currently One Piece 🏴‍☠️), design, and anything that sits at the intersection of code and creativity. I believe good software should feel good — not just work well.</p>
-  </section>
+    <div class="about-grid">
+      <div class="about reveal">
+        <p>Hey, I'm <b>Kushar</b>. An <span class="acc">MCA graduate</span> who loves building things — whether that's a game mechanic, a CI/CD pipeline, or a clean UI. I write the code, design the poster, and ship the thing.</p>
+        <p>I just wrapped a stint as an <b>HTML5 Trainee at BR Softech Pvt. Ltd.</b> in Jaipur (Feb — May 2026), spending my days on game systems and writing JavaScript that actually does something fun. Currently back in Patna, scouting the next chapter.</p>
+        <p>Before that, six months at <b>Orbiqe Technologies</b> as an AI-DevOps Engineer — deep in Docker, Kubernetes, Terraform, and automation. That experience taught me how software <i>runs</i> in the real world, not just how it's written.</p>
+        <p>Off the keyboard I'm into anime, samurai culture, story-heavy games, and design that feels good. I think clean code and thoughtful design are two sides of the same coin.</p>
 
-  <!-- CURRENTLY -->
-  <section>
-    <div class="section-label">/02 · currently</div>
-    <h2>Right now.</h2>
-    <div class="callouts">
-      <div class="callout">
-        <div class="ic">🎮</div>
-        <div class="body"><strong>Working at</strong> — Game Developer Trainee @ BR Softech Pvt. Ltd., Jaipur · Feb 2026 – Present</div>
+        <div class="about-quote">
+          「七転び八起き」 — Fall down seven times, rise eight.
+          <span>Designing with empathy, coding with logic.</span>
+        </div>
       </div>
-      <div class="callout">
-        <div class="ic">📖</div>
-        <div class="body">Designing with empathy, coding with logic — guided by Inclusion, Joy, Research, and Resilience.</div>
-      </div>
-      <div class="callout">
-        <div class="ic">📺</div>
-        <div class="body"><strong>Binge watching</strong> — One Piece 🏴‍☠️ · Black Mirror 🪞 · How I Met Your Mother ☂️</div>
-      </div>
-      <div class="callout">
-        <div class="ic">📚</div>
-        <div class="body"><strong>Reading</strong> — The 48 Laws of Power · Robert Greene</div>
-      </div>
+
+      <aside>
+        <div class="fact-card reveal">
+          <h5><span>// Vitals</span><span class="jp">己</span></h5>
+          <dl class="kvp">
+            <dt>Name</dt><dd>Kushar Raj Kashyap</dd>
+            <dt>Last role</dt><dd>HTML5 Trainee · BR Softech (Feb–May 2026)</dd>
+            <dt>Located</dt><dd>Patna, IN · GMT+5:30</dd>
+            <dt>Status</dt><dd>Open to Work · Game Dev / Web / DevOps</dd>
+            <dt>Education</dt><dd>MCA · Haldia Institute of Technology · 8.11<br/>BCA · BIT Mesra · 8.63</dd>
+            <dt>Reading</dt><dd>The 48 Laws of Power — Robert Greene</dd>
+          </dl>
+        </div>
+        <div class="principles reveal">
+          <h5>// Principles</h5>
+          <ul>
+            <li><span><b>Good software should feel good.</b>Not just work well.</span></li>
+            <li><span><b>Break it, learn it, ship it.</b>Most of what I know I learned by doing.</span></li>
+            <li><span><b>Empathy + logic.</b>Design and code are the same craft, different surface.</span></li>
+          </ul>
+        </div>
+      </aside>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section>
-    <div class="section-label">/03 · experience</div>
-    <h2>Where I've been.</h2>
+  <section id="path">
+    <header class="section-head">
+      <div class="num">02</div>
+      <div class="ttl">
+        <div class="lbl">Experience</div>
+        <h2>The route <b>so far.</b></h2>
+      </div>
+      <div class="meta">
+        ENTRIES&nbsp;&nbsp;05<br/>
+        SPAN&nbsp;&nbsp;2020 — NOW<br/>
+        STATUS&nbsp;&nbsp;ACTIVE
+      </div>
+    </header>
+
     <div class="timeline">
-      <div class="tl-item">
-        <div class="when">Feb 2026<br>— Present</div>
-        <div class="what">
-          <h3>Game Developer Trainee</h3>
-          <div class="org">BR Softech Pvt. Ltd. · Jaipur, India</div>
-          <div class="desc">Building game mechanics and interactive systems in JavaScript. Working on real game projects from concept to ship.</div>
+      <div class="tl-item now reveal">
+        <div class="when">May 2026 — Now</div>
+        <div>
+          <h4>Open to Work · Patna</h4>
+          <div class="org">Available · Game Dev / Web / DevOps / Design</div>
+          <p>Just wrapped my BR Softech run and back in Patna. Scouting the next mission — open to game projects, full-time roles, freelance gigs, and good collaborations.</p>
         </div>
+        <span class="tag">Now</span>
       </div>
-      <div class="tl-item">
-        <div class="when">2025<br>· 6 months</div>
-        <div class="what">
-          <h3>AI-DevOps Engineer</h3>
-          <div class="org">Orbiqe Technologies</div>
-          <div class="desc">Worked across Docker, Kubernetes, Terraform, Jenkins, AWS. Automated deploys, built CI/CD pipelines, learned how production really works.</div>
+      <div class="tl-item reveal">
+        <div class="when">Feb — May 2026</div>
+        <div>
+          <h4>HTML5 Trainee</h4>
+          <div class="org">BR Softech Pvt. Ltd. · Jaipur · Internship</div>
+          <p>Built gameplay systems and interactive HTML5 features end-to-end. Spent days on game mechanics and JavaScript that actually does something fun. Successfully completed and signed off on 4 May 2026.</p>
         </div>
+        <span class="tag">Recent</span>
       </div>
-      <div class="tl-item">
-        <div class="when">MCA<br>2023 – 2025</div>
-        <div class="what">
-          <h3>Master of Computer Applications</h3>
+      <div class="tl-item reveal">
+        <div class="when">2024 — 2025</div>
+        <div>
+          <h4>AI-DevOps Engineer</h4>
+          <div class="org">Orbiqe Technologies · 6 months</div>
+          <p>Hands deep in Docker, Kubernetes, Terraform, Jenkins, AWS, and CI/CD pipelines. Bridged AI workflows with infrastructure automation — learned how things actually run in production.</p>
+        </div>
+        <span class="tag">Engineering</span>
+      </div>
+      <div class="tl-item reveal">
+        <div class="when">2023 — 2025</div>
+        <div>
+          <h4>MCA · Master of Computer Applications</h4>
           <div class="org">Haldia Institute of Technology · CGPA 8.11</div>
-          <div class="desc">Deep dive into systems, software engineering, and applied CS.</div>
+          <p>Computer applications, software engineering, and the foundations of building real systems. Most of what I know I learned by building — and breaking — things.</p>
         </div>
+        <span class="tag">Education</span>
       </div>
-      <div class="tl-item">
-        <div class="when">BCA<br>2020 – 2023</div>
-        <div class="what">
-          <h3>Bachelor of Computer Applications</h3>
+      <div class="tl-item reveal">
+        <div class="when">2020 — 2023</div>
+        <div>
+          <h4>BCA · Bachelor of Computer Applications</h4>
           <div class="org">BIT Mesra · CGPA 8.63</div>
-          <div class="desc">Foundations: data structures, algorithms, web, databases.</div>
+          <p>The first real foundation — programming, problem-solving, and the late-night apprenticeship that made tech feel like home.</p>
         </div>
+        <span class="tag">Education</span>
       </div>
     </div>
   </section>
 
   <!-- SKILLS -->
-  <section>
-    <div class="section-label">/04 · skills</div>
-    <h2>What I work with.</h2>
+  <section id="skills">
+    <header class="section-head">
+      <div class="num">03</div>
+      <div class="ttl">
+        <div class="lbl">Skills</div>
+        <h2>Tools <b>at the hip.</b></h2>
+      </div>
+      <div class="meta">
+        CATEGORIES&nbsp;&nbsp;06<br/>
+        UPDATED&nbsp;&nbsp;Q2.26<br/>
+        TRAINING&nbsp;&nbsp;ACTIVE
+      </div>
+    </header>
+
     <div class="skills-grid">
-      <div class="skill-group">
-        <h4><span class="ic">🎮</span>Game Development</h4>
-        <div class="list">JavaScript · Game Mechanics · Interactive Design · 2D Game Systems</div>
+      <div class="skill-cat reveal">
+        <div class="cat-head">
+          <h4><span class="jp">壱</span>Game Development</h4>
+          <span class="lvl">Daily Driver</span>
+        </div>
+        <div class="skill-list">
+          <span>JavaScript</span><span>Game Mechanics</span><span>Phaser 3</span><span>Interactive Design</span><span>2D Game Systems</span>
+        </div>
       </div>
-      <div class="skill-group">
-        <h4><span class="ic">⚙️</span>DevOps &amp; Cloud</h4>
-        <div class="list">Docker · Terraform · Kubernetes · Jenkins · Ansible · AWS · GitHub Actions · Linux · CI/CD</div>
+      <div class="skill-cat reveal">
+        <div class="cat-head">
+          <h4><span class="jp">弐</span>Programming</h4>
+          <span class="lvl">Foundations</span>
+        </div>
+        <div class="skill-list">
+          <span>Python</span><span>JavaScript</span><span>HTML / CSS</span><span>SQL</span><span>Java</span><span>C</span>
+        </div>
       </div>
-      <div class="skill-group">
-        <h4><span class="ic">💻</span>Programming</h4>
-        <div class="list">Python · JavaScript · HTML / CSS · SQL · Java · C</div>
+      <div class="skill-cat reveal">
+        <div class="cat-head">
+          <h4><span class="jp">参</span>DevOps &amp; Cloud</h4>
+          <span class="lvl">Practitioner</span>
+        </div>
+        <div class="skill-list">
+          <span>Docker</span><span>Terraform</span><span>Kubernetes</span><span>Jenkins</span><span>Ansible</span><span>AWS</span><span>GitHub Actions</span><span>Linux</span><span>CI/CD</span>
+        </div>
       </div>
-      <div class="skill-group">
-        <h4><span class="ic">🧪</span>Testing &amp; QA</h4>
-        <div class="list">Selenium · Postman · JMeter</div>
+      <div class="skill-cat reveal">
+        <div class="cat-head">
+          <h4><span class="jp">肆</span>Design</h4>
+          <span class="lvl">For Joy</span>
+        </div>
+        <div class="skill-list">
+          <span>Graphic Design</span><span>Brand Logos</span><span>Social Media</span><span>Web Layouts</span><span>Figma</span><span>Canva</span><span>Adobe CS</span>
+        </div>
       </div>
-      <div class="skill-group">
-        <h4><span class="ic">🎨</span>Design</h4>
-        <div class="list">Graphic Design · Brand Logos · Social Media Graphics · Web Layouts · Figma · Canva · Adobe Creative Suite</div>
+      <div class="skill-cat reveal">
+        <div class="cat-head">
+          <h4><span class="jp">伍</span>Testing &amp; QA</h4>
+          <span class="lvl">Supporting</span>
+        </div>
+        <div class="skill-list">
+          <span>Selenium</span><span>Postman</span><span>JMeter</span>
+        </div>
       </div>
-      <div class="skill-group">
-        <h4><span class="ic">🛠️</span>Tools</h4>
-        <div class="list">Git / GitHub · VS Code · GitLab · Notion · Figma · Canva · Adobe Creative Suite</div>
-      </div>
-      <div class="skill-group">
-        <h4><span class="ic">🤝</span>Soft Skills</h4>
-        <div class="list">Problem Solving · Analytical Thinking · Agile Collaboration · Time Management · Attention to Detail</div>
+      <div class="skill-cat reveal">
+        <div class="cat-head">
+          <h4><span class="jp">陸</span>Tools &amp; Workflow</h4>
+          <span class="lvl">Everyday</span>
+        </div>
+        <div class="skill-list">
+          <span>Git / GitHub</span><span>VS Code</span><span>GitLab</span><span>Notion</span><span>Figma</span><span>Canva</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- DESIGN PROJECTS -->
-  <section>
-    <div class="section-label">/05 · design projects</div>
-    <h2>The journey from empathising to prototyping.</h2>
-    <div class="gallery" id="gallery">
+  <!-- PROJECTS -->
+  <section id="projects">
+    <header class="section-head">
+      <div class="num">04</div>
+      <div class="ttl">
+        <div class="lbl">Projects</div>
+        <h2>Code shipped, <b>things built.</b></h2>
+      </div>
+      <div class="meta">
+        REPOS&nbsp;&nbsp;11<br/>
+        SOURCE&nbsp;&nbsp;GITHUB<br/>
+        STATUS&nbsp;&nbsp;LIVE
+      </div>
+    </header>
 
-      <a class="proj" href="https://github.com/Kusharraj11/Disaster_Recovery_Advisor.git" target="_blank" rel="noopener">
-        <div class="cover">
-          <img src="/assets/pro/projects/disaster-recovery-advisor.png" alt="Disaster Recovery Advisor" loading="lazy" onerror="this.style.display='none'">
+    <div class="projects-featured">
+      <article class="proj-feat reveal">
+        <div class="pf-head">
+          <span class="id">★ Featured · Proj_001</span>
+          <span class="badge">Live · Playable</span>
         </div>
-        <div class="body">
-          <h3>Disaster Recovery Advisor</h3>
-          <div class="desc">AI/ML platform predicting disaster type + duration with tailored recovery recommendations. MCA capstone @ Haldia. Random Forest + recovery planning UI.</div>
-          <div class="gh">→ github</div>
+        <div class="pf-body">
+          <span class="lang-badge">Phaser 3 · JavaScript · Webpack</span>
+          <h3>Tokyo Can Sort</h3>
+          <p>20-level color-sorting puzzle game with unlimited and move-limited modes. Built in Phaser 3, runs entirely in the browser, auto-deployed via GitHub Actions to GitHub Pages. Tap-only controls, mobile + desktop friendly.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://kusharraj11.github.io/Tokyo-Can-Sort-Game-/" target="_blank" rel="noopener"><span class="arrow">▸</span> Play</a>
+            <a class="btn ghost" href="https://github.com/Kusharraj11/Tokyo-Can-Sort-Game-" target="_blank" rel="noopener"><span class="arrow">▸</span> Source</a>
+          </div>
         </div>
-      </a>
+      </article>
 
+      <article class="proj-feat reveal">
+        <div class="pf-head">
+          <span class="id">★ Featured · Proj_002</span>
+          <span class="badge">Live · Playable</span>
+        </div>
+        <div class="pf-body">
+          <span class="lang-badge">HTML · CSS · JavaScript</span>
+          <h3>Tetris</h3>
+          <p>Fully playable classic Tetris built in vanilla HTML/CSS/JavaScript. End-to-end game mechanics, browser-native — part of the game dev work from the BR Softech days.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://kusharraj11.github.io/tetris/" target="_blank" rel="noopener"><span class="arrow">▸</span> Play</a>
+            <a class="btn ghost" href="https://github.com/Kusharraj11/tetris" target="_blank" rel="noopener"><span class="arrow">▸</span> Source</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="projects-grid">
+      <article class="proj-card reveal">
+        <div class="top"><span class="idx">Proj · 003</span><span class="lang">Jupyter</span></div>
+        <div class="cat">AI / Python</div>
+        <h4>Disaster Recovery Advisor</h4>
+        <p>AI system that predicts natural disasters, estimates impact, and suggests recovery plans using historical, geographic, and environmental data.</p>
+        <a class="gh" href="https://github.com/Kusharraj11/Disaster_Recovery_Advisor" target="_blank" rel="noopener">↗ Github</a>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="top"><span class="idx">Proj · 004</span><span class="lang">JavaScript</span></div>
+        <div class="cat">Game Dev</div>
+        <h4>First Trail Game</h4>
+        <p>JavaScript game — mechanics and interactive design experiment. Where the game dev journey started.</p>
+        <a class="gh" href="https://github.com/Kusharraj11/first_trail_game" target="_blank" rel="noopener">↗ Github</a>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="top"><span class="idx">Proj · 005</span><span class="lang">TypeScript</span></div>
+        <div class="cat">Orbiqe OJT</div>
+        <h4>HMRS — HR Management</h4>
+        <p>Human Resource Management System built during the Orbiqe Technologies OJT program.</p>
+        <a class="gh" href="https://github.com/Kusharraj11/hmrs-orbiue-ojt" target="_blank" rel="noopener">↗ Github</a>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="top"><span class="idx">Proj · 006</span><span class="lang">Dockerfile</span></div>
+        <div class="cat">DevOps</div>
+        <h4>Go Multistage Docker</h4>
+        <p>Go application with multi-stage Docker build — optimised images, minimal footprint.</p>
+        <a class="gh" href="https://github.com/Kusharraj11/go-multistage" target="_blank" rel="noopener">↗ Github</a>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="top"><span class="idx">Proj · 007</span><span class="lang">JavaScript</span></div>
+        <div class="cat">DevOps</div>
+        <h4>DevOps Pipelines</h4>
+        <p>Pipeline configs, automation scripts, and CI/CD setups from real DevOps work.</p>
+        <a class="gh" href="https://github.com/Kusharraj11/devops-pipelines" target="_blank" rel="noopener">↗ Github</a>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="top"><span class="idx">Proj · 008</span><span class="lang">JavaScript</span></div>
+        <div class="cat">DevOps</div>
+        <h4>SonarQube Lab — Node.js</h4>
+        <p>Code quality lab: SonarQube static analysis integrated with a Node.js project.</p>
+        <a class="gh" href="https://github.com/Kusharraj11/SONARQUBE-LAB---Node.js" target="_blank" rel="noopener">↗ Github</a>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="top"><span class="idx">Proj · 009</span><span class="lang">JavaScript</span></div>
+        <div class="cat">DevOps</div>
+        <h4>Jenkins CI/CD Test</h4>
+        <p>Jenkins pipeline testing and CI/CD automation configuration.</p>
+        <a class="gh" href="https://github.com/Kusharraj11/jenkins-test-main" target="_blank" rel="noopener">↗ Github</a>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="top"><span class="idx">Proj · 010</span><span class="lang">Python</span></div>
+        <div class="cat">DevOps</div>
+        <h4>Microservice</h4>
+        <p>Python microservice architecture — modular, containerised services.</p>
+        <a class="gh" href="https://github.com/Kusharraj11/microservice" target="_blank" rel="noopener">↗ Github</a>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="top"><span class="idx">Proj · 011</span><span class="lang">Python</span></div>
+        <div class="cat">Tools</div>
+        <h4>Version Control Git</h4>
+        <p>Python scripts exploring Git version control workflows, automation, and branching strategies.</p>
+        <a class="gh" href="https://github.com/Kusharraj11/Version_Control_git" target="_blank" rel="noopener">↗ Github</a>
+      </article>
     </div>
   </section>
 
-  <!-- ABOUT CONTENT -->
-  <section>
-    <div class="section-label">/06 · beyond the resume</div>
-    <h2>A bit more about me.</h2>
-
-    <p style="font-size:16px;color:var(--ink-dim);margin-bottom:32px;max-width:680px">Growing up, I spent countless hours in cyber cafés — those buzzing hubs filled with the hum of computers and the excitement of discovery. Whether I was experimenting with new software, helping friends set up their first email accounts, or diving into intense gaming sessions at Xbox cafés, these experiences became the foundation of my fascination with technology.</p>
-
-    <div class="content-block">
-      <div>
-        <h3>Beyond my World</h3>
-        <p>I'm a huge anime fan — especially the legendary trio: <strong>Naruto</strong>, <strong>Bleach</strong>, and <strong>One Piece</strong> — plus thought-provoking series like <strong>Monster</strong> and <strong>Vinland Saga</strong>.</p>
-        <div class="quote">"You have no enemies. No one on this earth is your enemy." — A reminder that peace is possible if we choose to see people as fellow humans, not threats.</div>
-        <p>These stories aren't just entertainment — they're life lessons, motivation, and the fuel that keeps me pushing forward.</p>
+  <!-- BEYOND WORK -->
+  <section id="beyond">
+    <header class="section-head">
+      <div class="num">05</div>
+      <div class="ttl">
+        <div class="lbl">Beyond the Work</div>
+        <h2>What's running <b>on the side.</b></h2>
       </div>
-      <div class="gif">⛩️<br>anime</div>
+      <div class="meta">
+        FEEDS&nbsp;&nbsp;03<br/>
+        UPDATED&nbsp;&nbsp;LIVE<br/>
+        SIGNAL&nbsp;&nbsp;STRONG
+      </div>
+    </header>
+
+    <div class="beyond-grid">
+      <article class="bw reveal">
+        <div class="head"><span class="id">Feed · 001</span><span class="jp">漫</span></div>
+        <h3>Anime · The Long Voyage</h3>
+        <div class="sub">Currently watching</div>
+        <ul>
+          <li><b>One Piece 🏴‍☠️</b> — the long voyage</li>
+          <li><b>Naruto</b> · Bleach — the trio</li>
+          <li><b>Monster</b> · Vinland Saga — the heavy ones</li>
+        </ul>
+        <p class="quote">"You have no enemies. No one on this earth is your enemy."</p>
+      </article>
+
+      <article class="bw reveal">
+        <div class="head"><span class="id">Feed · 002</span><span class="jp">遊</span></div>
+        <h3>Games · Story-Heavy Worlds</h3>
+        <div class="sub">Currently roaming</div>
+        <ul>
+          <li><b>Ghost of Tsushima</b> — quiet inspiration</li>
+          <li><b>God of War</b> — battling gods</li>
+          <li><b>Death Stranding</b> — wandering the strange</li>
+          <li><b>Uncharted</b> — Drake's wild rides</li>
+        </ul>
+        <p class="quote">Gaming isn't a pastime — it's living narratives.</p>
+      </article>
+
+      <article class="bw reveal">
+        <div class="head"><span class="id">Feed · 003</span><span class="jp">影</span></div>
+        <h3>TV &amp; Reading</h3>
+        <div class="sub">Currently binging</div>
+        <ul>
+          <li><b>Better Call Saul</b> · Breaking Bad</li>
+          <li><b>Peaky Blinders</b> — style &amp; brood</li>
+          <li><b>Black Mirror</b> — tech nightmares</li>
+          <li><b>Westworld</b> · How I Met Your Mother</li>
+        </ul>
+        <p class="quote">Reading: <i>The 48 Laws of Power</i> — Robert Greene.</p>
+      </article>
     </div>
+  </section>
 
-    <div class="content-block flip">
-      <div class="gif">🎮<br>gaming</div>
-      <div>
-        <h3>In the world of 🎮</h3>
-        <p>I love story-driven games — the kind where you can dive in for hours and feel like you're part of the adventure. Roaming the landscapes of <strong>Ghost of Tsushima</strong> as a samurai (my gamer tag is "Ronin" for a reason), battling gods in <strong>God of War</strong>, wandering <strong>Death Stranding</strong>, joining Nathan Drake's wild rides in <strong>Uncharted</strong>.</p>
-        <p>For me, gaming isn't just a pastime — it's about living unforgettable narratives, exploring new identities, and experiencing every twist as if I'm there myself.</p>
+  <!-- CERTIFICATES -->
+  <section id="certs">
+    <header class="section-head">
+      <div class="num">06</div>
+      <div class="ttl">
+        <div class="lbl">Certifications &amp; Achievements</div>
+        <h2>Marks earned, <b>not claimed.</b></h2>
       </div>
-    </div>
+      <div class="meta">
+        TOTAL&nbsp;&nbsp;05<br/>
+        VERIFIED&nbsp;&nbsp;ALL<br/>
+        STREAK&nbsp;&nbsp;ACTIVE
+      </div>
+    </header>
 
-    <div class="content-block">
-      <div>
-        <h3>Dark Worlds &amp; Moral Mazes</h3>
-        <p>I'm drawn to TV with deep, complex stories and a dark, intense vibe. <strong>Better Call Saul</strong> and <strong>Breaking Bad</strong> live in moral gray areas. <strong>Peaky Blinders</strong> delivers style and brooding atmosphere. <strong>Black Mirror</strong> pushes tech-tales to their limits. <strong>Westworld</strong> asks the big questions about consciousness.</p>
-        <p>If you love shows that challenge, thrill, and stay with you long after the credits — we're already on the same wavelength.</p>
+    <div class="certs">
+      <div class="cert reveal">
+        <div class="top">
+          <div class="seal">壱</div>
+          <div style="flex:1">
+            <div class="org">// Deloitte Australia · via Forage</div>
+            <h4>Data Analytics Virtual Job Simulation</h4>
+            <span class="date">Issued · July 16, 2025</span>
+          </div>
+        </div>
+        <p>Real-world consulting tasks — applying data analytics in business scenarios modelled after actual roles at Deloitte.</p>
+        <div class="achs">
+          <span>Built an interactive Tableau data dashboard</span>
+          <span>Classified datasets and identified business trends in Excel</span>
+          <span>Practiced forensic data review for investigative insights</span>
+        </div>
+        <a href="assets/cert-deloitte.jpg" target="_blank" rel="noopener" class="cert-view">View Cert ↗</a>
       </div>
-      <div class="gif">📺<br>tv</div>
+
+      <div class="cert reveal">
+        <div class="top">
+          <div class="seal">弐</div>
+          <div style="flex:1">
+            <div class="org">// NxtWave · IIT-Delhi Instructor</div>
+            <h4>AI for Students: Build Your Own Generative AI Model</h4>
+            <span class="date">Issued · March 16, 2024</span>
+          </div>
+        </div>
+        <p>Hands-on workshop on the foundations of generative AI — model training, deployment, and creative application.</p>
+        <div class="achs">
+          <span>Built and trained a generative AI model end-to-end</span>
+          <span>Studied AI's future scope across education &amp; design</span>
+          <span>Guided by Mr. Trivikrama — IIT Delhi alumnus</span>
+        </div>
+        <a href="assets/cert-nxtwave.jpg" target="_blank" rel="noopener" class="cert-view">View Cert ↗</a>
+      </div>
+
+      <div class="cert reveal">
+        <div class="top">
+          <div class="seal">参</div>
+          <div style="flex:1">
+            <div class="org">// be10x · Verified Workshop</div>
+            <h4>AI Tools &amp; ChatGPT Workshop</h4>
+            <span class="date">Issued · July 13, 2025</span>
+          </div>
+        </div>
+        <p>Practical application of AI tools and ChatGPT for productivity, creative work, and software development tasks.</p>
+        <div class="achs">
+          <span>Crafted pro presentations with AI in &lt; 5 minutes</span>
+          <span>Analyzed datasets in &lt; 30 minutes using AI</span>
+          <span>Coded &amp; debugged with AI-pair workflows</span>
+        </div>
+        <a href="assets/cert-be10x.jpg" target="_blank" rel="noopener" class="cert-view">View Cert ↗</a>
+      </div>
+
+      <div class="cert reveal">
+        <div class="top">
+          <div class="seal">肆</div>
+          <div style="flex:1">
+            <div class="org">// Inamigos Foundation · Non-Profit</div>
+            <h4>Graphic Design Internship</h4>
+            <span class="date">Completed · July 19, 2025 · 2 Weeks</span>
+          </div>
+        </div>
+        <p>CSR-registered non-profit, recognised by the Ministry of Corporate Affairs (Govt. of India). Designed for social-impact campaigns.</p>
+        <div class="achs">
+          <span>Designed posters &amp; digital assets for awareness drives</span>
+          <span>Followed brand guidelines across social-media visuals</span>
+          <span>Collaborated in a fast-paced non-profit setting</span>
+        </div>
+        <a href="assets/cert-inamigos.jpg" target="_blank" rel="noopener" class="cert-view">View Cert ↗</a>
+      </div>
+
+      <div class="cert reveal" style="grid-column:1/-1">
+        <div class="top">
+          <div class="seal">伍</div>
+          <div style="flex:1">
+            <div class="org">// NSDC · Skill India · Govt. of India</div>
+            <h4>AI — DevOps Engineer (SSC/Q8112) · NSQF Level 5</h4>
+            <span class="date">Issued · 09 Feb 2026 · Orbiqe Technologies</span>
+          </div>
+        </div>
+        <p>Cleared the national skills assessment for the AI — DevOps Engineer role under the IT-ITeS Sector Skill Council (nasscom), conforming to NSQF Level 5. Issued by RTD-BSDM, Ministry of Skill Development &amp; Entrepreneurship.</p>
+        <div class="achs">
+          <span>Recruit · AI Train · AI Deploy (R-T-D) model skilling</span>
+          <span>Verified by Ministry of Skill Development, Govt. of India</span>
+          <span>Cert ID: LXDJXDA80HJN56VN</span>
+        </div>
+        <a href="assets/cert-nsdc.jpg" target="_blank" rel="noopener" class="cert-view">View Cert ↗</a>
+      </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section>
-    <div class="section-label">/07 · contact</div>
-    <h2>Let's talk.</h2>
-    <p style="font-size:15px;color:var(--ink-dim);margin-bottom:24px">Open to roles in game dev, frontend, or DevOps. Always up for interesting conversations.</p>
-    <div class="contact-grid">
-      <a class="contact-link" href="mailto:kusharraj11@gmail.com">
-        <span class="ic">📩</span>
-        <span><span class="lbl" style="display:block">email</span><span class="val">kusharraj11@gmail.com</span></span>
-      </a>
-      <a class="contact-link" href="https://www.linkedin.com/in/kushar-raj-kashyap/" target="_blank" rel="noopener">
-        <span class="ic">💼</span>
-        <span><span class="lbl" style="display:block">linkedin</span><span class="val">kushar-raj-kashyap</span></span>
-      </a>
-      <a class="contact-link" href="https://github.com/Kusharraj11" target="_blank" rel="noopener">
-        <span class="ic">⌨️</span>
-        <span><span class="lbl" style="display:block">github</span><span class="val">Kusharraj11</span></span>
-      </a>
-      <a class="contact-link" href="https://www.instagram.com/iamkrk11/" target="_blank" rel="noopener">
-        <span class="ic">📸</span>
-        <span><span class="lbl" style="display:block">instagram</span><span class="val">@iamkrk11</span></span>
-      </a>
-      <a class="contact-link" href="https://www.overleaf.com/read/qhndsfwfmngb#02b2e5" target="_blank" rel="noopener" style="grid-column:1/-1">
-        <span class="ic">📃</span>
-        <span><span class="lbl" style="display:block">resume</span><span class="val">Read on Overleaf →</span></span>
-      </a>
+  <section id="contact">
+    <header class="section-head">
+      <div class="num">07</div>
+      <div class="ttl">
+        <div class="lbl">Open Comms</div>
+        <h2>Let's <b>build something.</b></h2>
+      </div>
+      <div class="meta">
+        CHANNEL&nbsp;&nbsp;OPEN<br/>
+        REPLY&nbsp;&nbsp;&lt; 48H<br/>
+        TZ&nbsp;&nbsp;IST
+      </div>
+    </header>
+
+    <div class="contact">
+      <div>
+        <h3>Got a project, a role, or a wild idea — <span class="acc">send word.</span></h3>
+        <p>Open to game projects, full-time roles, freelance gigs, design work, and good conversation. Reply usually within 48 hours.</p>
+        <a class="btn primary" href="mailto:iamkrk.dev@gmail.com"><span class="arrow">▸</span> Compose Message</a>
+      </div>
+      <div class="contact-list">
+        <a href="mailto:iamkrk.dev@gmail.com"><span class="k">Email</span><span class="v">iamkrk.dev@gmail.com</span><span class="arr">↗</span></a>
+        <a href="https://linkedin.com/in/kushar-raj-kashyap" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span class="v">in/kushar-raj-kashyap</span><span class="arr">↗</span></a>
+        <a href="https://github.com/Kusharraj11" target="_blank" rel="noopener"><span class="k">Github</span><span class="v">github.com/Kusharraj11</span><span class="arr">↗</span></a>
+        <a href="https://instagram.com/iamkrk11" target="_blank" rel="noopener"><span class="k">Instagram</span><span class="v">@iamkrk11</span><span class="arr">↗</span></a>
+        <a href="https://www.overleaf.com/read/qhndsfwfmngb#02b2e5" target="_blank" rel="noopener"><span class="k">Resume</span><span class="v">overleaf · read-only</span><span class="arr">↗</span></a>
+      </div>
     </div>
+
+    <footer>
+      <span>© 2026 Kushar Raj Kashyap</span>
+      <span>Built in Patna · 流</span>
+      <span>End of Transmission</span>
+    </footer>
   </section>
 
 </main>
+
+<script>
+// Active section highlight
+const navLinks = document.querySelectorAll('.topbar nav a');
+const sections = [...navLinks].map(a => document.querySelector(a.getAttribute('href')));
+
+function onScroll(){
+  const y = window.scrollY + window.innerHeight * 0.35;
+  let idx = 0;
+  sections.forEach((s, i) => { if(s && s.offsetTop <= y) idx = i; });
+  navLinks.forEach((a, i) => a.classList.toggle('active', i === idx));
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+// Smooth scroll for nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if(href === '#' || href.length < 2) return;
+    const target = document.querySelector(href);
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      closeNav();
+    }
+  });
+});
+
+// Mobile nav
+const navToggle = document.getElementById('navToggle');
+const navBackdrop = document.getElementById('navBackdrop');
+const mobileNav = document.getElementById('mobileNav');
+
+function closeNav(){
+  if(!navToggle) return;
+  navToggle.classList.remove('open');
+  navToggle.setAttribute('aria-expanded','false');
+  if(mobileNav) mobileNav.classList.remove('open');
+  if(navBackdrop) navBackdrop.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if(navToggle && mobileNav && navBackdrop){
+  navToggle.addEventListener('click', () => {
+    const opening = !mobileNav.classList.contains('open');
+    navToggle.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    navBackdrop.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', opening.toString());
+    document.body.style.overflow = opening ? 'hidden' : '';
+  });
+  navBackdrop.addEventListener('click', closeNav);
+}
+window.addEventListener('keydown', e => { if(e.key === 'Escape') closeNav(); });
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      e.target.addEventListener('transitionend', () => {
+        e.target.style.transitionDelay = '';
+        e.target.classList.remove('reveal', 'visible');
+      }, {once: true});
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+
+document.querySelectorAll('.reveal').forEach((el) => {
+  const siblings = el.parentElement ? [...el.parentElement.querySelectorAll('.reveal')] : [];
+  const idx = siblings.indexOf(el);
+  if(idx > 0) el.style.transitionDelay = Math.min(idx * 0.06, 0.30) + 's';
+  revealObserver.observe(el);
+});
+</script>
 
 <script>
   if (window.persona) window.persona.mountSwitchButton();
