@@ -202,10 +202,7 @@
   const boot = document.getElementById('bootMx');
   if(!boot) return;
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let booted = false;
-  try { booted = sessionStorage.getItem('booted-mx') === '1'; } catch(e) {}
-  if(reduce || booted){ boot.remove(); return; }
-  try { sessionStorage.setItem('booted-mx','1'); } catch(e) {}
+  if(reduce){ boot.remove(); return; }
 
   const canvas = document.getElementById('bootMxCanvas');
   const ctx = canvas.getContext('2d');
