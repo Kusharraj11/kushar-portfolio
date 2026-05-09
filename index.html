@@ -114,6 +114,107 @@
     .modal-foot{flex-direction:column;align-items:flex-start;gap:8px}
     .modal-foot .kbd{flex-wrap:wrap;gap:10px}
   }
+
+  /* TILES */
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media (max-width:900px){.tiles{grid-template-columns:1fr;gap:14px}}
+
+  .tile{
+    position:relative;height:420px;cursor:pointer;overflow:hidden;
+    border:1px solid;text-decoration:none;color:inherit;display:block;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1), border-color .25s, box-shadow .25s;
+  }
+  .tile:hover,.tile:focus-visible{transform:translateY(-4px);outline:none}
+
+  .tile .meta-num{
+    position:absolute;top:16px;right:18px;z-index:5;
+    font-size:9px;letter-spacing:.32em;
+  }
+
+  .tile .enter-cta{
+    position:absolute;bottom:0;left:0;right:0;padding:14px 22px;
+    display:flex;align-items:center;justify-content:space-between;gap:8px;z-index:4;
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  }
+  .tile .enter-cta .arrow{
+    width:24px;height:1px;background:currentColor;position:relative;transition:width .25s;
+  }
+  .tile .enter-cta .arrow::after{
+    content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;
+    border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg);
+  }
+  .tile:hover .enter-cta .arrow{width:42px}
+
+  /* GAMER tile */
+  .tile-gamer{background:linear-gradient(180deg,#0a0a0f 0%,#070710 100%);border-color:rgba(255,40,64,0.32)}
+  .tile-gamer:hover{border-color:#ff2840;box-shadow:0 0 0 1px rgba(255,40,64,0.4),0 20px 60px -10px rgba(255,40,64,0.25)}
+  .tile-gamer::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 400px at 50% 20%,rgba(255,40,64,0.22),transparent 65%);pointer-events:none}
+  .tile-gamer::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.025) 0 1px,transparent 1px 3px);pointer-events:none;mix-blend-mode:overlay}
+  .tile-gamer .corner{position:absolute;width:14px;height:14px;z-index:3}
+  .tile-gamer .corner.tl{top:8px;left:8px;border-top:1px solid #ff2840;border-left:1px solid #ff2840}
+  .tile-gamer .corner.br{bottom:8px;right:8px;border-bottom:1px solid #ff2840;border-right:1px solid #ff2840}
+  .tile-gamer .corner.tr{top:8px;right:8px;border-top:1px solid #7df9ff;border-right:1px solid #7df9ff;opacity:.4}
+  .tile-gamer .corner.bl{bottom:8px;left:8px;border-bottom:1px solid #7df9ff;border-left:1px solid #7df9ff;opacity:.4}
+  .tile-gamer .gamer-kanji{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-family:"Noto Serif JP",serif;font-weight:900;font-size:clamp(180px,28vw,280px);
+    color:#ff2840;opacity:0.92;line-height:.85;letter-spacing:-.04em;
+  }
+  .tile-gamer .gamer-rail{
+    position:absolute;right:12px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;
+    font-family:"Noto Serif JP",serif;font-size:11px;letter-spacing:.4em;color:rgba(232,230,224,0.4);z-index:3;
+  }
+  .tile-gamer .live{
+    position:absolute;top:38px;left:22px;z-index:3;
+    display:inline-flex;align-items:center;gap:6px;font-size:9px;
+    letter-spacing:.3em;color:#8d8a82;text-transform:uppercase;
+  }
+  .tile-gamer .live .dot{width:6px;height:6px;border-radius:50%;background:#ff2840;box-shadow:0 0 8px #ff2840;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .tile-gamer .enter-cta{color:#e8e6e0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.85));border-top:1px solid rgba(255,40,64,0.25)}
+
+  /* PRO tile */
+  .tile-pro{background:linear-gradient(170deg,#f5f3ec 0%,#e8e4d8 100%);color:#14141d;border-color:rgba(232,230,224,0.18)}
+  .tile-pro:hover{border-color:#14141d;box-shadow:0 20px 60px -12px rgba(0,0,0,0.4)}
+  .tile-pro::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(20,20,29,0.3),transparent)}
+  .tile-pro .pro-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(20,20,29,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(20,20,29,0.025) 1px,transparent 1px);background-size:24px 24px;opacity:.7;pointer-events:none}
+  .tile-pro .pro-content{position:relative;z-index:2;padding:38px 24px 0}
+  .tile-pro .pro-eyebrow{font-size:9.5px;letter-spacing:.32em;color:#56544f;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .tile-pro .pro-eyebrow span{width:24px;height:1px;background:#14141d}
+  .tile-pro .pro-name{font-family:"Space Grotesk",sans-serif;font-weight:200;font-size:clamp(30px,3.4vw,42px);line-height:1;color:#14141d;letter-spacing:-.03em}
+  .tile-pro .pro-name b{font-weight:500}
+  .tile-pro .pro-bio{margin-top:18px;font-family:"Space Grotesk",sans-serif;font-size:13px;line-height:1.55;color:#3a3a44;max-width:90%}
+  .tile-pro .chips{position:absolute;bottom:78px;left:24px;right:24px;display:flex;gap:6px;flex-wrap:wrap;z-index:2}
+  .tile-pro .chip{font-size:9px;border:1px solid rgba(20,20,29,0.2);padding:3px 8px;letter-spacing:.15em;color:#3a3a44}
+  .tile-pro .enter-cta{color:#14141d;background:rgba(245,243,236,0.92);border-top:1px solid rgba(20,20,29,0.12)}
+
+  /* CODER tile */
+  .tile-coder{background:#000;border-color:rgba(125,249,255,0.22);font-family:"JetBrains Mono",monospace}
+  .tile-coder:hover{border-color:#7df9ff;box-shadow:0 0 0 1px rgba(125,249,255,0.4),0 20px 60px -10px rgba(125,249,255,0.18)}
+  .term-bar{height:26px;background:linear-gradient(180deg,#1c1c1f,#141416);border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;padding:0 12px;gap:6px}
+  .term-dot{width:11px;height:11px;border-radius:50%}
+  .term-body{padding:18px 18px 80px;font-size:11.5px;line-height:1.85;color:#cdcdc0}
+  .term-body .pl{color:#27c93f}
+  .term-body .at{color:#56544f}
+  .term-body .pa{color:#7df9ff}
+  .term-body .cm{color:#e8e6e0}
+  .term-body .out{color:#8d8a82}
+  .term-body .key{color:#d8b25a}
+  .term-body .blink{display:inline-block;width:7px;height:13px;background:#7df9ff;vertical-align:-2px;animation:tileblink 1s steps(2) infinite}
+  @keyframes tileblink{50%{opacity:0}}
+  .tile-coder .meta-num{top:36px}
+  .tile-coder .enter-cta{color:#7df9ff;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.95));border-top:1px solid rgba(125,249,255,0.2)}
+
+  .tile .name{font-family:"Zen Dots",sans-serif;font-size:20px;color:#e8e6e0;letter-spacing:-.01em}
+  .tile .sub{font-size:9.5px;letter-spacing:.18em;color:#8d8a82;margin-top:4px;text-transform:uppercase}
+  .tile-pro .name{font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:19px;color:#14141d;letter-spacing:-.01em}
+  .tile-pro .sub{color:#56544f}
+  .tile-coder .name{font-family:"JetBrains Mono",monospace;font-size:18px;color:#7df9ff;letter-spacing:.04em}
+
+  @media (max-width:900px){
+    .tile{height:340px}
+    .tile-gamer .gamer-kanji{font-size:200px}
+  }
 </style>
 </head>
 <body>
@@ -152,7 +253,73 @@
     </div>
 
     <div class="tiles" id="tiles">
-      <!-- TILES inserted in next task -->
+
+      <a class="tile tile-gamer" href="/gamer.html" data-persona="gamer" tabindex="0">
+        <span class="corner tl"></span><span class="corner br"></span>
+        <span class="corner tr"></span><span class="corner bl"></span>
+        <span class="meta-num" style="color:#ff2840">/01 — GAMER</span>
+        <span class="gamer-rail">流転 · 侍道</span>
+        <span class="live"><span class="dot"></span>live · raw</span>
+        <span class="gamer-kanji">侍</span>
+        <span class="enter-cta">
+          <span>
+            <span class="name">GAMER</span>
+            <span class="sub" style="display:block">samurai · HUD · kanji</span>
+          </span>
+          <span style="display:flex;align-items:center;gap:10px;color:#ff2840;font-size:9.5px;letter-spacing:.3em">ENTER<span class="arrow"></span></span>
+        </span>
+      </a>
+
+      <a class="tile tile-pro" href="/pro.html" data-persona="pro" tabindex="0">
+        <span class="pro-grid"></span>
+        <span class="meta-num" style="color:#56544f">02 / PRO</span>
+        <span class="pro-content">
+          <span class="pro-eyebrow"><span></span>currently building</span>
+          <span class="pro-name">Kushar Raj<br><b>Kashyap.</b></span>
+          <span class="pro-bio">MCA · Game Dev Trainee. Designer<br>and builder. Available for hire.</span>
+        </span>
+        <span class="chips">
+          <span class="chip">RESUME</span>
+          <span class="chip">WORK</span>
+          <span class="chip">WRITING</span>
+          <span class="chip">CONTACT</span>
+        </span>
+        <span class="enter-cta">
+          <span>
+            <span class="name">Professional</span>
+            <span class="sub" style="display:block">resume · work · writing</span>
+          </span>
+          <span style="display:flex;align-items:center;gap:10px;color:#14141d;font-size:9.5px;letter-spacing:.3em">VIEW<span class="arrow"></span></span>
+        </span>
+      </a>
+
+      <a class="tile tile-coder" href="/code.html" data-persona="code" tabindex="0">
+        <span class="term-bar">
+          <span class="term-dot" style="background:#ff5f56"></span>
+          <span class="term-dot" style="background:#ffbd2e"></span>
+          <span class="term-dot" style="background:#27c93f"></span>
+          <span style="margin-left:auto;font-size:9.5px;color:#56544f;font-family:'JetBrains Mono',monospace">kushar@portfolio: ~ — 80×24</span>
+        </span>
+        <span class="meta-num" style="color:#7df9ff">/03 — CODER</span>
+        <span class="term-body" style="display:block">
+          <span style="display:block"><span class="pl">kushar</span><span class="at">@</span><span class="pl">portfolio</span><span class="at">:</span><span class="pa">~</span><span class="at">$</span> <span class="cm">cat about.txt</span></span>
+          <span class="out" style="display:block">&gt; MCA grad · india · game dev trainee</span>
+          <span class="out" style="display:block">&gt; writes shaders, scripts, tools</span>
+          <span style="display:block;margin-top:8px"><span class="pl">kushar</span><span class="at">@</span><span class="pl">portfolio</span><span class="at">:</span><span class="pa">~</span><span class="at">$</span> <span class="cm">ls -la projects/</span></span>
+          <span class="out" style="display:block">drwxr-xr-x  <span class="key">10</span> kushar  <span class="pa">repos</span></span>
+          <span class="out" style="display:block">drwxr-xr-x  <span class="key">3</span>  kushar  <span class="pa">scripts</span></span>
+          <span class="out" style="display:block">-rw-r--r--  <span class="key">1</span>  kushar  <span class="pa">README.md</span></span>
+          <span style="display:block;margin-top:8px"><span class="pl">kushar</span><span class="at">@</span><span class="pl">portfolio</span><span class="at">:</span><span class="pa">~</span><span class="at">$</span> <span class="cm">./enter</span><span class="blink"></span></span>
+        </span>
+        <span class="enter-cta">
+          <span>
+            <span class="name">&gt; CODER</span>
+            <span class="sub" style="display:block">terminal · repos · live</span>
+          </span>
+          <span style="display:flex;align-items:center;gap:10px;color:#7df9ff;font-size:9.5px;letter-spacing:.3em">EXEC<span class="arrow"></span></span>
+        </span>
+      </a>
+
     </div>
 
     <div class="modal-foot">
@@ -180,6 +347,12 @@
         wrap.setAttribute("aria-hidden", "false");
       }
     }, 1500);
+
+    document.querySelectorAll(".tile[data-persona]").forEach((tile) => {
+      tile.addEventListener("click", () => {
+        if (window.persona) window.persona.set(tile.dataset.persona);
+      });
+    });
   }
 </script>
 
