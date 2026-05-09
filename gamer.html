@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Serif+JP:wght@200;400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared/persona.css">
+<script src="/shared/persona.js" defer></script>
 
 <style>
 :root{
@@ -22,6 +24,9 @@
   --crimson-deep:#a00018;
   --cyan:#7df9ff;
   --gold:#d8b25a;
+  --persona-switch-fg: var(--bone);
+  --persona-switch-bg: rgba(13,13,20,0.7);
+  --persona-switch-border: var(--line-2);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--ink);color:var(--bone);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -1126,6 +1131,10 @@ document.querySelectorAll('.reveal').forEach((el) => {
   if(idx > 0) el.style.transitionDelay = Math.min(idx * 0.08, 0.32) + 's';
   revealObserver.observe(el);
 });
+</script>
+
+<script>
+  if (window.persona) window.persona.mountSwitchButton();
 </script>
 
 </body>
