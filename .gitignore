@@ -1,3 +1,5 @@
 .superpowers/
 .claude/
 docs/superpowers/plans/notion-extract.md
+.wrangler/
+node_modules/

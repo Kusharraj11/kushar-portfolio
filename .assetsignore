@@ -1,0 +1,15 @@
+.git
+.git/**
+.gitignore
+.gitattributes
+.claude
+.claude/**
+.wrangler
+.wrangler/**
+docs
+docs/**
+node_modules
+node_modules/**
+*.log
+wrangler.jsonc
+.assetsignore
