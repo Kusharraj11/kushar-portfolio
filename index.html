@@ -6,6 +6,7 @@
 <title>KUSHAR.RAJ — choose your path</title>
 <meta name="description" content="Three identities, one me. Choose between gamer, professional, or coder portfolio variants.">
 <meta name="theme-color" content="#07070b">
+<link rel="icon" type="image/svg+xml" href="/shared/favicon-index.svg?v=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Serif+JP:wght@200;400;700;900&family=Space+Grotesk:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -66,8 +67,9 @@
 
   /* MODAL */
   .modal-wrap{
-    position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    position:fixed;inset:0;display:flex;align-items:safe center;justify-content:center;
     padding:24px;z-index:2;opacity:0;pointer-events:none;
+    overflow-y:auto;-webkit-overflow-scrolling:touch;
     transition:opacity 400ms cubic-bezier(.2,.7,.2,1);
   }
   .modal-wrap.visible{opacity:1;pointer-events:auto}
@@ -110,6 +112,7 @@
   .modal-foot .kbd{display:flex;gap:14px}
 
   @media (max-width:640px){
+    .modal-wrap{align-items:flex-start;padding:18px 14px}
     .modal{padding:28px 18px 22px}
     .modal-head{flex-direction:column;align-items:flex-start;gap:10px}
     .modal-head .right{text-align:left}
