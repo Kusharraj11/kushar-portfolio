@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>404 — kushar.raj</title>
-<link rel="stylesheet" href="/shared/persona.css">
+<link rel="stylesheet" href="/shared/persona.css?v=2">
 <style>
   :root {
     --persona-switch-fg: #e8e6e0;
@@ -31,6 +31,27 @@
   .home{margin-top:24px;font-size:10px;letter-spacing:.32em;color:#56544f;text-transform:uppercase}
   .home a{color:#7df9ff;text-decoration:none}
   .home a:hover{text-decoration:underline}
+
+  @media (max-width:640px){
+    html,body{padding:18px}
+    .code{font-size:80px}
+    .msg{font-size:11px;letter-spacing:.2em;margin-top:12px}
+    .links{margin-top:28px}
+    .links a{padding:11px 14px;font-size:10.5px;letter-spacing:.18em}
+    .home{margin-top:20px;font-size:9.5px;letter-spacing:.26em}
+  }
+  @media (max-width:380px){
+    html,body{padding:14px}
+    .code{font-size:64px}
+    .msg{font-size:10px}
+    .links a{padding:10px 12px;font-size:10px}
+  }
+  @media (max-height:480px) and (orientation:landscape){
+    .code{font-size:56px}
+    .links{margin-top:18px;flex-direction:row;gap:8px;flex-wrap:wrap;justify-content:center}
+    .links a{padding:9px 14px;font-size:10px;flex:1;min-width:120px}
+    .home{margin-top:14px}
+  }
 </style>
 </head>
 <body>
