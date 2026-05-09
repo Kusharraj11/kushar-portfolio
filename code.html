@@ -141,7 +141,122 @@
 </noscript>
 
 <script>
-  // REPL added in Task 15
+(function(){
+  const out = document.getElementById("termOutput");
+  const input = document.getElementById("termInput");
+  const form = document.getElementById("termForm");
+  const chips = document.getElementById("chips");
+
+  const STATE = {
+    history: [],
+    historyIndex: -1,
+  };
+
+  function el(tag, cls, html){
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+
+  function print(html, cls){
+    const line = el("div", "line " + (cls || ""), html);
+    out.appendChild(line);
+    out.scrollTop = out.scrollHeight;
+  }
+
+  function printPrompt(cmd){
+    const html = `<span class="pl">kushar</span><span class="at">@</span><span class="pl">portfolio</span><span class="at">:</span><span class="pa">~</span><span class="at">$</span> <span class="input">${escapeHTML(cmd)}</span>`;
+    print(html, "cmd");
+  }
+
+  function escapeHTML(s){
+    return String(s).replace(/[&<>"']/g, c => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"
+    }[c]));
+  }
+
+  // Command dispatch
+  const COMMANDS = {};
+
+  function execute(raw){
+    const trimmed = raw.trim();
+    printPrompt(raw);
+
+    if (!trimmed) return;
+
+    STATE.history.push(trimmed);
+    if (STATE.history.length > 50) STATE.history.shift();
+    STATE.historyIndex = STATE.history.length;
+
+    const parts = trimmed.split(/\s+/);
+    const cmd = parts[0];
+    const args = parts.slice(1);
+
+    const fn = COMMANDS[cmd];
+    if (fn){
+      try { fn(args); }
+      catch(err){ print(`error: ${err.message || err}`, "err"); }
+    } else {
+      print(`bash: ${escapeHTML(cmd)}: command not found`, "err");
+    }
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const v = input.value;
+    input.value = "";
+    execute(v);
+  });
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowUp"){
+      e.preventDefault();
+      if (STATE.history.length === 0) return;
+      STATE.historyIndex = Math.max(0, STATE.historyIndex - 1);
+      input.value = STATE.history[STATE.historyIndex] || "";
+    } else if (e.key === "ArrowDown"){
+      e.preventDefault();
+      if (STATE.history.length === 0) return;
+      STATE.historyIndex = Math.min(STATE.history.length, STATE.historyIndex + 1);
+      input.value = STATE.history[STATE.historyIndex] || "";
+    } else if (e.key === "Tab"){
+      e.preventDefault();
+      const prefix = input.value;
+      if (!prefix) return;
+      const matches = Object.keys(COMMANDS).filter(c => c.startsWith(prefix));
+      if (matches.length === 1) input.value = matches[0];
+      else if (matches.length > 1){
+        print(matches.join("  "), "out");
+      }
+    } else if (e.key === "l" && (e.ctrlKey || e.metaKey)){
+      e.preventDefault();
+      out.innerHTML = "";
+    }
+  });
+
+  chips.addEventListener("click", (e) => {
+    const c = e.target.closest(".chip");
+    if (!c) return;
+    const cmd = c.dataset.cmd;
+    input.value = "";
+    execute(cmd);
+    input.focus();
+  });
+
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("a")) return;
+    if (e.target.closest(".chip")) return;
+    if (e.target.closest(".persona-switch")) return;
+    input.focus();
+  });
+
+  window.__repl = { print, COMMANDS, escapeHTML, execute };
+
+  if (window.persona) window.persona.mountSwitchButton();
+
+  if (typeof boot === "function") boot();
+})();
 </script>
 
 </body>
