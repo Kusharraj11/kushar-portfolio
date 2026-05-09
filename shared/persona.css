@@ -1,6 +1,6 @@
 .persona-switch {
   position: fixed;
-  top: 18px;
+  bottom: 18px;
   right: 18px;
   z-index: 100;
   font: 500 10px/1 "JetBrains Mono", ui-monospace, monospace;
@@ -26,9 +26,18 @@
 
 @media (max-width: 640px) {
   .persona-switch {
-    top: 10px;
+    bottom: 10px;
     right: 10px;
     padding: 6px 10px;
+    font-size: 9px;
+  }
+}
+
+@media (max-height: 420px) and (orientation: landscape) {
+  .persona-switch {
+    bottom: 8px;
+    right: 8px;
+    padding: 5px 9px;
     font-size: 9px;
   }
 }

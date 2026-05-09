@@ -581,6 +581,43 @@ footer{
   .contact h3{font-size:32px}
   footer{flex-direction:column;align-items:flex-start;gap:8px}
 }
+@media (max-width:480px){
+  html,body{font-size:14px}
+  .shell{padding:72px 14px 24px}
+  .topbar{padding:0 14px;height:48px}
+  .topbar .brand{font-size:13px}
+  section{padding:48px 0}
+  .section-head{margin-bottom:28px;gap:12px}
+  .section-head h2{font-size:clamp(22px,7vw,30px)}
+  .hero{gap:32px;padding-top:8px}
+  .hero .name{font-size:clamp(40px,13vw,64px);line-height:.95}
+  .hero .role{font-size:15px}
+  .hero .lede{font-size:15px}
+  .hero .ctas{flex-wrap:wrap;gap:8px}
+  .btn{min-width:0;width:100%;font-size:10.5px;padding:13px 14px}
+  .tl-item{padding:18px 0 18px 20px}
+  .tl-item .tag{font-size:9.5px;padding:3px 7px}
+  .contact h3{font-size:26px}
+  .contact-list a{padding:14px 0;gap:12px}
+  .contact-list a .k{width:72px;font-size:9.5px}
+  .contact-list a .v{font-size:14px}
+  .chip,.chips .chip{font-size:10px}
+  footer{font-size:9px;padding-top:24px;margin-top:48px}
+  .mobile-nav{width:88vw;padding:72px 18px 18px}
+}
+@media (max-width:380px){
+  .shell{padding:68px 12px 20px}
+  .hero .name{font-size:clamp(36px,14vw,52px)}
+  .btn{font-size:10px;padding:12px 12px}
+  .contact-list a .k{width:64px}
+}
+@media (max-height:480px) and (orientation:landscape){
+  .shell{padding-top:64px}
+  .hero{min-height:auto;padding-top:8px;gap:24px}
+  .hero .name{font-size:clamp(36px,7vw,56px)}
+  section{padding:40px 0}
+  .topbar{height:46px}
+}
 
 /* Mobile drawer */
 .mobile-nav{
@@ -597,9 +634,56 @@ footer{
 }
 .mobile-nav a .num{color:var(--accent)}
 .mobile-nav a:hover{color:var(--accent)}
+
+/* BOOT — yin-yang */
+.boot-pro{
+  position:fixed;inset:0;z-index:200;background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+  transition:opacity .4s ease;
+}
+.boot-pro.fade{opacity:0;pointer-events:none}
+.boot-pro .yy-wrap{
+  width:140px;height:140px;display:flex;align-items:center;justify-content:center;
+  animation:yyIn 1.4s cubic-bezier(.2,.7,.2,1) both;
+}
+.boot-pro .yy-wrap svg{width:100%;height:100%;display:block}
+.boot-pro .yy-cap{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.34em;
+  color:var(--mute);text-transform:uppercase;
+  opacity:0;animation:yyCap 600ms 700ms ease forwards;
+}
+.boot-pro .yy-line{
+  width:0;height:1px;background:var(--ink);
+  animation:yyLine 700ms 800ms cubic-bezier(.2,.7,.2,1) forwards;
+}
+@keyframes yyIn{
+  0%{transform:rotate(-540deg) scale(.3);opacity:0}
+  60%{opacity:1}
+  100%{transform:rotate(0) scale(1);opacity:1}
+}
+@keyframes yyCap{to{opacity:.78}}
+@keyframes yyLine{to{width:88px}}
+@media(prefers-reduced-motion:reduce){.boot-pro{display:none !important}}
+@media (max-width:480px){
+  .boot-pro .yy-wrap{width:104px;height:104px}
+  .boot-pro .yy-cap{font-size:9px;letter-spacing:.28em}
+}
 </style>
 </head>
 <body>
+
+<div class="boot-pro" id="bootPro" aria-hidden="true">
+  <div class="yy-wrap">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="48" fill="#fbfaf5" stroke="#14141d" stroke-width="1.2"/>
+      <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,1 50,50 A24,24 0 0,0 50,2 Z" fill="#14141d"/>
+      <circle cx="50" cy="26" r="6" fill="#fbfaf5"/>
+      <circle cx="50" cy="74" r="6" fill="#14141d"/>
+    </svg>
+  </div>
+  <div class="yy-line"></div>
+  <div class="yy-cap">// initializing professional mode</div>
+</div>
 
 <header class="topbar">
   <a class="brand" href="#hero"><b>Kushar</b> Raj Kashyap</a>
@@ -1270,6 +1354,24 @@ document.querySelectorAll('.reveal').forEach((el) => {
   if(idx > 0) el.style.transitionDelay = Math.min(idx * 0.06, 0.30) + 's';
   revealObserver.observe(el);
 });
+</script>
+
+<script>
+  // Boot animation lifecycle
+  (function(){
+    const boot = document.getElementById('bootPro');
+    if(!boot) return;
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let booted = false;
+    try { booted = sessionStorage.getItem('booted-pro') === '1'; } catch(e) {}
+    if(reduce || booted){ boot.remove(); return; }
+    try { sessionStorage.setItem('booted-pro','1'); } catch(e) {}
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      boot.classList.add('fade');
+      setTimeout(() => { boot.remove(); document.body.style.overflow = ''; }, 420);
+    }, 1500);
+  })();
 </script>
 
 <script>

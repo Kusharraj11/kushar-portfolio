@@ -97,16 +97,72 @@
   }
   .chip:hover,.chip:active{background:rgba(125,249,255,0.08)}
 
+  @media (max-width:1024px){
+    .term-wrap{inset:12px}
+    .term-output{padding:16px 18px 10px}
+  }
   @media (max-width:768px){
     .term-wrap{inset:0;border:0}
     .term-output{padding:14px 14px 8px}
     .term-input-row{padding:8px 14px 12px}
     .chips{display:flex}
     html,body{font-size:13px}
+    .term-bar{height:28px;padding:0 10px}
+    .term-dot{width:10px;height:10px}
+    .term-bar .title{font-size:9.5px}
+  }
+  @media (max-width:480px){
+    html,body{font-size:12px;line-height:1.65}
+    .term-output{padding:12px 12px 6px}
+    .term-input-row{padding:8px 12px 10px;gap:6px}
+    .chips{padding:6px 12px;gap:5px}
+    .chip{font-size:10px;padding:5px 8px}
+    .ascii{font-size:9px;line-height:1.15}
+    .term-bar .title{font-size:9px}
+  }
+  @media (max-width:380px){
+    html,body{font-size:11.5px}
+    .ascii{font-size:8px}
+    .term-input-row .prompt-pre{font-size:11px}
+  }
+  @media (max-height:480px) and (orientation:landscape){
+    .term-output{padding:10px 14px 6px}
+    .term-input-row{padding:6px 14px 8px}
+    .chips{padding:4px 14px}
+  }
+
+  /* BOOT — matrix rain */
+  .boot-mx{
+    position:fixed;inset:0;z-index:200;background:#000;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    transition:opacity .4s ease;
+  }
+  .boot-mx.fade{opacity:0;pointer-events:none}
+  .boot-mx canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .boot-mx .mx-cap{
+    position:relative;z-index:2;
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.32em;
+    color:var(--green);text-transform:uppercase;
+    padding:10px 18px;background:rgba(0,0,0,0.6);
+    border:1px solid rgba(39,201,63,0.35);
+    text-shadow:0 0 8px rgba(39,201,63,0.6);
+    opacity:0;animation:mxCap 500ms 350ms ease forwards;
+  }
+  .boot-mx .mx-cap .blink{display:inline-block;width:7px;height:11px;background:var(--green);vertical-align:-1px;margin-left:4px;animation:mxBlink 1s steps(2) infinite}
+  @keyframes mxCap{to{opacity:1}}
+  @keyframes mxBlink{50%{opacity:0}}
+  @media(prefers-reduced-motion:reduce){.boot-mx{display:none !important}}
+  @media (max-width:480px){
+    .boot-mx .mx-cap{font-size:10px;letter-spacing:.26em;padding:8px 14px}
   }
 </style>
 </head>
 <body>
+
+<div class="boot-mx" id="bootMx" aria-hidden="true">
+  <canvas id="bootMxCanvas"></canvas>
+  <div class="mx-cap">$ booting matrix<span class="blink"></span></div>
+</div>
 
 <div class="term-wrap">
   <div class="term-bar">
@@ -139,6 +195,66 @@
     <div style="margin-top:14px;color:#8d8a82;font-size:12px">Coder variant requires JavaScript. Try the <a href="/pro.html" style="color:#7df9ff">professional</a> variant.</div>
   </div>
 </noscript>
+
+<script>
+// Matrix rain boot animation
+(function(){
+  const boot = document.getElementById('bootMx');
+  if(!boot) return;
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let booted = false;
+  try { booted = sessionStorage.getItem('booted-mx') === '1'; } catch(e) {}
+  if(reduce || booted){ boot.remove(); return; }
+  try { sessionStorage.setItem('booted-mx','1'); } catch(e) {}
+
+  const canvas = document.getElementById('bootMxCanvas');
+  const ctx = canvas.getContext('2d');
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function size(){
+    canvas.width = Math.floor(window.innerWidth * dpr);
+    canvas.height = Math.floor(window.innerHeight * dpr);
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+  }
+  size();
+
+  const fontSize = 16 * dpr;
+  const cols = Math.ceil(canvas.width / fontSize);
+  const drops = new Array(cols).fill(0).map(() => Math.random() * -50);
+  const glyphs = 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789ABCDEF{}[]<>$#@*+-=/\\';
+
+  ctx.font = fontSize + "px 'JetBrains Mono', monospace";
+  let raf;
+  function frame(){
+    ctx.fillStyle = 'rgba(0,0,0,0.08)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    for(let i = 0; i < cols; i++){
+      const ch = glyphs.charAt(Math.floor(Math.random() * glyphs.length));
+      const x = i * fontSize;
+      const y = drops[i] * fontSize;
+      // head bright, trail dim
+      ctx.fillStyle = '#9bff9b';
+      ctx.fillText(ch, x, y);
+      ctx.fillStyle = '#27c93f';
+      ctx.fillText(ch, x, y - fontSize);
+      drops[i]++;
+      if(y > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    }
+    raf = requestAnimationFrame(frame);
+  }
+  frame();
+
+  document.documentElement.style.overflow = 'hidden';
+  setTimeout(() => {
+    boot.classList.add('fade');
+    setTimeout(() => {
+      cancelAnimationFrame(raf);
+      boot.remove();
+      document.documentElement.style.overflow = '';
+    }, 420);
+  }, 1500);
+})();
+</script>
 
 <script>
 (function(){

@@ -217,6 +217,39 @@
     .tile{height:340px}
     .tile-gamer .gamer-kanji{font-size:200px}
   }
+
+  @media (max-width:480px){
+    .modal-wrap{padding:14px}
+    .modal{padding:22px 14px 18px}
+    .modal-head{padding-bottom:14px;margin-bottom:22px}
+    .modal-head .right .kanji{font-size:20px}
+    .modal-head .title-block h1{font-size:22px}
+    .tile{height:300px}
+    .tile-gamer .gamer-kanji{font-size:160px}
+    .tile-pro .pro-content{padding:30px 18px 0}
+    .tile-pro .pro-name{font-size:28px}
+    .tile-pro .pro-bio{font-size:12px;margin-top:14px}
+    .tile-pro .chips{bottom:68px;left:18px;right:18px}
+    .tile-pro .chip{font-size:8.5px;padding:2px 6px}
+    .term-body{padding:14px 14px 64px;font-size:10.5px;line-height:1.75}
+    .tile .enter-cta{padding:12px 16px}
+    .tile .name{font-size:17px}
+    .tile-pro .name,.tile-coder .name{font-size:16px}
+  }
+  @media (max-width:380px){
+    .tile{height:280px}
+    .tile-gamer .gamer-kanji{font-size:140px}
+    .tile-pro .pro-name{font-size:24px}
+    .term-body{padding:12px 12px 60px;font-size:10px}
+    .modal-head .title-block h1{font-size:20px}
+  }
+  @media (max-height:560px) and (orientation:landscape){
+    .modal-wrap{padding:14px;align-items:flex-start;overflow-y:auto}
+    .modal{max-height:none}
+    .tile{height:240px}
+    .tile-gamer .gamer-kanji{font-size:120px}
+    .teaser .word{font-size:clamp(40px,9vw,90px)}
+  }
 </style>
 </head>
 <body>
