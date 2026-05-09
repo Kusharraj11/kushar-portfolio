@@ -1,0 +1,7 @@
+# Clean URLs — handled by static hosting; explicit not necessary but documents intent
+/gamer    /gamer.html  200
+/pro      /pro.html    200
+/code     /code.html   200
+
+# 404
+/*  /404.html  404
