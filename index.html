@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KUSHAR.RAJ — choose your path</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Serif+JP:wght@200;400;700;900&family=Space+Grotesk:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="/shared/persona.js" defer></script>
+<style>
+  :root {
+    --ink:#07070b;
+    --ink-2:#0d0d14;
+    --bone:#e8e6e0;
+    --bone-dim:#8d8a82;
+    --bone-faint:#56544f;
+    --crimson:#ff2840;
+    --cyan:#7df9ff;
+    --line:rgba(232,230,224,0.10);
+    --line-2:rgba(232,230,224,0.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{
+    background:var(--ink);color:var(--bone);
+    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:14px;
+    line-height:1.55;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;min-height:100vh;
+  }
+
+  /* TEASER HERO */
+  .teaser{
+    position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:radial-gradient(900px 600px at 50% 50%, rgba(255,40,64,0.06), transparent 70%), var(--ink);
+    z-index:1;
+  }
+  .teaser .label{
+    font-size:10px;letter-spacing:.4em;color:var(--bone-faint);text-transform:uppercase;
+  }
+  .teaser .word{
+    font-family:"Zen Dots",sans-serif;font-size:clamp(56px,12vw,180px);
+    color:var(--bone);letter-spacing:-.02em;line-height:1;margin-top:18px;
+    opacity:0;animation:wordIn 600ms cubic-bezier(.2,.7,.2,1) 100ms forwards;
+  }
+  .teaser .underline{
+    width:0;height:2px;background:var(--crimson);margin-top:24px;
+    animation:lineGrow 700ms cubic-bezier(.2,.7,.2,1) 800ms forwards;
+  }
+  .teaser .loading{
+    margin-top:18px;font-size:10px;letter-spacing:.32em;color:var(--bone-faint);
+    text-transform:uppercase;opacity:0;animation:fadeIn 400ms 1100ms forwards;
+  }
+  .teaser .kanji-bg{
+    position:absolute;font-family:"Noto Serif JP",serif;font-weight:900;
+    font-size:clamp(280px,40vw,520px);color:var(--bone);opacity:0.025;
+    pointer-events:none;user-select:none;line-height:.85;
+  }
+
+  @keyframes wordIn { 0%{opacity:0;transform:translateY(12px)} 100%{opacity:1;transform:translateY(0)} }
+  @keyframes lineGrow { 0%{width:0} 100%{width:120px} }
+  @keyframes fadeIn { 0%{opacity:0} 100%{opacity:0.85} }
+
+  .teaser.hidden{opacity:0;pointer-events:none;transition:opacity 400ms ease}
+</style>
+</head>
+<body>
+
+<div class="teaser" id="teaser">
+  <div class="kanji-bg">三</div>
+  <div class="label">// kushar.raj</div>
+  <div class="word">KUSHAR</div>
+  <div class="underline"></div>
+  <div class="loading">// loading personas...</div>
+</div>
+
+<noscript>
+  <div style="position:fixed;inset:0;background:#07070b;color:#e8e6e0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:monospace;padding:24px;text-align:center">
+    <div style="font-size:48px;color:#ff2840;font-family:'Zen Dots',sans-serif">KUSHAR</div>
+    <div style="margin-top:18px;font-size:11px;letter-spacing:.32em;color:#8d8a82;text-transform:uppercase">choose your path</div>
+    <div style="margin-top:32px;display:flex;flex-direction:column;gap:10px">
+      <a href="/gamer.html" style="color:#e8e6e0;border:1px solid rgba(232,230,224,0.2);padding:12px 24px;text-decoration:none">→ Gamer</a>
+      <a href="/pro.html" style="color:#e8e6e0;border:1px solid rgba(232,230,224,0.2);padding:12px 24px;text-decoration:none">→ Professional</a>
+      <a href="/code.html" style="color:#e8e6e0;border:1px solid rgba(232,230,224,0.2);padding:12px 24px;text-decoration:none">→ Coder</a>
+    </div>
+  </div>
+</noscript>
+
+<script>
+  // Auto-route returning visitors (unless ?force=1)
+  if (window.persona && window.persona.maybeAutoRoute()) {
+    // page navigates away; nothing else to do
+  }
+</script>
+
+</body>
+</html>
