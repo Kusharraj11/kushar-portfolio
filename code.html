@@ -178,6 +178,7 @@
     <button class="chip" data-cmd="help">help</button>
     <button class="chip" data-cmd="whoami">whoami</button>
     <button class="chip" data-cmd="projects">projects</button>
+    <button class="chip" data-cmd="certs">certs</button>
     <button class="chip" data-cmd="cat resume.md">cat resume.md</button>
     <button class="chip" data-cmd="socials">socials</button>
     <button class="chip" data-cmd="exit">exit</button>
@@ -376,7 +377,8 @@
       ["skills", "technologies and tools"],
       ["projects", "list of repos"],
       ["ls", "files available for cat"],
-      ["cat &lt;file&gt;", "read a file (resume.md, contact.md, hobbies.md)"],
+      ["cat &lt;file&gt;", "read a file (resume.md, contact.md, hobbies.md, certs.md)"],
+      ["certs", "certificates &amp; achievements"],
       ["socials", "social links"],
       ["theme", "toggle terminal color scheme"],
       ["clear", "clear screen (Ctrl+L)"],
@@ -386,50 +388,77 @@
   };
 
   COMMANDS.whoami = () => {
-    print(`kushar — MCA grad · game dev trainee · designer · cli native`, "out");
+    print(`kushar — software developer · html5 / game dev · devops · open to work`, "out");
   };
 
   COMMANDS.about = () => {
-    print(`Hey — I'm Kushar.`, "");
+    print(`Hey — I'm Kushar Raj Kashyap.`, "");
     print(``);
-    print(`MCA graduate. Currently a Game Developer Trainee at BR Softech in Jaipur,`, "out");
-    print(`writing JavaScript that turns into actual game mechanics.`, "out");
+    print(`Software Developer · HTML5 / Game Dev · DevOps. MCA grad with production`, "out");
+    print(`experience across Phaser 3 game systems, CI/CD pipelines, and AI-assisted`, "out");
+    print(`engineering workflows.`, "out");
     print(``);
-    print(`Before this, six months at Orbiqe Technologies as an AI-DevOps Engineer.`, "out");
-    print(`Docker, Kubernetes, Terraform, Jenkins. Learned how things really run.`, "out");
+    print(`Just wrapped an HTML5 Trainee run at BR Softech, Jaipur (Feb — May 2026)`, "out");
+    print(`— shipped Phaser 3 gameplay systems (physics, collisions, state machines,`, "out");
+    print(`scoring, multi-level progression) across multiple titles. Currently in Patna.`, "out");
+    print(``);
+    print(`Before that, 6 months on the NSDC AI-DevOps Engineer program at Orbiqe`, "out");
+    print(`Technologies (SSC/Q8112 · NSQF Level 5 · Govt. of India).`, "out");
+    print(`Jenkins, Ansible, Docker, Terraform, AWS, CI/CD. Delivered HMRS as OJT.`, "out");
     print(``);
     print(`MCA · Haldia Institute of Technology · 8.11`, "out");
     print(`BCA · BIT Mesra · 8.63`, "out");
     print(``);
-    print(`Off the clock: anime, samurai culture, design, the odd late-night project.`, "out");
+    print(`Off the clock: anime (One Piece, Naruto, Bleach, Monster, Vinland Saga),`, "out");
+    print(`story-heavy games (Ghost of Tsushima — gamertag "Ronin"), design, late-night builds.`, "out");
   };
 
   COMMANDS.experience = () => {
     print(`<span class="key">CURRENT</span>`, "");
-    print(`  Game Developer Trainee · BR Softech Pvt. Ltd., Jaipur`, "");
-    print(`  Feb 2026 – Present`, "out");
+    print(`  Open to Work · Patna · IN`, "");
+    print(`  May 2026 – Present · HTML5 / Game Dev / DevOps / Design`, "out");
     print(``);
     print(`<span class="key">PREVIOUS</span>`, "");
-    print(`  AI-DevOps Engineer · Orbiqe Technologies`, "");
-    print(`  6 months · Docker, K8s, Terraform, Jenkins, AWS, CI/CD`, "out");
+    print(`  HTML5 Trainee · BR Softech Pvt. Ltd., Jaipur`, "");
+    print(`  Feb – May 2026 · Phaser 3, gameplay systems, JavaScript, GitHub Actions`, "out");
+    print(``);
+    print(`  AI DevOps Engineer Trainee · NSQF Level 5 · Orbiqe Technologies`, "");
+    print(`  Sept 2025 – Feb 2026 · Bihar Skill Dev Mission · Noida`, "out");
+    print(`  Jenkins, Ansible, Docker, Terraform, AWS · CI/CD pipelines · HMRS OJT`, "out");
+    print(``);
+    print(`  Graphic Design Intern · InAmigos Foundation · Remote`, "");
+    print(`  Jun – Jul 2025 · social impact campaign visuals · CEO recognition`, "out");
     print(``);
     print(`<span class="key">EDUCATION</span>`, "");
-    print(`  MCA · Haldia Institute of Technology · CGPA 8.11`, "");
-    print(`  BCA · BIT Mesra · CGPA 8.63`, "");
+    print(`  MCA · Haldia Institute of Technology · 2023 – 2025 · CGPA 8.11`, "");
+    print(`  BCA · BIT Mesra · 2020 – 2023 · CGPA 8.63`, "");
   };
 
   COMMANDS.skills = () => {
-    print(`<span class="key">programming</span>  python · javascript · html / css · sql · java · c`, "");
-    print(`<span class="key">game dev</span>     javascript · game mechanics · 2d systems`, "");
-    print(`<span class="key">devops</span>       docker · kubernetes · terraform · jenkins · ansible · aws · ci/cd · linux`, "");
-    print(`<span class="key">testing</span>      selenium · postman · jmeter`, "");
-    print(`<span class="key">design</span>       figma · canva · adobe creative suite · brand · web layouts`, "");
-    print(`<span class="key">tools</span>        git · github · gitlab · vs code · notion`, "");
+    print(`<span class="key">languages</span>    javascript (es6+) · python · sql · c`, "");
+    print(`<span class="key">frontend</span>     phaser 3 · react · html5 canvas · css3 · webpack · dom apis · responsive`, "");
+    print(`<span class="key">devops</span>       docker · terraform (iac) · jenkins · ansible · aws (ec2/s3) · github actions · linux · ci/cd`, "");
+    print(`<span class="key">backend</span>      rest api design · fastapi · node.js · git`, "");
+    print(`<span class="key">ai/ml</span>        supervised learning · classification · generative ai · ollama (local llm) · jupyter`, "");
+    print(`<span class="key">ai-aug dev</span>   prompt engineering · llm tooling · agentic workflows · rapid prototyping`, "");
+    print(`<span class="key">testing</span>      postman · selenium · jmeter · unit testing`, "");
+    print(`<span class="key">design</span>       adobe creative suite · canva · ui/ux · visual communication`, "");
+    print(`<span class="key">tools</span>        vs code · gitlab · notion · webpack · postman`, "");
   };
 
   const PROJECTS = [
+    { name: "Tokyo-Can-Sort-Game", url: "https://github.com/Kusharraj11/Tokyo-Can-Sort-Game-", desc: "★ 20-level color-sort puzzle · Phaser 3 · live & playable" },
+    { name: "tetris", url: "https://github.com/Kusharraj11/tetris", desc: "★ classic Tetris · vanilla HTML/CSS/JS · live & playable" },
+    { name: "Disaster_Recovery_Advisor", url: "https://github.com/Kusharraj11/Disaster_Recovery_Advisor", desc: "react · fastapi · ollama · ml classification · 95% acc" },
+    { name: "first_trail_game", url: "https://github.com/Kusharraj11/first_trail_game", desc: "first JS game — mechanics & interactive design experiment" },
+    { name: "hmrs-orbiue-ojt", url: "https://github.com/Kusharraj11/hmrs-orbiue-ojt", desc: "HR Management System · TypeScript · Orbiqe OJT" },
+    { name: "go-multistage", url: "https://github.com/Kusharraj11/go-multistage", desc: "containerised Go server · multi-stage Docker · binary-only image" },
+    { name: "devops-pipelines", url: "https://github.com/Kusharraj11/devops-pipelines", desc: "pipeline configs, automation scripts, CI/CD setups" },
+    { name: "SONARQUBE-LAB---Node.js", url: "https://github.com/Kusharraj11/SONARQUBE-LAB---Node.js", desc: "SonarQube static analysis · Node.js project" },
+    { name: "jenkins-test-main", url: "https://github.com/Kusharraj11/jenkins-test-main", desc: "Jenkins pipeline testing & CI/CD automation" },
+    { name: "microservice", url: "https://github.com/Kusharraj11/microservice", desc: "Python microservice architecture · containerised" },
+    { name: "Version_Control_git", url: "https://github.com/Kusharraj11/Version_Control_git", desc: "Python scripts · Git workflows & branching" },
     { name: "kushar-portfolio", url: "https://github.com/Kusharraj11/kushar-portfolio", desc: "this multi-persona portfolio" },
-    { name: "Disaster_Recovery_Advisor", url: "https://github.com/Kusharraj11/Disaster_Recovery_Advisor", desc: "AI/ML disaster prediction + recovery planning" },
   ];
 
   COMMANDS.projects = () => {
@@ -445,7 +474,7 @@
   };
 
   COMMANDS.ls = () => {
-    print(`resume.md  contact.md  hobbies.md`, "out");
+    print(`resume.md  contact.md  hobbies.md  certs.md`, "out");
   };
 
   const FILES = {
@@ -453,25 +482,47 @@
       print(`<span class="key"># resume.md</span>`, "");
       print(``);
       print(`Kushar Raj Kashyap`, "");
-      print(`MCA · Game Developer Trainee · Designer`, "out");
+      print(`MCA · Game Dev · DevOps · Designer · Open to Work`, "out");
       print(``);
       print(`Full PDF: <a href="https://www.overleaf.com/read/qhndsfwfmngb#02b2e5" target="_blank" rel="noopener">overleaf.com/read/qhndsfwfmngb</a>`, "");
     },
     "contact.md": () => {
       print(`<span class="key"># contact.md</span>`, "");
       print(``);
-      print(`email     <a href="mailto:kusharraj11@gmail.com">kusharraj11@gmail.com</a>`, "");
+      print(`email     <a href="mailto:iamkrk.dev@gmail.com">iamkrk.dev@gmail.com</a>`, "");
+      print(`phone     <a href="tel:+917272972089">+91 72729 72089</a>`, "");
       print(`linkedin  <a href="https://www.linkedin.com/in/kushar-raj-kashyap/" target="_blank" rel="noopener">/in/kushar-raj-kashyap</a>`, "");
       print(`github    <a href="https://github.com/Kusharraj11" target="_blank" rel="noopener">/Kusharraj11</a>`, "");
-      print(`instagram <a href="https://www.instagram.com/iamkrk11/" target="_blank" rel="noopener">/iamkrk11</a>`, "");
+      print(`instagram <a href="https://www.instagram.com/iamkrk11/" target="_blank" rel="noopener">@iamkrk11</a>`, "");
+      print(``);
+      print(`reply window  &lt; 48h · TZ IST · channel open`, "out");
     },
     "hobbies.md": () => {
       print(`<span class="key"># hobbies.md</span>`, "");
       print(``);
-      print(`anime    naruto · bleach · one piece · monster · vinland saga`, "out");
+      print(`anime    one piece · naruto · bleach · monster · vinland saga`, "out");
       print(`gaming   ghost of tsushima · god of war · death stranding · uncharted`, "out");
-      print(`tv       breaking bad · better call saul · peaky blinders · black mirror · westworld`, "out");
+      print(`tv       breaking bad · better call saul · peaky blinders · black mirror · westworld · himym`, "out");
       print(`reading  the 48 laws of power — robert greene`, "out");
+    },
+    "certs.md": () => {
+      print(`<span class="key"># certs.md</span>`, "");
+      print(``);
+      print(`<span class="key">零</span>  Getting Started with DevOps on AWS`, "");
+      print(`    Amazon Web Services · Nov 2025`, "out");
+      print(``);
+      print(`<span class="key">壱</span>  AI — DevOps Engineer (SSC/Q8112) · NSQF Level 5`, "");
+      print(`    NSDC · Skill India · Govt of India · 09 Feb 2026`, "out");
+      print(`    Cert ID: LXDJXDA80HJN56VN`, "out");
+      print(``);
+      print(`<span class="key">弐</span>  Data Analytics Job Simulation`, "");
+      print(`    Deloitte Australia · via Forage · Jul 2025`, "out");
+      print(``);
+      print(`<span class="key">参</span>  AI Tools &amp; ChatGPT Workshop`, "");
+      print(`    be10x · verified workshop · Jul 2025`, "out");
+      print(``);
+      print(`<span class="key">肆</span>  Build Your Own Generative AI Model`, "");
+      print(`    IIT Delhi Alumnus · Mar 2024`, "out");
     },
   };
 
@@ -491,6 +542,10 @@
 
   COMMANDS.socials = () => {
     COMMANDS.cat(["contact.md"]);
+  };
+
+  COMMANDS.certs = () => {
+    COMMANDS.cat(["certs.md"]);
   };
 
   COMMANDS.clear = () => {
