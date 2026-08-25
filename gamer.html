@@ -58,17 +58,18 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:61;opa
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .statusbar .live::before{content:"●";color:var(--crimson);margin-right:6px;animation:pulse 1.4s infinite}
 
-.sidenav{position:fixed;left:14px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:18px;padding:18px 12px;border:1px solid var(--line);background:rgba(13,13,20,0.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim)}
-.sidenav a{color:inherit;text-decoration:none;display:flex;align-items:center;gap:10px;padding:6px 4px;border-left:2px solid transparent;transition:all .2s}
-.sidenav a:hover,.sidenav a.active{color:var(--bone);border-left-color:var(--crimson)}
+.sidenav{position:fixed;left:14px;right:14px;top:48px;height:44px;z-index:49;display:flex;align-items:stretch;justify-content:center;gap:0;padding:0 12px;border-bottom:1px solid var(--line);background:rgba(7,7,11,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-dim)}
+.sidenav::before{content:"NAV // SECTOR MAP";display:flex;align-items:center;margin-right:auto;padding-right:18px;color:var(--bone-faint);font-size:8px;letter-spacing:.2em;white-space:nowrap}
+.sidenav a{color:inherit;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:7px;padding:0 clamp(8px,1.15vw,18px);border-bottom:2px solid transparent;transition:color .2s,background .2s,border-color .2s;white-space:nowrap}
+.sidenav a:hover,.sidenav a.active{color:var(--bone);border-bottom-color:var(--crimson);background:linear-gradient(180deg,transparent,rgba(255,40,64,0.08))}
 .sidenav .num{color:var(--bone-faint);font-size:9px}
 .sidenav a:hover .num,.sidenav a.active .num{color:var(--crimson)}
 
 .kanji-rail{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:40;writing-mode:vertical-rl;font-family:"Noto Serif JP",serif;font-weight:200;font-size:11px;letter-spacing:.4em;color:var(--bone-faint);text-transform:none}
 
-.shell{padding:64px 96px 64px 110px;max-width:1480px;margin:0 auto}
-section{position:relative;padding:120px 0;border-top:1px solid var(--line)}
-section:first-of-type{border-top:0;padding-top:80px}
+.shell{padding:108px 96px 64px;max-width:1480px;margin:0 auto}
+section{position:relative;padding:120px 0;border-top:1px solid var(--line);scroll-margin-top:108px}
+section:first-of-type{border-top:0;padding-top:56px}
 
 .section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:32px;border-bottom:1px solid var(--line);padding-bottom:18px}
 .section-head .lbl{font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--crimson)}
@@ -284,6 +285,10 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
 .nav-backdrop{display:none;position:fixed;inset:0;background:rgba(7,7,11,0.75);z-index:105;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
 .nav-backdrop.open{display:block}
 
+@media (min-width:981px) and (max-width:1180px){
+  .sidenav::before{display:none}
+  .sidenav a{padding:0 10px}
+}
 @media (max-width:980px){
   .shell{padding:60px 20px 32px}
   .sidenav,.kanji-rail{display:none}
@@ -299,7 +304,11 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
   .contact h3{font-size:44px}
   .avatar-frame{aspect-ratio:1/1.05;max-width:340px;margin-left:auto;margin-right:auto}
   .nav-toggle{display:flex}
-  .sidenav{display:flex;left:-220px;top:0;bottom:0;height:100%;transform:none;transition:left .3s cubic-bezier(.4,0,.2,1);z-index:110;padding-top:60px;width:200px;gap:14px}
+  section{scroll-margin-top:54px}
+  .sidenav{display:flex;left:-240px;right:auto;top:0;bottom:0;width:220px;height:100%;flex-direction:column;align-items:stretch;justify-content:flex-start;transform:none;transition:left .3s cubic-bezier(.4,0,.2,1);z-index:110;padding:60px 12px 18px;border:1px solid var(--line);gap:14px;background:rgba(13,13,20,0.96)}
+  .sidenav::before{display:none}
+  .sidenav a{justify-content:flex-start;height:auto;padding:8px 6px;border-left:2px solid transparent;border-bottom:0}
+  .sidenav a:hover,.sidenav a.active{border-left-color:var(--crimson);border-bottom-color:transparent;background:linear-gradient(90deg,rgba(255,40,64,0.08),transparent)}
   .sidenav.open{left:0}
 }
 @media (max-width:640px){
@@ -407,7 +416,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
 </div>
 
 <div class="nav-backdrop" id="navBackdrop"></div>
-<nav class="sidenav">
+<nav class="sidenav" aria-label="Gaming portfolio sections">
   <a href="#hero" class="active"><span class="num">00</span>HOME</a>
   <a href="#about"><span class="num">01</span>ABOUT</a>
   <a href="#path"><span class="num">02</span>PATH</a>
@@ -864,13 +873,31 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
       </div>
       <div class="kanji">証</div>
       <div class="meta">
-        TOTAL&nbsp;&nbsp;08<br/>
+        TOTAL&nbsp;&nbsp;09<br/>
         VERIFIED&nbsp;&nbsp;ALL<br/>
         STREAK&nbsp;&nbsp;ACTIVE
       </div>
     </header>
 
     <div class="certs" data-section-mood="happy">
+
+      <div class="cert reveal" style="grid-column:1/-1">
+        <div class="top">
+          <div class="seal">玖</div>
+          <div style="flex:1">
+            <div class="org">// OUTSKILL · GENERATIVE AI MASTERMIND</div>
+            <h4>Generative AI Mastermind · Applied AI Roadmap</h4>
+            <span class="date">COMPLETED · 25 AUGUST 2026 · LED BY VAIBHAV SISINTY</span>
+          </div>
+        </div>
+        <p><span class="cy">AI is not just about writing better prompts; it is about completely reimagining what is possible.</span> The mastermind unlocked a practical playbook for building, scaling, and solving real problems with modern AI tools.</p>
+        <div class="achs">
+          <span>Unlocked an actionable generative AI roadmap</span>
+          <span>Upgraded development workflows with modern AI tools</span>
+          <span>New capabilities equipped for upcoming project missions</span>
+        </div>
+        <a href="assets/cert-outskill-generative-ai-mastermind.pdf" target="_blank" rel="noopener" class="cert-view">VIEW CERT ↗</a>
+      </div>
 
       <div class="cert reveal" style="grid-column:1/-1">
         <div class="top">
@@ -905,7 +932,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
           <span>CI/CD pipeline design on AWS</span>
           <span>Issued directly by AWS Training</span>
         </div>
-        <a href="assets/cert-aws.jpg" target="_blank" rel="noopener" class="cert-view">VIEW CERT ↗</a>
+        <a href="https://drive.google.com/file/d/17TP4xbXnZ6UddNJfCcWBh-WTWDmu-zEB/view?usp=sharing" target="_blank" rel="noopener" class="cert-view">VIEW CERT ↗</a>
       </div>
 
       <div class="cert reveal">
