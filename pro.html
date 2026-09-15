@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Kushar Raj Kashyap — Professional Portfolio</title>
-<meta name="description" content="Kushar Raj Kashyap — Software Developer · HTML5 / Game Dev · DevOps. MCA grad with Phaser 3, CI/CD (NSDC NSQF L5), and AI workflow experience. Available for hire.">
+<meta name="description" content="Kushar Raj Kashyap — software developer building browser games, DevOps systems, and AI agents with FastAPI, Mem0, and Qdrant. Available for hire.">
 <meta name="theme-color" content="#f5f3ec">
 <link rel="icon" type="image/svg+xml" href="/shared/favicon-pro.svg?v=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -360,6 +360,11 @@ section:first-of-type{border-top:0;padding-top:48px}
 
 /* PROJECTS */
 .projects-featured{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+.projects-featured > :first-child{grid-column:1/-1}
+.projects-featured > :first-child .pf-body{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:48px;align-items:end}
+.projects-featured > :first-child .lang-badge,
+.projects-featured > :first-child h3{grid-column:1/-1}
+.projects-featured > :first-child .actions{grid-column:2;grid-row:3;align-self:center}
 .proj-feat{
   border:1px solid var(--line-2);background:var(--paper);padding:0;position:relative;
   display:flex;flex-direction:column;overflow:hidden;
@@ -571,6 +576,8 @@ footer{
   .topbar{padding:0 18px;height:52px}
   .topbar .status-pill{display:none}
   .skills-grid,.projects-featured,.projects-grid,.beyond-grid,.certs{grid-template-columns:1fr}
+  .projects-featured > :first-child .pf-body{display:block}
+  .projects-featured > :first-child .actions{margin-top:20px}
   section{padding:64px 0}
   .section-head{grid-template-columns:auto 1fr;gap:18px;margin-bottom:36px}
   .section-head .meta{display:none}
@@ -724,18 +731,18 @@ footer{
         <b>Kashyap</b><span class="jp">柏</span>
       </h1>
       <p class="role">
-        Software Developer · <b>HTML5 / Game Dev · DevOps</b>. MCA grad with production runs across Phaser 3 game systems, CI/CD pipelines (NSDC <span class="acc">NSQF Level 5</span>, Govt. of India), and AI-assisted engineering. Just wrapped BR Softech, Jaipur — currently in <b>Bangalore</b>, open to work.
+        Software Developer building <b>browser games, delivery systems, and AI agents</b>. MCA grad with production runs across Phaser 3, CI/CD (NSDC <span class="acc">NSQF Level 5</span>), and long-term memory systems with Mem0 + Qdrant. Based in <b>Bangalore</b>, open to work.
       </p>
       <div class="tags">
         <span>Phaser 3</span>
         <span>JavaScript · Python</span>
         <span>CI/CD · Docker</span>
-        <span>FastAPI</span>
+        <span>FastAPI · Mem0 · Qdrant</span>
         <span>AWS</span>
         <span>India · GMT+5:30</span>
       </div>
       <div class="ctas">
-        <a class="btn primary" href="https://www.overleaf.com/read/qvmpppmngndr#ab4de1" target="_blank" rel="noopener"><span class="arrow">▸</span> Read Resume</a>
+        <a class="btn primary" href="assets/Kushar-Raj-Kashyap-Resume.pdf" target="_blank" rel="noopener"><span class="arrow">▸</span> Read Resume</a>
         <a class="btn ghost" href="#contact"><span class="arrow">▸</span> Get in touch</a>
       </div>
     </div>
@@ -990,13 +997,27 @@ footer{
         <h2>Code shipped, <b>things built.</b></h2>
       </div>
       <div class="meta">
-        REPOS&nbsp;&nbsp;11<br/>
+        REPOS&nbsp;&nbsp;13<br/>
         SOURCE&nbsp;&nbsp;GITHUB<br/>
         STATUS&nbsp;&nbsp;LIVE
       </div>
     </header>
 
     <div class="projects-featured">
+      <article class="proj-feat reveal">
+        <div class="pf-head">
+          <span class="id">★ New · Proj_001</span>
+          <span class="badge">AI · Memory</span>
+        </div>
+        <div class="pf-body">
+          <span class="lang-badge">Python · FastAPI · Gemini · Mem0 · Qdrant</span>
+          <h3>Recall AI</h3>
+          <p>A user-scoped long-term memory service for AI agents. Conversations become durable, searchable facts through Mem0 and Qdrant, while Gemini handles responses and embeddings. The FastAPI architecture keeps memory providers replaceable and includes no-network tests for retrieval, updates, deletion, and user isolation.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://github.com/Kusharraj11/recall-ai-long-term-memory-for-ai-agents-with-mem0-and-qdrant" target="_blank" rel="noopener"><span class="arrow">▸</span> Explore project</a>
+          </div>
+        </div>
+      </article>
       <article class="proj-feat reveal">
         <div class="pf-head">
           <span class="id">★ Featured · Proj_001</span>
@@ -1368,7 +1389,7 @@ footer{
         <a href="https://linkedin.com/in/kushar-raj-kashyap" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span class="v">in/kushar-raj-kashyap</span><span class="arr">↗</span></a>
         <a href="https://github.com/Kusharraj11" target="_blank" rel="noopener"><span class="k">Github</span><span class="v">github.com/Kusharraj11</span><span class="arr">↗</span></a>
         <a href="https://instagram.com/iamkrk11" target="_blank" rel="noopener"><span class="k">Instagram</span><span class="v">@iamkrk11</span><span class="arr">↗</span></a>
-        <a href="https://www.overleaf.com/read/qvmpppmngndr#ab4de1" target="_blank" rel="noopener"><span class="k">Resume</span><span class="v">overleaf · read-only</span><span class="arr">↗</span></a>
+        <a href="assets/Kushar-Raj-Kashyap-Resume.pdf" target="_blank" rel="noopener"><span class="k">Resume</span><span class="v">PDF · updated September 2026</span><span class="arr">↗</span></a>
       </div>
     </div>
 

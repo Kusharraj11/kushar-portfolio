@@ -49,6 +49,24 @@
     document.body.appendChild(a);
   }
 
+  function mountProgress() {
+    if (document.querySelector(".site-progress")) return;
+    const rail = document.createElement("div");
+    const fill = document.createElement("span");
+    rail.className = "site-progress";
+    rail.setAttribute("aria-hidden", "true");
+    rail.appendChild(fill);
+    document.body.appendChild(rail);
+
+    const update = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      fill.style.transform = `scaleX(${max > 0 ? Math.min(scrollY / max, 1) : 0})`;
+    };
+    addEventListener("scroll", update, { passive: true });
+    addEventListener("resize", update, { passive: true });
+    update();
+  }
+
   window.persona = {
     PERSONAS,
     get: getPersona,
@@ -57,5 +75,8 @@
     isForce: isForceParam,
     maybeAutoRoute,
     mountSwitchButton,
+    mountProgress,
   };
+
+  addEventListener("DOMContentLoaded", mountProgress);
 })();
