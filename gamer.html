@@ -198,6 +198,7 @@ section:first-of-type{border-top:0;padding-top:56px}
 
 /* Projects */
 .projects-featured{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+.projects-featured > :first-child{grid-column:1/-1;background:linear-gradient(135deg,rgba(125,249,255,.07),rgba(255,40,64,.035))}
 .proj-feat{border:1px solid var(--line);padding:28px;background:rgba(13,13,20,0.5);position:relative;display:flex;flex-direction:column;transition:all .25s}
 .proj-feat:hover{border-color:rgba(255,40,64,0.5);transform:translateY(-3px);box-shadow:0 0 0 1px rgba(255,40,64,0.1),0 0 32px rgba(255,40,64,0.18),0 8px 40px rgba(0,0,0,0.55)}
 .proj-feat .corner{position:absolute;width:10px;height:10px;border:1px solid var(--crimson)}
@@ -442,13 +443,13 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
         <span class="accent glitch" data-text="KASHYAP">KASHYAP</span>
       </h1>
       <p class="role">
-        Software Developer · <b>HTML5 / Game Dev · DevOps</b> — <span class="red">"Ronin"</span> by gamertag, MCA by training. Phaser 3 game systems, CI/CD pipelines (NSDC NSQF L5, Govt. of India), and AI-assisted engineering. Just wrapped BR Softech, Jaipur — now posted in Bangalore, scouting the next mission.
+        Software Developer · <b>Games / DevOps / AI Agents</b> — <span class="red">"Ronin"</span> by gamertag, MCA by training. Phaser 3 systems, CI/CD pipelines, and long-term AI memory with Mem0 + Qdrant. Posted in Bangalore and scouting the next mission.
       </p>
       <div class="tags">
         <span>Phaser 3</span>
         <span>JavaScript · Python</span>
         <span>CI/CD · Docker</span>
-        <span>FastAPI · React</span>
+        <span>FastAPI · Mem0 · Qdrant</span>
         <span>Anime · Samurai</span>
         <span>One Piece 🏴‍☠️</span>
       </div>
@@ -689,13 +690,28 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
       </div>
       <div class="kanji">作</div>
       <div class="meta">
-        REPOS&nbsp;&nbsp;11<br/>
+        REPOS&nbsp;&nbsp;13<br/>
         SOURCE&nbsp;&nbsp;GITHUB<br/>
         STATUS&nbsp;&nbsp;LIVE
       </div>
     </header>
 
     <div class="projects-featured">
+
+      <div class="proj-feat reveal" style="border-color:rgba(125,249,255,0.28)">
+        <span class="corner tl cy"></span><span class="corner tr cy"></span>
+        <span class="corner bl cy"></span><span class="corner br cy"></span>
+        <div class="ftag">
+          <span class="id">★ NEW MISSION // PROJ_001</span>
+          <span class="badge" style="color:var(--cyan)">▸ AI · MEMORY</span>
+        </div>
+        <span class="lang-badge">◆ Python · FastAPI · Gemini · Mem0 · Qdrant</span>
+        <h3>Recall AI</h3>
+        <p>Long-term memory infrastructure for AI agents. Mem0 decides what survives a conversation; Qdrant retrieves user-scoped memories; Gemini responds with the right context. Includes replaceable service boundaries and no-network tests for the full memory lifecycle.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/Kusharraj11/recall-ai-long-term-memory-for-ai-agents-with-mem0-and-qdrant" target="_blank" rel="noopener"><span class="arrow">▸</span> INSPECT SOURCE</a>
+        </div>
+      </div>
 
       <div class="proj-feat reveal" style="border-color:rgba(125,249,255,0.15)">
         <span class="corner tl cy"></span><span class="corner tr cy"></span>
@@ -1073,6 +1089,7 @@ footer{padding:32px 0 0;margin-top:64px;border-top:1px solid var(--line);display
         <a href="https://linkedin.com/in/kushar-raj-kashyap" target="_blank" rel="noopener"><span class="k">LINKEDIN</span><span class="v">in/kushar-raj-kashyap</span><span class="arr">↗</span></a>
         <a href="https://github.com/Kusharraj11" target="_blank" rel="noopener"><span class="k">GITHUB</span><span class="v">github.com/Kusharraj11</span><span class="arr">↗</span></a>
         <a href="https://instagram.com/iamkrk11" target="_blank" rel="noopener"><span class="k">INSTAGRAM</span><span class="v">@iamkrk11</span><span class="arr">↗</span></a>
+        <a href="assets/Kushar-Raj-Kashyap-Resume.pdf" target="_blank" rel="noopener"><span class="k">RESUME</span><span class="v">PDF · SEP 2026</span><span class="arr">↗</span></a>
       </div>
     </div>
 
