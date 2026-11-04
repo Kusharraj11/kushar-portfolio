@@ -1,70 +1,28 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>404 — kushar.raj</title>
-<link rel="icon" type="image/svg+xml" href="/shared/favicon-index.svg?v=1">
-<link rel="stylesheet" href="/shared/persona.css?v=2">
-<style>
-  :root {
-    --persona-switch-fg: #e8e6e0;
-    --persona-switch-bg: rgba(13,13,20,0.7);
-    --persona-switch-border: rgba(232,230,224,0.18);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{
-    background:#07070b;color:#e8e6e0;
-    font-family:"JetBrains Mono",ui-monospace,monospace;
-    min-height:100vh;display:flex;align-items:center;justify-content:center;
-    padding:24px;
-  }
-  .wrap{max-width:520px;text-align:center}
-  .code{font-size:96px;color:#ff2840;font-weight:200;letter-spacing:-.02em;line-height:1}
-  .msg{margin-top:16px;color:#8d8a82;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
-  .links{margin-top:36px;display:flex;flex-direction:column;gap:10px}
-  .links a{
-    color:#e8e6e0;text-decoration:none;border:1px solid rgba(232,230,224,0.18);
-    padding:12px 18px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
-    transition:border-color .2s, color .2s;
-  }
-  .links a:hover{border-color:#ff2840;color:#ff2840}
-  .home{margin-top:24px;font-size:10px;letter-spacing:.32em;color:#56544f;text-transform:uppercase}
-  .home a{color:#7df9ff;text-decoration:none}
-  .home a:hover{text-decoration:underline}
-
-  @media (max-width:640px){
-    html,body{padding:18px}
-    .code{font-size:80px}
-    .msg{font-size:11px;letter-spacing:.2em;margin-top:12px}
-    .links{margin-top:28px}
-    .links a{padding:11px 14px;font-size:10.5px;letter-spacing:.18em}
-    .home{margin-top:20px;font-size:9.5px;letter-spacing:.26em}
-  }
-  @media (max-width:380px){
-    html,body{padding:14px}
-    .code{font-size:64px}
-    .msg{font-size:10px}
-    .links a{padding:10px 12px;font-size:10px}
-  }
-  @media (max-height:480px) and (orientation:landscape){
-    .code{font-size:56px}
-    .links{margin-top:18px;flex-direction:row;gap:8px;flex-wrap:wrap;justify-content:center}
-    .links a{padding:9px 14px;font-size:10px;flex:1;min-width:120px}
-    .home{margin-top:14px}
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page not found — Kushar Raj Kashyap</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0a0c10; color: #e9edf5;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; text-align: center; padding: 24px; }
+    .code { font-family: ui-monospace, Menlo, monospace; color: #8aa4ff; letter-spacing: .14em; font-size: 13px; }
+    h1 { font-size: clamp(32px, 6vw, 52px); letter-spacing: -0.03em; margin: 12px 0 8px; }
+    p { color: #9aa3b5; margin: 0 0 28px; }
+    a { display: inline-block; padding: 12px 20px; border-radius: 12px; background: #8aa4ff; color: #0a0c10; font-weight: 600; text-decoration: none; }
+    a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="code">404</div>
-    <div class="msg">// path not found</div>
-    <div class="links">
-      <a href="/gamer.html">→ Gamer</a>
-      <a href="/pro.html">→ Professional</a>
-      <a href="/code.html">→ Coder</a>
-    </div>
-    <div class="home">or <a href="/?force=1">return to chooser</a></div>
-  </div>
+  <main>
+    <div class="code">404 · NOT FOUND</div>
+    <h1>This page doesn't exist.</h1>
+    <p>The portfolio now lives on a single page.</p>
+    <a href="/">Go to the homepage</a>
+  </main>
 </body>
 </html>
