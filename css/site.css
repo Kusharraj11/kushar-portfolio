@@ -240,7 +240,7 @@ p { margin: 0 0 1em; }
 .profile-card__meta dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
 .profile-card__meta dd { margin: 2px 0 0; font-size: 14px; font-weight: 550; }
 
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(48px, 7vw, 80px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+.stats { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: clamp(48px, 7vw, 80px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
 .stat { padding: 22px 24px; border-left: 1px solid var(--line); }
 .stat:first-child { border-left: 0; }
 .stat__num { font-family: var(--font-display); font-size: clamp(30px, 3.6vw, 42px); font-weight: 700; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
@@ -586,8 +586,9 @@ dialog::backdrop { background: rgba(5, 7, 10, .66); backdrop-filter: blur(4px); 
   .hero__grid, .about__grid, .method, .contact, .tabpanel .two { grid-template-columns: 1fr; }
   .profile-card { justify-self: start; max-width: 340px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
-  .stat:nth-child(3) { border-left: 0; }
+  .stat:nth-child(odd) { border-left: 0; }
   .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .projects-featured, .blueprints { grid-template-columns: 1fr; }
   .edu { grid-template-columns: 1fr; }
   .why { grid-template-columns: 1fr; }
