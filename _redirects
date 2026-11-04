@@ -1,5 +1,10 @@
-# Root + clean URL aliases (rewrite, not redirect)
-/       /index.html  200
-/gamer  /gamer.html  200
-/pro    /pro.html    200
-/code   /code.html   200
+# Old persona pages -> new single-page site at root (permanent)
+/pro          /   301!
+/pro.html     /   301!
+/pro/*        /   301!
+/gamer        /   301!
+/gamer.html   /   301!
+/gamer/*      /   301!
+/code         /   301!
+/code.html    /   301!
+/code/*       /   301!
